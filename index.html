@@ -293,6 +293,17 @@ footer p{color:var(--muted);font-size:.9rem;margin:0}
 .picks-note{font-size:.84rem;color:var(--muted);margin-top:14px}
 :focus-visible{outline:3px solid var(--amber);outline-offset:2px}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+
+.gsearch{background:var(--surface,#fff);border-bottom:1.5px solid var(--line,#e5e0d8);padding:12px 0}
+.gsearch .wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.gsearch form{display:flex;gap:8px}
+.gsearch input{flex:1;border:1.5px solid var(--line,#ccc);border-radius:999px;padding:10px 18px;font:inherit;min-width:0}
+.gsearch button{border:0;border-radius:999px;background:#2F7DE1;color:#fff;font:inherit;font-weight:700;padding:10px 22px;cursor:pointer}
+.gsearch .chips{margin-top:9px;font-size:.86rem;color:var(--muted,#666);display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.gsearch .chips a{background:var(--bg2,#f3efe8);border-radius:999px;padding:4px 11px;text-decoration:none;color:var(--ink,#222);font-weight:600}
+.gs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.gs-badge{display:inline-block;background:#2F7DE1;color:#fff;border-radius:999px;padding:2px 10px;font-size:.75rem;font-weight:700;margin-bottom:6px}
+.gs-count{color:var(--muted,#666);margin:4px 0 14px}
 </style>
 
 <style id="standalone-photos">
@@ -311,6 +322,7 @@ footer p{color:var(--muted);font-size:.9rem;margin:0}
 /* Page views: one tab visible at a time (Downloads home / Shop / How / Help). */
 [data-view]{display:none!important}
 body[data-route="downloads"] [data-view="downloads"],body[data-route="shop"] [data-view="shop"],body[data-route="services"] [data-view="services"],body[data-route="how"] [data-view="how"],body[data-route="help"] [data-view="help"]{display:block!important}
+body[data-route="search"] [data-view="search"]{display:block!important}
 nav.main a.tab.active{background:#2F7DE1;color:#fff}
 /* The original design hides nav.main under 820px (it was anchor links on one
    long page). As page tabs they must stay reachable on phones. */
@@ -413,6 +425,10 @@ nav.main a.tab.active{background:#2F7DE1;color:#fff}
     <a class="btn btn-primary btn-sm" style="margin-left:8px" href="https://beacons.ai/christopherdewitt" target="_blank" rel="noopener" data-i18n="header.beaconsBtn">Open Beacons store ↗</a>
   </div>
 </header>
+<div class="gsearch"><div class="wrap">
+<form id="gsForm" role="search"><input id="gq" type="search" placeholder="Search everything — services, downloads, templates… try “party”" aria-label="Search everything"><button type="submit" id="gsBtn">Search</button></form>
+<div class="chips"><span>Popular:</span><a href="party-planning.html">Party</a><a href="wedding-planning.html">Wedding</a><a href="quinceanera-planning.html">Quinceañera</a><a href="budget-planner.html">Budget</a><a href="resume-help.html">Resume</a><a href="translation-services.html">Translation</a><a href="delivery-driver.html">Driver</a><a href="printable-templates.html">All templates</a></div>
+</div></div>
 
 <main id="top">
   <!-- HERO -->
@@ -539,6 +555,18 @@ nav.main a.tab.active{background:#2F7DE1;color:#fff}
       </div>
     </section>
 
+
+    <!-- GLOBAL SEARCH RESULTS -->
+    <section id="search-results">
+      <div class="sec-head"><div><p class="kicker" id="gsKicker">Search results</p><h2 id="gsTitle">Everything in one shot</h2><p class="gs-count" id="gsCount"></p></div></div>
+      <h3 id="gsSvcHead" style="margin:14px 0 8px">Services</h3>
+      <div class="gs-grid" id="gsServices"></div>
+      <h3 id="gsDlHead" style="margin:22px 0 8px">Downloads &amp; templates</h3>
+      <div class="gs-grid" id="gsDownloads"></div>
+      <h3 id="gsPickHead" style="margin:22px 0 8px">Shop picks</h3>
+      <div id="gsPicks"></div>
+      <p id="gsEmpty" style="display:none;color:var(--muted,#666)"></p>
+    </section>
     <!-- SERVICES (done-for-you by Frankie, Chris's AI assistant) -->
     <section id="services">
       <div class="sec-head">
@@ -1414,8 +1442,8 @@ var PICK_INFO = {
    #/downloads (home) · #/shop · #/services · #/how · #/help. Legacy in-page anchors
    (#shop, #picks, #refund-policy, ...) route to the view that holds them. */
 (function(){
-  var VIEWS={downloads:1,shop:1,services:1,how:1,help:1};
-  var MAP={'help-top':'help','seasonal':'downloads','top-picks':'downloads','categories':'downloads','shop':'downloads','picks':'shop','services':'services','how':'how','help':'help','install-app':'help'};
+  var VIEWS={downloads:1,shop:1,services:1,how:1,help:1,search:1};
+  var MAP={'help-top':'help','seasonal':'downloads','top-picks':'downloads','categories':'downloads','shop':'downloads','picks':'shop','services':'services','how':'how','help':'help','install-app':'help','search-results':'search'};
   function tag(){
     for(var id in MAP){ var el=document.getElementById(id); if(el) el.setAttribute('data-view',MAP[id]); }
     var hero=document.querySelector('.hero'); if(hero) hero.setAttribute('data-view','downloads');
@@ -1448,5 +1476,100 @@ var PICK_INFO = {
 </script>
 <script data-goatcounter="https://dewittshop.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
+<script>
+/* Global search — one shot across services, downloads/templates and shop picks (Chris, Nov 5, 2026). */
+(function(){
+  var B="https://shop.beacons.ai/christopherdewitt/";
+  var SERVICES=[
+   {k:"translation",p:20,u:B+"448ef229-de77-41cf-b9ae-6effdb48aee3",en:"Bilingual Translation & Writing",es:"Traducción y redacción bilingüe",de:"Documents, letters and text translated or written in English or Spanish.",ds:"Documentos, cartas y textos traducidos o redactados en inglés o español.",kw:"translation translate traducción traducir english spanish inglés español writing redacción document documento letter carta"},
+   {k:"resume",p:30,u:B+"f128d8a8-6a4a-4fe0-b520-b0e6b4b1b5de",en:"Resume Writing & Polish",es:"Currículum profesional",de:"A clean, job-ready resume and cover letter, in English or Spanish.",ds:"Un currículum limpio y listo para empleo, con carta de presentación, en inglés o español.",kw:"resume currículum curriculum cv job empleo work trabajo cover letter carta de presentación"},
+   {k:"socialpack",p:40,u:B+"8b5fff39-d57e-480c-a767-735a4f798ffc",en:"Social Media Content Pack",es:"Paquete de contenido para redes sociales",de:"Ready-to-post captions and content for your business or page, English + Spanish.",ds:"Textos y contenido listos para publicar en tu negocio o página, inglés + español.",kw:"social media redes sociales content contenido instagram facebook posts publicaciones marketing negocio business"},
+   {k:"party",p:40,u:B+"cbaeed95-453b-48b1-a7fe-c43ffa9dc30f",en:"Party Planning Package — Online",es:"Paquete de planificación de fiestas — en línea",de:"Your complete party plan: theme, budget, timeline, food and games — a packet delivered by email.",ds:"Tu plan completo de fiesta: tema, presupuesto, horario, comida y juegos — un paquete entregado por correo.",kw:"party fiesta birthday cumpleaños celebration celebración event evento planning planificación"},
+   {k:"wedding",p:75,u:B+"e20e643b-1519-42e6-8d6c-b9b7d666441c",en:"Wedding Planning Package — Online",es:"Paquete de planificación de bodas — en línea",de:"Your complete wedding plan packet: budget, timeline, vendors and checklists, delivered by email.",ds:"Tu paquete completo de boda: presupuesto, horario, proveedores y listas, entregado por correo.",kw:"wedding boda matrimonio bride novia planning planificación"},
+   {k:"quince",p:50,u:B+"1f3ebbd7-d433-4b35-8d72-8b42184ec5aa",en:"Quinceañera Planning Package — Online",es:"Paquete de planificación de quinceañera — en línea",de:"Your complete quinceañera plan packet: budget, timeline, padrinos and checklists, delivered by email.",ds:"Tu paquete completo de quinceañera: presupuesto, horario, padrinos y listas, entregado por correo.",kw:"quince quinceañera xv años fiesta party planning planificación"},
+   {k:"giftfinder",p:10,u:B+"ab69979e-4acc-4b98-83e6-812f6a6713dd",en:"Personal Gift Finder",es:"Buscador personal de regalos",de:"Tell us who it is for — we send back hand-picked gift ideas that fit your budget.",ds:"Dinos para quién es — te enviamos ideas de regalos escogidas para tu presupuesto.",kw:"gift regalo present presente birthday cumpleaños christmas navidad idea"}
+  ];
+  var GROUPS=[
+   ["party","fiesta","birthday","cumpleaños","cumpleanos","celebration","celebración","celebracion","event","evento"],
+   ["wedding","boda","matrimonio","bride","novia"],
+   ["quince","quinceañera","quinceanera","xv"],
+   ["budget","presupuesto","money","dinero","gastos","expenses","finance","finanzas"],
+   ["resume","currículum","curriculum","cv","empleo","job"],
+   ["translation","traducción","traduccion","traducir","translate","translator"],
+   ["gift","regalo","present","presente"],
+   ["christmas","navidad","thanksgiving","acción de gracias","accion de gracias"],
+   ["driver","conductor","delivery","repartidor","reparto"],
+   ["template","plantilla","printable","imprimible","planner","planificador"],
+   ["excel","spreadsheet","hoja de cálculo","hoja de calculo"],
+   ["citizenship","ciudadanía","ciudadania","naturalization","naturalización"],
+   ["business","negocio","empresa","small business"]
+  ];
+  function expand(q){
+    var terms=[q];
+    GROUPS.forEach(function(g){ if(g.indexOf(q)>-1){ g.forEach(function(w){ if(terms.indexOf(w)<0) terms.push(w); }); } });
+    return terms;
+  }
+  function hit(text,terms){ text=text.toLowerCase(); for(var i=0;i<terms.length;i++){ if(text.indexOf(terms[i])>-1) return true; } return false; }
+  function L(){ return (typeof currentLang!=="undefined" && currentLang==="es") ? "es" : "en"; }
+  function dlCard(x){
+    var u=(typeof ui==="function")?ui():{printablePDF:"Printable PDF",pages:"pages",instant:"Instant"};
+    return '<article class="card">'
+     + (x.i ? '<div class="card-photo"><img src="'+x.i+'" alt="'+esc(x.t)+'" loading="lazy"><span class="cp-price">$'+x.p+'</span></div>' : '<div class="cover-art" style="background:'+CATS[x.c].color+'"><span class="ca-title">'+esc(x.t)+'</span></div>')
+     + '<div class="card-body"><span class="gs-badge">'+(L()==="es"?"Descarga":"Download")+'</span>'
+     + '<div class="top"><span class="cat">'+CATS[x.c].icon+' '+catLabel(x.c)+'</span><span class="pr">$'+x.p+'</span></div>'
+     + '<h3>'+esc(x.t)+'</h3><p>'+esc(x.d)+'</p>'+footHtml(x)+'</div></article>';
+  }
+  function svcCard(sv){
+    var es=L()==="es";
+    return '<article class="card"><div class="card-body"><span class="gs-badge">'+(es?"Servicio":"Service")+'</span>'
+     + '<div class="top"><span class="cat">🛎️ '+(es?"Servicios":"Services")+'</span><span class="pr">$'+sv.p+'</span></div>'
+     + '<h3>'+esc(es?sv.es:sv.en)+'</h3><p>'+esc(es?sv.ds:sv.de)+'</p>'
+     + '<div class="foot"><a class="buy" href="'+sv.u+'" target="_blank" rel="noopener">'+(es?"Comprar en Beacons":"Buy on Beacons")+'</a></div></div></article>';
+  }
+  function render(){
+    var qEl=document.getElementById("gq"); if(!qEl) return;
+    var q=qEl.value.trim().toLowerCase(); if(q.length<2) return;
+    var terms=expand(q);
+    var es=L()==="es";
+    document.getElementById("gsTitle").textContent=(es?"Resultados para \u201c":"Results for \u201c")+q+"\u201d";
+    var sv=SERVICES.filter(function(sv){ return hit(sv.en+" "+sv.es+" "+sv.de+" "+sv.ds+" "+sv.kw,terms); });
+    document.getElementById("gsServices").innerHTML=sv.map(svcCard).join("");
+    document.getElementById("gsSvcHead").style.display=sv.length?"":"none";
+    var dl=PRODUCTS.filter(function(x){ return hit(x.t+" "+x.d+" "+catLabelBoth(x.c)+" printable template download plantilla imprimible descarga",terms); });
+    document.getElementById("gsDownloads").innerHTML=dl.map(dlCard).join("");
+    document.getElementById("gsDlHead").style.display=dl.length?"":"none";
+    var picks=[];
+    var nodes=document.querySelectorAll("#picks .pick-list li a");
+    for(var i=0;i<nodes.length;i++){ var a=nodes[i]; var nm=a.querySelector(".nm"), pd=a.querySelector(".pd"); if(!nm) continue;
+      var item={n:nm.textContent,d:pd?pd.textContent:"",u:a.getAttribute("href"),img:a.querySelector("img")?a.querySelector("img").getAttribute("src"):""};
+      if(hit(item.n+" "+item.d,terms)) picks.push(item); }
+    var ph="";
+    if(picks.length){ ph='<ul class="pick-list">'+picks.map(function(it){ return '<li><a href="'+it.u+'" target="_blank" rel="noopener">'+(it.img?'<img class="pick-photo" src="'+it.img+'" alt="'+esc(it.n)+'" loading="lazy">':"")+'<span class="pick-info"><span class="nm">'+esc(it.n)+'</span><span class="pd">'+esc(it.d)+'</span></span><span class="arr">↗</span></a></li>'; }).join("")+'</ul>'; }
+    document.getElementById("gsPicks").innerHTML=ph;
+    document.getElementById("gsPickHead").style.display=picks.length?"":"none";
+    var total=sv.length+dl.length+picks.length;
+    document.getElementById("gsCount").textContent= es ? (total+" opciones en un solo lugar — servicios, descargas y recomendaciones.") : (total+" options in one shot — services, downloads and picks.");
+    var em=document.getElementById("gsEmpty");
+    em.style.display= total? "none":"block";
+    em.textContent= es ? "Nada coincide con eso todavía. Prueba \u201cfiesta\u201d, \u201cpresupuesto\u201d o \u201cboda\u201d." : "Nothing matches that yet. Try \u201cparty\u201d, \u201cbudget\u201d or \u201cwedding\u201d.";
+    try{ localStorage.setItem("gsq",q); }catch(e){}
+  }
+  function go(){
+    var qEl=document.getElementById("gq"); if(!qEl||qEl.value.trim().length<2) return;
+    if(location.hash!=="#/search"){ location.hash="#/search"; }
+    render(); window.scrollTo(0,0);
+  }
+  var form=document.getElementById("gsForm");
+  if(form){ form.addEventListener("submit",function(e){ e.preventDefault(); go(); }); }
+  var qEl=document.getElementById("gq");
+  if(qEl){ var t=null; qEl.addEventListener("input",function(){ clearTimeout(t); t=setTimeout(function(){ if(qEl.value.trim().length>=3) go(); },400); });
+    try{ var saved=localStorage.getItem("gsq"); if(saved && location.hash==="#/search"){ qEl.value=saved; render(); } }catch(e){} }
+  window.addEventListener("hashchange",function(){ if(location.hash==="#/search") render(); });
+  /* keep the bar bilingual with the site toggle */
+  setInterval(function(){ var es=L()==="es"; var b=document.getElementById("gsBtn"); if(b) b.textContent= es?"Buscar":"Search";
+    if(qEl) qEl.setAttribute("placeholder", es?"Busca todo — servicios, descargas, plantillas… prueba \u201cfiesta\u201d":"Search everything — services, downloads, templates… try \u201cparty\u201d"); },1500);
+})();
+</script>
 </body>
+
 </html>
