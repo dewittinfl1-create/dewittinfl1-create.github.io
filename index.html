@@ -373,9 +373,8 @@ p.trust-strip{display:block}
 [data-view]{display:none!important}
 body[data-route="downloads"] [data-view="downloads"],body[data-route="shop"] [data-view="shop"],body[data-route="services"] [data-view="services"],body[data-route="how"] [data-view="how"],body[data-route="help"] [data-view="help"]{display:block!important}
 body[data-route="search"] [data-view="search"]{display:block!important}
-body[data-route="downloads"] [data-view="earn"],body[data-route="earn"] [data-view="earn"]{display:block!important}
+body[data-route="downloads"] #earn{display:block!important}
 body[data-route="templates"] [data-view="templates"]{display:block!important}
-body[data-route="earn"] [data-view="earn"]{display:block!important}
 nav.main a.tab.active{background:#2F7DE1;color:#fff}
 /* The original design hides nav.main under 820px (it was anchor links on one
    long page). As page tabs they must stay reachable on phones. */
@@ -523,7 +522,7 @@ body.scrolled header.site .brand,body.scrolled header.site .lang-toggle,body.scr
   <div class="wrap">
     <a class="brand" href="#/downloads">Christopher DeWitt's Shop<span data-i18n="brand.tagline">Printable planners · logs · guides</span><span data-i18n="brand.builtFor">Downloads in English &amp; Spanish</span></a>
     <nav class="main" aria-label="Main">
-      <a class="tab" data-route-link="earn" href="#/earn" style="background:linear-gradient(135deg,#D4AF37,#B8860B);color:#1A1206;font-weight:900" data-i18n="nav.earn">💰 Earn 40%</a>
+      <a class="tab" data-route-link="downloads" href="#/earn" style="background:linear-gradient(135deg,#D4AF37,#B8860B);color:#1A1206;font-weight:900" data-i18n="nav.earn">💰 Earn 40%</a>
       <a class="tab" data-route-link="downloads" href="#/downloads" data-i18n="nav.downloads">Downloads</a>
       <a class="tab" data-route-link="shop" href="#/shop" data-i18n="nav.shop">Shop</a>
       <a class="tab" data-route-link="services" href="#/services" data-i18n="nav.services">Services</a>
@@ -1837,8 +1836,8 @@ var PICK_INFO = {
    #/downloads (home) · #/shop · #/services · #/how · #/help. Legacy in-page anchors
    (#shop, #picks, #refund-policy, ...) route to the view that holds them. */
 (function(){
-  var VIEWS={downloads:1,shop:1,services:1,templates:1,how:1,help:1,search:1,earn:1};
-  var MAP={'help-top':'help','seasonal':'downloads','top-picks':'downloads','categories':'downloads','shop':'downloads','picks':'shop','services':'services','how':'how','help':'help','install-app':'help','search-results':'search','start-here':'downloads','freeTools':'downloads','licencesStrip':'downloads','affStrip':'downloads','what-downloads':'downloads','trust-strip':'downloads','templates':'templates','earn':'downloads'};
+  var VIEWS={downloads:1,shop:1,services:1,templates:1,how:1,help:1,search:1};
+  var MAP={'help-top':'help','seasonal':'downloads','top-picks':'downloads','categories':'downloads','shop':'downloads','picks':'shop','services':'services','how':'how','help':'help','install-app':'help','search-results':'search','start-here':'downloads','freeTools':'downloads','licencesStrip':'downloads','affStrip':'downloads','what-downloads':'downloads','trust-strip':'downloads','templates':'templates'};
   function tag(){
     for(var id in MAP){ var el=document.getElementById(id); if(el) el.setAttribute('data-view',MAP[id]); }
     var hero=document.querySelector('.hero'); if(hero) hero.setAttribute('data-view','downloads');
@@ -1861,7 +1860,7 @@ var PICK_INFO = {
   }
   function handle(){
     var h=location.hash||'';
-    if(h.indexOf('#/')===0){ setRoute(h.slice(2)); window.scrollTo(0,0); return; }
+    if(h.indexOf('#/')===0){ var rr=h.slice(2); if(rr==='earn'){ var ee=document.getElementById('earn'); if(ee){ setRoute('downloads'); setTimeout(function(){ ee.scrollIntoView(); },60); } else { setRoute('downloads'); } return; } setRoute(rr); window.scrollTo(0,0); return; }
     if(h.length>1){
       var el=document.getElementById(h.slice(1));
       if(el){ var v=viewOf(el); if(v) setRoute(v); setTimeout(function(){ el.scrollIntoView(); },60); return; }
