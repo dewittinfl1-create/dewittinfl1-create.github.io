@@ -457,6 +457,7 @@ header.site nav.main a{flex:0 0 auto}
 .gsearch{position:sticky;top:var(--hdr,104px);z-index:31}
 body.scrolled .gsearch{padding:6px 0}
 body.scrolled .gsearch .chips,body.scrolled .gsearch .req-link{display:none}
+body.scrolled header.site .brand,body.scrolled header.site .lang-toggle,body.scrolled header.site .btn{display:none}
 #grid{grid-template-columns:repeat(2,1fr);gap:12px}
 #grid .cover-art{min-height:138px;padding:12px}
 #grid .cover-art .ca-icon{font-size:1.6rem}
@@ -471,6 +472,27 @@ body.scrolled .gsearch .chips,body.scrolled .gsearch .req-link{display:none}
 #featGrid .feat .cover h3{font-size:1rem}
 #featGrid .feat .body{padding:14px 16px 16px}
 #featGrid .feat .body p{font-size:.92rem;-webkit-line-clamp:3}
+#startGrid (top downloads) so the Shop view (#picks) and all
+   other views are untouched. Visual only: no markup, links, photos, prices
+   or copy change. */
+#grid{grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+#startGrid{grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+#startGrid .feat{border:1px solid var(--line);border-radius:12px;box-shadow:none}
+#startGrid .feat-photo img{aspect-ratio:4/3}
+#startGrid .feat .cover{min-height:118px;padding:12px 14px 12px}
+#startGrid .feat .cover .fc-icon{font-size:1.5rem;margin-top:8px}
+#startGrid .feat .cover h3{font-size:1rem;line-height:1.25;margin-top:4px}
+#startGrid .feat .body{padding:10px 12px 12px;gap:6px}
+#startGrid .feat .body p{font-size:.8rem;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+#startGrid .feat .price-row .price{font-size:.95rem}
+#startGrid{grid-template-columns:repeat(2,1fr);gap:10px}
+#startGrid .feat .body{padding:8px 10px 10px}
+#startGrid .feat .cover h3{font-size:.9rem}
+#startGrid{grid-template-columns:repeat(2,1fr);gap:12px}
+#startGrid .feat .cover{min-height:138px}
+#startGrid .feat .cover h3{font-size:1rem}
+#startGrid .feat .body{padding:14px 16px 16px}
+#startGrid .feat .body p{font-size:.92rem;-webkit-line-clamp:3}
 }
 @media(min-width:641px){
 .topbar .tb-left{flex-direction:column;align-items:center;text-align:center;gap:6px}
@@ -1815,7 +1837,7 @@ var PICK_INFO = {
     if(qEl) qEl.setAttribute("placeholder", es?"Busca todo — servicios, descargas, plantillas… prueba \u201cfiesta\u201d":"Search everything — services, downloads, templates… try \u201cparty\u201d"); },1500);
 })();
 </script>
-<script>function fitSticky(){var h=document.querySelector("header.site");if(h){document.documentElement.style.setProperty("--hdr",h.offsetHeight+"px");}}function onScr(){document.body.classList.toggle("scrolled",window.scrollY>140);}window.addEventListener("resize",fitSticky);window.addEventListener("load",fitSticky);window.addEventListener("scroll",onScr,{passive:true});fitSticky();onScr();setTimeout(fitSticky,600);</script>
+<script>function fitSticky(){var h=document.querySelector("header.site");if(h){document.documentElement.style.setProperty("--hdr",h.offsetHeight+"px");}}var _sc=false;function onScr(){var sc=window.scrollY>140;if(sc!==_sc){_sc=sc;document.body.classList.toggle("scrolled",sc);requestAnimationFrame(fitSticky);}}window.addEventListener("resize",fitSticky);window.addEventListener("load",fitSticky);window.addEventListener("scroll",onScr,{passive:true});fitSticky();onScr();setTimeout(fitSticky,600);</script>
 </body>
 
 </html>
