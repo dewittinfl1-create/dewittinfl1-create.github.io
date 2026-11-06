@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Debt Payoff Calculator | Calculadora para Salir de Deudas — Christopher DeWitt's Shop</title>
+<meta name="description" content="Free debt payoff calculator: type in what you owe, the interest rate and your monthly payment, and see your debt-free date and how much interest you will pay. Calculadora gratis para salir de deudas: escribe cuánto debes, la tasa de interés y tu pago mensual, y mira tu fecha libre de deudas.">
+<link rel="canonical" href="https://dewittinfl1-create.github.io/tools/debt-payoff-calculator.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#14532D; --green-dark:#0E3D21; --gold:#D4AF37; --gold-soft:#FEF3C7;
+  --burgundy:#7B1E2B; --bg:#FBF8F3; --surface:#FFFFFF; --line:#E7E0D2;
+  --ink:#22312A; --muted:#5B6B60; --radius:16px;
+  --shadow:0 2px 10px rgba(30,42,58,.06),0 10px 30px rgba(30,42,58,.05);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:"Nunito","Public Sans",system-ui,sans-serif;line-height:1.15;margin:0;letter-spacing:-.01em}
+header.site{background:var(--green);color:#fff;padding:16px}
+header.site .wrap{max-width:860px;margin:0 auto;display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between}
+.brand{color:#fff;text-decoration:none;font-family:"Nunito",sans-serif;font-weight:900;font-size:1.05rem;line-height:1.15}
+.brand span{display:block;font-family:"Public Sans",sans-serif;font-weight:600;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#FFD97A}
+.lang-toggle{display:inline-flex;align-items:center;background:#fff;border-radius:999px;padding:3px;gap:2px}
+.lang-toggle button{border:0;background:transparent;color:var(--muted);font:inherit;font-weight:800;font-size:.84rem;padding:6px 14px;border-radius:999px;cursor:pointer}
+.lang-toggle button.on{background:var(--green);color:#fff}
+main{max-width:860px;margin:0 auto;padding:22px 16px 44px}
+.backlink{display:inline-block;margin-bottom:14px;color:var(--green-dark);font-weight:700;text-decoration:none}
+.backlink:hover{text-decoration:underline}
+.badge{display:inline-block;background:var(--gold);color:#223;border-radius:999px;padding:3px 12px;font-size:.78rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+h1{font-size:2rem;margin:12px 0 10px;color:var(--green-dark)}
+.explainer{font-size:1.06rem;color:var(--ink)}
+.explainer p{margin:0 0 10px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);margin-top:18px}
+.card h2{font-size:1.3rem;color:var(--green-dark);margin-bottom:12px}
+.field{margin-bottom:16px}
+.field label{display:block;font-weight:700;margin-bottom:6px}
+.field .hint{font-weight:400;color:var(--muted);font-size:.9rem}
+.field input{width:100%;font:inherit;font-size:1.15rem;font-weight:700;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;background:#FFFDF8;color:var(--ink)}
+.field input:focus{outline:2px solid var(--gold);border-color:var(--gold)}
+.results{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:560px){.results{grid-template-columns:1fr}}
+.stat{background:#F2F7F0;border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.stat .k{font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.stat .v{font-family:"Nunito",sans-serif;font-weight:900;font-size:1.6rem;color:var(--green-dark);margin-top:2px}
+.stat .v.gold{color:#8A6D1F}
+.empty-note{color:var(--muted);font-size:1rem;margin:0}
+.warn{display:none;background:#FBEBED;border:1.5px solid var(--burgundy);color:var(--burgundy);border-radius:12px;padding:14px 16px;font-weight:700;margin-top:14px}
+.extra-row{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;padding:11px 0;border-bottom:1px dashed var(--line)}
+.extra-row:last-of-type{border-bottom:0}
+.extra-row .amt{font-family:"Nunito",sans-serif;font-weight:900;font-size:1.1rem;color:var(--green-dark);min-width:118px}
+.extra-row .gain{color:var(--ink)}
+input[type=range]{width:100%;accent-color:var(--green);margin:8px 0 4px}
+.custom-line{font-weight:700;color:var(--green-dark);margin:6px 0 0}
+.privacy{margin-top:16px;color:var(--muted);font-size:.95rem}
+.pointer{border:2px solid var(--gold);background:#FFFDF4}
+.pointer p{margin:0 0 12px;font-size:1.02rem}
+.btn{display:inline-flex;align-items:center;gap:8px;border:0;cursor:pointer;text-decoration:none;font-weight:700;border-radius:999px;padding:12px 20px;font-size:.98rem;font-family:inherit;background:var(--green);color:#fff}
+.btn:hover{background:var(--green-dark);color:#fff}
+footer{max-width:860px;margin:0 auto;padding:0 16px 34px;color:var(--muted);font-size:.9rem}
+footer a{color:var(--green-dark);font-weight:700}
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="https://dewittinfl1-create.github.io/">Christopher DeWitt's Shop <span data-i18n="brandSub">Free tools</span></a>
+    <div class="lang-toggle" role="group" aria-label="Language / Idioma">
+      <button type="button" id="btnEn" class="on" onclick="setLang('en')">English</button>
+      <button type="button" id="btnEs" onclick="setLang('es')">Español</button>
+    </div>
+  </div>
+</header>
+<main>
+  <a class="backlink" href="https://dewittinfl1-create.github.io/" data-i18n="backShop">← Back to the shop</a>
+  <div><span class="badge" data-i18n="badge">Free tool</span></div>
+  <h1 data-i18n="h1">Debt Payoff Calculator</h1>
+  <div class="explainer">
+    <p data-i18n="expl1">Owe money on a card or a loan? This free tool tells you the one thing the bill never does: the exact month you will be DONE paying it.</p>
+    <p data-i18n="expl2">Type in three numbers — what you owe, the interest rate, and what you pay each month. You instantly see how many months are left, the date the debt is gone, and how much interest it costs you along the way. Then try paying a little extra each month and watch the finish line move closer.</p>
+  </div>
+
+  <section class="card" aria-label="Calculator">
+    <h2 data-i18n="calcTitle">Your three numbers</h2>
+    <div class="field">
+      <label for="inBalance" data-i18n="lBalance">Total amount you owe ($)</label>
+      <input id="inBalance" type="number" inputmode="decimal" min="0" step="any" placeholder="5,000">
+    </div>
+    <div class="field">
+      <label for="inApr"><span data-i18n="lApr">Interest rate — APR (%)</span> <span class="hint" data-i18n="aprHint">It is on your statement. Credit cards are often 20–30%.</span></label>
+      <input id="inApr" type="number" inputmode="decimal" min="0" step="any" placeholder="24">
+    </div>
+    <div class="field">
+      <label for="inPayment" data-i18n="lPayment">What you pay each month ($)</label>
+      <input id="inPayment" type="number" inputmode="decimal" min="0" step="any" placeholder="200">
+    </div>
+    <p class="empty-note" id="emptyNote" data-i18n="hintEmpty">Type in your three numbers above and your answer appears right here — no button to press.</p>
+    <div class="warn" id="warnInterest" data-i18n="warnInterest">That payment doesn't cover the monthly interest — the balance would grow.</div>
+    <div class="results" id="resultsBox" style="display:none">
+      <div class="stat"><div class="k" data-i18n="rMonthsLabel">Debt-free in</div><div class="v" id="outMonths">—</div></div>
+      <div class="stat"><div class="k" data-i18n="rDateLabel">Debt gone by</div><div class="v" id="outDate">—</div></div>
+      <div class="stat"><div class="k" data-i18n="rInterestLabel">Interest you will pay</div><div class="v gold" id="outInterest">—</div></div>
+      <div class="stat"><div class="k" data-i18n="rTotalLabel">Total you will pay</div><div class="v" id="outTotal">—</div></div>
+    </div>
+  </section>
+
+  <section class="card" id="extraCard" style="display:none">
+    <h2 data-i18n="extraTitle">What if you pay a little extra?</h2>
+    <p data-i18n="extraNote">Even a small extra payment every month cuts months off the debt — and the interest savings are bigger than most people expect:</p>
+    <div class="extra-row"><span class="amt" id="xAmt25"></span><span class="gain" id="xGain25"></span></div>
+    <div class="extra-row"><span class="amt" id="xAmt50"></span><span class="gain" id="xGain50"></span></div>
+    <div class="extra-row"><span class="amt" id="xAmt100"></span><span class="gain" id="xGain100"></span></div>
+    <label for="inExtra" style="display:block;font-weight:700;margin-top:16px" data-i18n="sliderLabel">Or slide to pick your own extra amount:</label>
+    <input type="range" id="inExtra" min="0" max="300" step="5" value="50">
+    <p class="custom-line" id="customLine"></p>
+  </section>
+
+  <p class="privacy" data-i18n="privacy">🔒 Your numbers never leave your phone/computer — everything is figured out right here on this page. Nothing is sent anywhere, nothing is saved.</p>
+
+  <section class="card pointer">
+    <p data-i18n="pointerText">Want the full tracker you can print? The Debt Payoff Tracker walks you month by month — write in each payment, watch the balance drop, and check off the finish line when you get there.</p>
+    <a class="btn" href="https://dewittinfl1-create.github.io/#/downloads" data-i18n="pointerBtn">See the Debt Payoff Tracker →</a>
+  </section>
+</main>
+<footer>
+  <p data-i18n="footerNote">A free tool from Christopher DeWitt's Shop — printable planners, trackers and guides in English &amp; Spanish.</p>
+  <p><a href="https://dewittinfl1-create.github.io/" data-i18n="backShop">← Back to the shop</a></p>
+</footer>
+<script>
+var STR = {
+en: {
+  docTitle: "Debt Payoff Calculator — Christopher DeWitt's Shop",
+  brandSub: "Free tools",
+  backShop: "← Back to the shop",
+  badge: "Free tool",
+  h1: "Debt Payoff Calculator",
+  expl1: "Owe money on a card or a loan? This free tool tells you the one thing the bill never does: the exact month you will be DONE paying it.",
+  expl2: "Type in three numbers — what you owe, the interest rate, and what you pay each month. You instantly see how many months are left, the date the debt is gone, and how much interest it costs you along the way. Then try paying a little extra each month and watch the finish line move closer.",
+  calcTitle: "Your three numbers",
+  lBalance: "Total amount you owe ($)",
+  lApr: "Interest rate — APR (%)",
+  aprHint: "It is on your statement. Credit cards are often 20–30%.",
+  lPayment: "What you pay each month ($)",
+  hintEmpty: "Type in your three numbers above and your answer appears right here — no button to press.",
+  warnInterest: "That payment doesn't cover the monthly interest — the balance would grow.",
+  rMonthsLabel: "Debt-free in",
+  rDateLabel: "Debt gone by",
+  rInterestLabel: "Interest you will pay",
+  rTotalLabel: "Total you will pay",
+  monthWord: "month",
+  monthsWord: "months",
+  extraTitle: "What if you pay a little extra?",
+  extraNote: "Even a small extra payment every month cuts months off the debt — and the interest savings are bigger than most people expect:",
+  extraPerMonth: "extra / month",
+  soonerTxt: "{s} sooner",
+  savedTxt: "and {v} less interest",
+  sliderLabel: "Or slide to pick your own extra amount:",
+  customLine: "With {x} extra a month: debt-free {s} sooner, and you pay {v} less interest.",
+  privacy: "🔒 Your numbers never leave your phone/computer — everything is figured out right here on this page. Nothing is sent anywhere, nothing is saved.",
+  pointerText: "Want the full tracker you can print? The Debt Payoff Tracker walks you month by month — write in each payment, watch the balance drop, and check off the finish line when you get there.",
+  pointerBtn: "See the Debt Payoff Tracker →",
+  footerNote: "A free tool from Christopher DeWitt's Shop — printable planners, trackers and guides in English & Spanish."
+},
+es: {
+  docTitle: "Calculadora para Salir de Deudas — Christopher DeWitt's Shop",
+  brandSub: "Herramientas gratis",
+  backShop: "← Volver a la tienda",
+  badge: "Herramienta gratis",
+  h1: "Calculadora para Salir de Deudas",
+  expl1: "¿Debes dinero en una tarjeta o un préstamo? Esta herramienta gratis te dice lo que la factura nunca te dice: el mes exacto en que terminas de pagar.",
+  expl2: "Escribe tres números — cuánto debes, la tasa de interés y lo que pagas cada mes. Al instante ves cuántos meses te faltan, la fecha en que la deuda desaparece y cuánto interés te cuesta en el camino. Después prueba pagando un poco más cada mes y mira cómo se acerca la meta.",
+  calcTitle: "Tus tres números",
+  lBalance: "Cantidad total que debes ($)",
+  lApr: "Tasa de interés — APR (%)",
+  aprHint: "Está en tu estado de cuenta. Las tarjetas de crédito suelen estar entre 20–30%.",
+  lPayment: "Lo que pagas cada mes ($)",
+  hintEmpty: "Escribe tus tres números arriba y tu respuesta aparece aquí mismo — sin botones.",
+  warnInterest: "Ese pago no cubre el interés mensual — la deuda crecería en vez de bajar.",
+  rMonthsLabel: "Libre de deudas en",
+  rDateLabel: "Deuda pagada para",
+  rInterestLabel: "Intereses que pagarás",
+  rTotalLabel: "Total que pagarás",
+  monthWord: "mes",
+  monthsWord: "meses",
+  extraTitle: "¿Y si pagas un poco más?",
+  extraNote: "Hasta un pago extra pequeño cada mes le quita meses a la deuda — y el ahorro en intereses es más grande de lo que la mayoría espera:",
+  extraPerMonth: "extra al mes",
+  soonerTxt: "{s} antes",
+  savedTxt: "y {v} menos en intereses",
+  sliderLabel: "O mueve la barra para elegir tu propia cantidad extra:",
+  customLine: "Con {x} extra al mes: sales de la deuda {s} antes y pagas {v} menos en intereses.",
+  privacy: "🔒 Tus números nunca salen de tu teléfono/computadora — todo se calcula aquí mismo en esta página. Nada se envía a ningún lado, nada se guarda.",
+  pointerText: "¿Quieres el registro completo para imprimir? El registro para salir de deudas te guía mes a mes — anota cada pago, mira cómo baja la deuda y marca la meta cuando llegues.",
+  pointerBtn: "Ver el registro para salir de deudas →",
+  footerNote: "Una herramienta gratis de Christopher DeWitt's Shop — planificadores, registros y guías imprimibles en inglés y español."
+}};
+var lang = "en";
+function t(k){ return STR[lang][k]; }
+function locale(){ return lang === "es" ? "es-US" : "en-US"; }
+function fmtMoney(n){
+  return "$" + n.toLocaleString(locale(), {minimumFractionDigits: 2, maximumFractionDigits: 2});
+}
+function monthsPhrase(n){
+  return n + " " + (n === 1 ? t("monthWord") : t("monthsWord"));
+}
+function num(id){
+  var v = parseFloat(document.getElementById(id).value);
+  return (isNaN(v) || v < 0) ? 0 : v;
+}
+/* Month-by-month simulation. Returns {months, totalInterest, totalPaid}
+   or {never:true} when the payment does not beat the monthly interest. */
+function simulate(balance, aprPct, payment){
+  var r = aprPct / 100 / 12;
+  if (balance <= 0 || payment <= 0) return null;
+  if (r > 0 && payment <= balance * r) return {never: true};
+  var months = 0, totalInterest = 0, bal = balance;
+  while (bal > 0 && months < 1200){
+    var interest = bal * r;
+    totalInterest += interest;
+    var principal = payment - interest;
+    if (principal >= bal){ bal = 0; } else { bal -= principal; }
+    months++;
+  }
+  if (bal > 0) return {never: true};
+  return {months: months, totalInterest: totalInterest, totalPaid: balance + totalInterest};
+}
+function gainText(base, alt){
+  var sooner = base.months - alt.months;
+  var saved = base.totalInterest - alt.totalInterest;
+  var parts = [];
+  if (sooner > 0) parts.push(t("soonerTxt").replace("{s}", monthsPhrase(sooner)));
+  if (saved > 0.005) parts.push(t("savedTxt").replace("{v}", fmtMoney(saved)));
+  return parts.join(" ");
+}
+function calc(){
+  var balance = num("inBalance"), apr = num("inApr"), payment = num("inPayment");
+  var emptyNote = document.getElementById("emptyNote");
+  var warn = document.getElementById("warnInterest");
+  var box = document.getElementById("resultsBox");
+  var extraCard = document.getElementById("extraCard");
+  warn.style.display = "none";
+  if (balance <= 0 || payment <= 0){
+    emptyNote.style.display = "block";
+    box.style.display = "none";
+    extraCard.style.display = "none";
+    return;
+  }
+  var base = simulate(balance, apr, payment);
+  if (!base || base.never){
+    emptyNote.style.display = "none";
+    box.style.display = "none";
+    extraCard.style.display = "none";
+    warn.style.display = "block";
+    return;
+  }
+  emptyNote.style.display = "none";
+  box.style.display = "grid";
+  document.getElementById("outMonths").textContent = monthsPhrase(base.months);
+  var d = new Date();
+  d.setMonth(d.getMonth() + base.months);
+  document.getElementById("outDate").textContent =
+    d.toLocaleDateString(locale(), {month: "long", year: "numeric"});
+  document.getElementById("outInterest").textContent = fmtMoney(base.totalInterest);
+  document.getElementById("outTotal").textContent = fmtMoney(base.totalPaid);
+  /* Extra-payment comparisons */
+  var extras = [25, 50, 100];
+  for (var i = 0; i < extras.length; i++){
+    var alt = simulate(balance, apr, payment + extras[i]);
+    document.getElementById("xAmt" + extras[i]).textContent =
+      "+" + fmtMoney(extras[i]).replace(/\.00$/, "") + " " + t("extraPerMonth");
+    document.getElementById("xGain" + extras[i]).textContent =
+      alt && !alt.never ? gainText(base, alt) : "—";
+  }
+  var extra = num("inExtra");
+  document.getElementById("customLine").textContent = "";
+  if (extra > 0){
+    var altC = simulate(balance, apr, payment + extra);
+    if (altC && !altC.never){
+      var sooner = base.months - altC.months;
+      var saved = base.totalInterest - altC.totalInterest;
+      if (sooner > 0 || saved > 0.005){
+        document.getElementById("customLine").textContent = t("customLine")
+          .replace("{x}", fmtMoney(extra).replace(/\.00$/, ""))
+          .replace("{s}", monthsPhrase(sooner))
+          .replace("{v}", fmtMoney(saved));
+      }
+    }
+  }
+  extraCard.style.display = "block";
+}
+function setLang(l){
+  lang = l;
+  document.documentElement.lang = (l === "es" ? "es" : "en");
+  document.title = t("docTitle");
+  document.getElementById("btnEn").className = (l === "en" ? "on" : "");
+  document.getElementById("btnEs").className = (l === "es" ? "on" : "");
+  var nodes = document.querySelectorAll("[data-i18n]");
+  for (var i = 0; i < nodes.length; i++){
+    var key = nodes[i].getAttribute("data-i18n");
+    if (STR[lang][key]) nodes[i].textContent = STR[lang][key];
+  }
+  calc();
+}
+["inBalance", "inApr", "inPayment", "inExtra"].forEach(function(id){
+  document.getElementById(id).addEventListener("input", calc);
+});
+calc();
+</script>
+</body>
+</html>

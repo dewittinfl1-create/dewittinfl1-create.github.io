@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Monthly Budget Calculator | Calculadora de Presupuesto Mensual — Christopher DeWitt's Shop</title>
+<meta name="description" content="Free monthly budget calculator: type in your take-home pay and what you spend, and see exactly where your money goes and what is left over. Calculadora gratis de presupuesto mensual: escribe tu sueldo neto y tus gastos, y mira a dónde se va tu dinero y cuánto te queda.">
+<link rel="canonical" href="https://dewittinfl1-create.github.io/tools/budget-calculator.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#14532D; --green-dark:#0E3D21; --gold:#D4AF37; --gold-soft:#FEF3C7;
+  --burgundy:#7B1E2B; --red:#B3261E; --bg:#FBF8F3; --surface:#FFFFFF; --line:#E7E0D2;
+  --ink:#22312A; --muted:#5B6B60; --radius:16px;
+  --shadow:0 2px 10px rgba(30,42,58,.06),0 10px 30px rgba(30,42,58,.05);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:"Nunito","Public Sans",system-ui,sans-serif;line-height:1.15;margin:0;letter-spacing:-.01em}
+header.site{background:var(--green);color:#fff;padding:16px}
+header.site .wrap{max-width:860px;margin:0 auto;display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between}
+.brand{color:#fff;text-decoration:none;font-family:"Nunito",sans-serif;font-weight:900;font-size:1.05rem;line-height:1.15}
+.brand span{display:block;font-family:"Public Sans",sans-serif;font-weight:600;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#FFD97A}
+.lang-toggle{display:inline-flex;align-items:center;background:#fff;border-radius:999px;padding:3px;gap:2px}
+.lang-toggle button{border:0;background:transparent;color:var(--muted);font:inherit;font-weight:800;font-size:.84rem;padding:6px 14px;border-radius:999px;cursor:pointer}
+.lang-toggle button.on{background:var(--green);color:#fff}
+main{max-width:860px;margin:0 auto;padding:22px 16px 44px}
+.backlink{display:inline-block;margin-bottom:14px;color:var(--green-dark);font-weight:700;text-decoration:none}
+.backlink:hover{text-decoration:underline}
+.badge{display:inline-block;background:var(--gold);color:#223;border-radius:999px;padding:3px 12px;font-size:.78rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+h1{font-size:2rem;margin:12px 0 10px;color:var(--green-dark)}
+.explainer{font-size:1.06rem}
+.explainer p{margin:0 0 10px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);margin-top:18px}
+.card h2{font-size:1.3rem;color:var(--green-dark);margin-bottom:12px}
+.field{margin-bottom:14px}
+.field label{display:block;font-weight:700;margin-bottom:6px}
+.field input,.cat input{width:100%;font:inherit;font-size:1.1rem;font-weight:700;padding:11px 13px;border:1.5px solid var(--line);border-radius:12px;background:#FFFDF8;color:var(--ink)}
+.field input:focus,.cat input:focus{outline:2px solid var(--gold);border-color:var(--gold)}
+.cat{display:grid;grid-template-columns:1fr 150px;gap:8px 14px;align-items:center;padding:9px 0;border-bottom:1px dashed var(--line)}
+.cat:last-of-type{border-bottom:0}
+.cat label{font-weight:600}
+@media (max-width:480px){.cat{grid-template-columns:1fr 118px}}
+.results{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:560px){.results{grid-template-columns:1fr}}
+.stat{background:#F2F7F0;border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.stat .k{font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.stat .v{font-family:"Nunito",sans-serif;font-weight:900;font-size:1.6rem;color:var(--green-dark);margin-top:2px}
+.stat .v.neg{color:var(--red)}
+.empty-note{color:var(--muted);font-size:1rem;margin:0 0 14px}
+.share-row{padding:9px 0;border-bottom:1px dashed var(--line)}
+.share-row:last-child{border-bottom:0}
+.share-head{display:flex;justify-content:space-between;gap:12px;font-weight:600}
+.share-head .amt{font-weight:700;white-space:nowrap}
+.share-head .pct{color:var(--muted);font-weight:700}
+.bar{height:10px;background:#EFE9DC;border-radius:999px;margin-top:5px;overflow:hidden}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--green),#2E7D46);border-radius:999px;width:0%}
+.privacy{margin-top:16px;color:var(--muted);font-size:.95rem}
+.pointer{border:2px solid var(--gold);background:#FFFDF4}
+.pointer p{margin:0 0 12px;font-size:1.02rem}
+.btn{display:inline-flex;align-items:center;gap:8px;border:0;cursor:pointer;text-decoration:none;font-weight:700;border-radius:999px;padding:12px 20px;font-size:.98rem;font-family:inherit;background:var(--green);color:#fff}
+.btn:hover{background:var(--green-dark);color:#fff}
+footer{max-width:860px;margin:0 auto;padding:0 16px 34px;color:var(--muted);font-size:.9rem}
+footer a{color:var(--green-dark);font-weight:700}
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="https://dewittinfl1-create.github.io/">Christopher DeWitt's Shop <span data-i18n="brandSub">Free tools</span></a>
+    <div class="lang-toggle" role="group" aria-label="Language / Idioma">
+      <button type="button" id="btnEn" class="on" onclick="setLang('en')">English</button>
+      <button type="button" id="btnEs" onclick="setLang('es')">Español</button>
+    </div>
+  </div>
+</header>
+<main>
+  <a class="backlink" href="https://dewittinfl1-create.github.io/" data-i18n="backShop">← Back to the shop</a>
+  <div><span class="badge" data-i18n="badge">Free tool</span></div>
+  <h1 data-i18n="h1">Monthly Budget Calculator</h1>
+  <div class="explainer">
+    <p data-i18n="expl1">Ever get to the end of the month and wonder where your paycheck went? This free tool shows you — plain and simple.</p>
+    <p data-i18n="expl2">Type in what you bring home each month and what you spend on the big things — rent, food, the car, bills. You instantly see the total going out, what is left over (or how far over you are), and a simple picture of where every dollar goes. Leave anything blank that does not apply to you.</p>
+  </div>
+
+  <section class="card">
+    <h2 data-i18n="incomeTitle">What comes in</h2>
+    <div class="field" style="margin-bottom:0">
+      <label for="inIncome" data-i18n="lIncome">Your monthly take-home pay — after taxes ($)</label>
+      <input id="inIncome" type="number" inputmode="decimal" min="0" step="any" placeholder="3,200">
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 data-i18n="expensesTitle">What goes out each month</h2>
+    <div class="cat"><label for="exp-rent" data-i18n="cRent">Rent or mortgage</label><input id="exp-rent" type="number" inputmode="decimal" min="0" step="any" placeholder="0"></div>
+    <div class="cat"><label for="exp-utilities" data-i18n="cUtilities">Utilities — light, water, phone, internet</label><input id="exp-utilities" type="number" inputmode="decimal" min="0" step="any" placeholder="0"></div>
+    <div class="cat"><label for="exp-car" data-i18n="cCar">Car payment</label><input id="exp-car" type="number" inputmode="decimal" min="0" step="any" placeholder="0"></div>
+    <div class="cat"><label for="exp-insurance" data-i18n="cInsurance">Insurance — car, health, home</label><input id="exp-insurance" type="number" inputmode="decimal" min="0" step="any" placeholder="0"></div>
+    <div class="cat"><label for="exp-groceries" data-i18n="cGroceries">Groceries &amp; household basics</label><input id="exp-groceries" type="number" inputmode="decimal" min="0" step="any" placeholder="0"></div>
+    <div class="cat"><label for="exp-gas" data-i18n="cGas">Gas for the car</label><input id="exp-gas" type="number" inputmode="decimal" min="0" step="any" placeholder="0"></div>
+    <div class="cat"><label for="exp-debt" data-i18n="cDebt">Debt minimum payments — cards &amp; loans</label><input id="exp-debt" type="number" inputmode="decimal" min="0" step="any" placeholder="0"></div>
+    <div class="cat"><label for="exp-fun" data-i18n="cFun">Fun &amp; eating out</label><input id="exp-fun" type="number" inputmode="decimal" min="0" step="any" placeholder="0"></div>
+    <div class="cat"><label for="exp-other" data-i18n="cOther">Everything else</label><input id="exp-other" type="number" inputmode="decimal" min="0" step="any" placeholder="0"></div>
+  </section>
+
+  <section class="card">
+    <h2 data-i18n="outTitle">Your month at a glance</h2>
+    <p class="empty-note" id="emptyNote" data-i18n="hintEmpty">Type your pay and your spending above — the totals fill in as you go.</p>
+    <div class="results">
+      <div class="stat"><div class="k" data-i18n="rTotalLabel">Total going out</div><div class="v" id="outTotal">$0.00</div></div>
+      <div class="stat"><div class="k" id="leftLabel">Money left over</div><div class="v" id="outLeft">$0.00</div></div>
+    </div>
+    <h2 style="margin-top:20px" data-i18n="breakdownTitle">Where it goes</h2>
+    <div id="breakdown"></div>
+  </section>
+
+  <p class="privacy" data-i18n="privacy">🔒 Your numbers never leave your phone/computer — everything is figured out right here on this page. Nothing is sent anywhere, nothing is saved.</p>
+
+  <section class="card pointer">
+    <p data-i18n="pointerText">Like what you see? The Budget Kit turns this into a full printable system — a page for every month, bill trackers, savings challenges and debt pages, all filled in by hand at your own kitchen table.</p>
+    <a class="btn" href="https://dewittinfl1-create.github.io/#/downloads" data-i18n="pointerBtn">See the Budget Kit →</a>
+  </section>
+</main>
+<footer>
+  <p data-i18n="footerNote">A free tool from Christopher DeWitt's Shop — printable planners, trackers and guides in English &amp; Spanish.</p>
+  <p><a href="https://dewittinfl1-create.github.io/" data-i18n="backShop">← Back to the shop</a></p>
+</footer>
+<script>
+var CATS = ["rent", "utilities", "car", "insurance", "groceries", "gas", "debt", "fun", "other"];
+var STR = {
+en: {
+  docTitle: "Monthly Budget Calculator — Christopher DeWitt's Shop",
+  brandSub: "Free tools",
+  backShop: "← Back to the shop",
+  badge: "Free tool",
+  h1: "Monthly Budget Calculator",
+  expl1: "Ever get to the end of the month and wonder where your paycheck went? This free tool shows you — plain and simple.",
+  expl2: "Type in what you bring home each month and what you spend on the big things — rent, food, the car, bills. You instantly see the total going out, what is left over (or how far over you are), and a simple picture of where every dollar goes. Leave anything blank that does not apply to you.",
+  incomeTitle: "What comes in",
+  lIncome: "Your monthly take-home pay — after taxes ($)",
+  expensesTitle: "What goes out each month",
+  cRent: "Rent or mortgage",
+  cUtilities: "Utilities — light, water, phone, internet",
+  cCar: "Car payment",
+  cInsurance: "Insurance — car, health, home",
+  cGroceries: "Groceries & household basics",
+  cGas: "Gas for the car",
+  cDebt: "Debt minimum payments — cards & loans",
+  cFun: "Fun & eating out",
+  cOther: "Everything else",
+  outTitle: "Your month at a glance",
+  hintEmpty: "Type your pay and your spending above — the totals fill in as you go.",
+  rTotalLabel: "Total going out",
+  rLeftLabel: "Money left over",
+  rOverLabel: "You are over by",
+  breakdownTitle: "Where it goes",
+  ofSpending: "of spending",
+  privacy: "🔒 Your numbers never leave your phone/computer — everything is figured out right here on this page. Nothing is sent anywhere, nothing is saved.",
+  pointerText: "Like what you see? The Budget Kit turns this into a full printable system — a page for every month, bill trackers, savings challenges and debt pages, all filled in by hand at your own kitchen table.",
+  pointerBtn: "See the Budget Kit →",
+  footerNote: "A free tool from Christopher DeWitt's Shop — printable planners, trackers and guides in English & Spanish."
+},
+es: {
+  docTitle: "Calculadora de Presupuesto Mensual — Christopher DeWitt's Shop",
+  brandSub: "Herramientas gratis",
+  backShop: "← Volver a la tienda",
+  badge: "Herramienta gratis",
+  h1: "Calculadora de Presupuesto Mensual",
+  expl1: "¿Llegas a fin de mes y te preguntas a dónde se fue tu sueldo? Esta herramienta gratis te lo muestra — claro y sencillo.",
+  expl2: "Escribe cuánto te queda al mes y lo que gastas en lo principal — renta, comida, el carro, las cuentas. Al instante ves el total que sale, cuánto te queda (o cuánto te pasas), y una imagen sencilla de a dónde va cada dólar. Deja en blanco lo que no te aplique.",
+  incomeTitle: "Lo que entra",
+  lIncome: "Tu sueldo mensual neto — después de impuestos ($)",
+  expensesTitle: "Lo que sale cada mes",
+  cRent: "Renta o hipoteca",
+  cUtilities: "Servicios — luz, agua, teléfono, internet",
+  cCar: "Pago del carro",
+  cInsurance: "Seguros — carro, salud, hogar",
+  cGroceries: "Compras de comida y cosas de la casa",
+  cGas: "Gasolina para el carro",
+  cDebt: "Pagos mínimos de deudas — tarjetas y préstamos",
+  cFun: "Diversión y comidas fuera",
+  cOther: "Todo lo demás",
+  outTitle: "Tu mes de un vistazo",
+  hintEmpty: "Escribe tu sueldo y tus gastos arriba — los totales se llenan mientras escribes.",
+  rTotalLabel: "Total que sale",
+  rLeftLabel: "Dinero que te queda",
+  rOverLabel: "Te pasas por",
+  breakdownTitle: "A dónde se va",
+  ofSpending: "del gasto",
+  privacy: "🔒 Tus números nunca salen de tu teléfono/computadora — todo se calcula aquí mismo en esta página. Nada se envía a ningún lado, nada se guarda.",
+  pointerText: "¿Te gusta lo que ves? El Kit de Presupuesto convierte esto en un sistema completo para imprimir — una página para cada mes, registro de cuentas, retos de ahorro y páginas de deudas, todo llenado a mano en tu propia mesa.",
+  pointerBtn: "Ver el Kit de Presupuesto →",
+  footerNote: "Una herramienta gratis de Christopher DeWitt's Shop — planificadores, registros y guías imprimibles en inglés y español."
+}};
+var lang = "en";
+function t(k){ return STR[lang][k]; }
+function locale(){ return lang === "es" ? "es-US" : "en-US"; }
+function fmtMoney(n){
+  return "$" + n.toLocaleString(locale(), {minimumFractionDigits: 2, maximumFractionDigits: 2});
+}
+function num(id){
+  var v = parseFloat(document.getElementById(id).value);
+  return (isNaN(v) || v < 0) ? 0 : v;
+}
+function buildBreakdown(){
+  var box = document.getElementById("breakdown");
+  box.innerHTML = "";
+  CATS.forEach(function(c){
+    var row = document.createElement("div");
+    row.className = "share-row";
+    var head = document.createElement("div");
+    head.className = "share-head";
+    var name = document.createElement("span");
+    name.id = "share-name-" + c;
+    var amt = document.createElement("span");
+    amt.className = "amt";
+    amt.id = "share-amt-" + c;
+    head.appendChild(name);
+    head.appendChild(amt);
+    var bar = document.createElement("div");
+    bar.className = "bar";
+    var fill = document.createElement("i");
+    fill.id = "share-bar-" + c;
+    bar.appendChild(fill);
+    row.appendChild(head);
+    row.appendChild(bar);
+    box.appendChild(row);
+  });
+}
+function catLabel(c){
+  var key = "c" + c.charAt(0).toUpperCase() + c.slice(1);
+  return t(key);
+}
+function calc(){
+  var income = num("inIncome");
+  var total = 0, amounts = {}, maxAmt = 0;
+  CATS.forEach(function(c){
+    var a = num("exp-" + c);
+    amounts[c] = a;
+    total += a;
+    if (a > maxAmt) maxAmt = a;
+  });
+  var anyInput = income > 0 || total > 0;
+  document.getElementById("emptyNote").style.display = anyInput ? "none" : "block";
+  document.getElementById("outTotal").textContent = fmtMoney(total);
+  var left = income - total;
+  var leftEl = document.getElementById("outLeft");
+  var leftLabel = document.getElementById("leftLabel");
+  if (left < 0){
+    leftLabel.textContent = t("rOverLabel");
+    leftEl.textContent = fmtMoney(-left);
+    leftEl.className = "v neg";
+  } else {
+    leftLabel.textContent = t("rLeftLabel");
+    leftEl.textContent = fmtMoney(left);
+    leftEl.className = "v";
+  }
+  CATS.forEach(function(c){
+    var a = amounts[c];
+    var pct = total > 0 ? Math.round(a / total * 100) : 0;
+    document.getElementById("share-name-" + c).textContent = catLabel(c);
+    document.getElementById("share-amt-" + c).innerHTML =
+      fmtMoney(a) + ' <span class="pct">' + pct + "% " + t("ofSpending") + "</span>";
+    document.getElementById("share-bar-" + c).style.width =
+      (maxAmt > 0 ? (a / maxAmt * 100) : 0) + "%";
+  });
+}
+function setLang(l){
+  lang = l;
+  document.documentElement.lang = (l === "es" ? "es" : "en");
+  document.title = t("docTitle");
+  document.getElementById("btnEn").className = (l === "en" ? "on" : "");
+  document.getElementById("btnEs").className = (l === "es" ? "on" : "");
+  var nodes = document.querySelectorAll("[data-i18n]");
+  for (var i = 0; i < nodes.length; i++){
+    var key = nodes[i].getAttribute("data-i18n");
+    if (STR[lang][key]) nodes[i].textContent = STR[lang][key];
+  }
+  calc();
+}
+buildBreakdown();
+document.getElementById("inIncome").addEventListener("input", calc);
+CATS.forEach(function(c){
+  document.getElementById("exp-" + c).addEventListener("input", calc);
+});
+calc();
+</script>
+</body>
+</html>
