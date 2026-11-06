@@ -1837,7 +1837,7 @@ var PICK_INFO = {
    (#shop, #picks, #refund-policy, ...) route to the view that holds them. */
 (function(){
   var VIEWS={downloads:1,shop:1,services:1,templates:1,how:1,help:1,search:1,earn:1};
-  var MAP={'help-top':'help','seasonal':'downloads','top-picks':'downloads','categories':'downloads','shop':'downloads','picks':'shop','services':'services','how':'how','help':'help','install-app':'help','search-results':'search','start-here':'downloads','freeTools':'downloads','licencesStrip':'downloads','affStrip':'downloads','trust-strip':'downloads','templates':'templates','earn':'earn'};
+  var MAP={'help-top':'help','seasonal':'downloads','top-picks':'downloads','categories':'downloads','shop':'downloads','picks':'shop','services':'services','how':'how','help':'help','install-app':'help','search-results':'search','start-here':'downloads','freeTools':'downloads','licencesStrip':'downloads','affStrip':'downloads','what-downloads':'downloads','trust-strip':'downloads','templates':'templates','earn':'earn'};
   function tag(){
     for(var id in MAP){ var el=document.getElementById(id); if(el) el.setAttribute('data-view',MAP[id]); }
     var hero=document.querySelector('.hero'); if(hero) hero.setAttribute('data-view','downloads');
