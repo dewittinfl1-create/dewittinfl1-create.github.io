@@ -453,8 +453,10 @@ header.site a.btn{padding:6px 10px;font-size:.82rem}
 header.site nav.main{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
 header.site nav.main::-webkit-scrollbar{display:none}
 header.site nav.main a{flex:0 0 auto}
-.controls{position:static}
+.controls{position:sticky;top:calc(var(--hdr,104px) + 62px);z-index:30}
 .gsearch{position:sticky;top:var(--hdr,104px);z-index:31}
+body.scrolled .gsearch{padding:6px 0}
+body.scrolled .gsearch .chips,body.scrolled .gsearch .req-link{display:none}
 body.scrolled header.site .brand,body.scrolled header.site .lang-toggle,body.scrolled header.site .btn{display:none}
 #grid{grid-template-columns:repeat(2,1fr);gap:12px}
 #grid .cover-art{min-height:138px;padding:12px}
