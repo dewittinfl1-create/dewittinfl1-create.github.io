@@ -498,7 +498,7 @@ body.scrolled header.site .brand,body.scrolled header.site .lang-toggle,body.scr
 .topbar .tb-left{flex-direction:column;align-items:center;text-align:center;gap:6px}
 }
 .rmore{background:none;border:none;color:#14532D;font-weight:700;font-size:.86rem;padding:5px 0 0;cursor:pointer;text-decoration:underline;display:block}
-#grid .card.open .card-body p,#grid .card.open .body p,#featGrid .feat.open .body p,#startGrid .feat.open .body p,#tplGroups .card.open .card-body p,#tplGroups .card.open .body p{-webkit-line-clamp:unset;display:block;overflow:visible}
+#grid .card.open .card-body p,#grid .card.open .body p,#featGrid .feat.open .body p,#startGrid .feat.open .body p,#tplGroups .card.open .card-body p,#tplGroups .card.open .body p{-webkit-line-clamp:unset;display:block;overflow:visible}#startGrid .card.open .card-body p,#startGrid .card.open .body p{-webkit-line-clamp:unset;display:block;overflow:visible}.lang-pair{width:100%}.lang-pair a{flex:1 1 0;min-width:0;text-align:center;padding-left:4px;padding-right:4px}
 </style>
 </head>
 <body data-route="downloads">
@@ -1306,7 +1306,7 @@ function pairUrls(x){
   for(var k in ES_EDITIONS){ if(ES_EDITIONS[k]===id) return {en:B+k, es:x.u}; }
   return null;
 }
-function rmoreHtml(x){if(!x.d||x.d.length<=130)return "";var es=(typeof currentLang!=="undefined"&&currentLang==="es");var more=es?"Leer más":"Read more";var less=es?"Mostrar menos":"Show less";return '<button class="rmore" type="button" data-more="'+more+'" data-less="'+less+'">'+more+"</button>";}
+function rmoreHtml(x){if(!x.d||x.d.length<=45)return "";var es=(typeof currentLang!=="undefined"&&currentLang==="es");var more=es?"Leer más":"Read more";var less=es?"Mostrar menos":"Show less";return '<button class="rmore" type="button" data-more="'+more+'" data-less="'+less+'">'+more+"</button>";}
 function buyButtons(x, mainCls, altCls){
   var pr = pairUrls(x); if(!pr) return "";
   var esView = currentLang==="es";
@@ -1700,7 +1700,7 @@ var PICK_INFO = {
     if(!VIEWS[r]) r='downloads';
     var prevR=document.body.getAttribute('data-route');
     document.body.setAttribute('data-route',r);
-    if(prevR!==r){window.scrollTo(0,0);}
+    if(prevR!==r){window.scrollTo(0,0);}if(typeof queuePrune==="function"){queuePrune();}
     var tabs=document.querySelectorAll('nav.main a.tab');
     for(var i=0;i<tabs.length;i++){
       var on=tabs[i].getAttribute('data-route-link')===r;
@@ -1843,7 +1843,7 @@ var PICK_INFO = {
 <script>function fitSticky(){var h=document.querySelector("header.site");if(h){document.documentElement.style.setProperty("--hdr",h.offsetHeight+"px");}}var _sc=false;function onScr(){var sc=window.scrollY>30;if(sc!==_sc){_sc=sc;document.body.classList.toggle("scrolled",sc);requestAnimationFrame(fitSticky);}}window.addEventListener("resize",fitSticky);window.addEventListener("load",fitSticky);window.addEventListener("scroll",onScr,{passive:true});fitSticky();onScr();setTimeout(fitSticky,600);</script>
 <script>
 document.addEventListener("click",function(e){var b=(e.target&&e.target.closest)?e.target.closest(".rmore"):null;if(!b)return;e.preventDefault();e.stopPropagation();var card=b.closest(".card,.feat");if(!card)return;var open=card.classList.toggle("open");b.textContent=open?b.getAttribute("data-less"):b.getAttribute("data-more");});
-function pruneRmore(){document.querySelectorAll(".rmore").forEach(function(b){var card=b.closest(".card,.feat");if(!card||card.classList.contains("open"))return;var pp=card.querySelector(".body p,.card-body p");if(pp&&pp.scrollHeight<=pp.clientHeight+2){b.style.display="none";}});}
+function pruneRmore(){document.querySelectorAll(".rmore").forEach(function(b){var card=b.closest(".card,.feat");if(!card||card.classList.contains("open"))return;var pp=card.querySelector(".body p,.card-body p");if(!pp||!pp.clientHeight)return;var cl=pp.cloneNode(true);var rb=cl.querySelector(".rmore");if(rb)rb.remove();cl.style.cssText+=";position:absolute;visibility:hidden;height:auto;max-height:none;-webkit-line-clamp:unset;line-clamp:unset;overflow:visible;width:"+pp.clientWidth+"px";pp.parentNode.appendChild(cl);var full=cl.scrollHeight;cl.remove();b.style.display=(full<=pp.clientHeight+2)?"none":"";});}
 var _prt=null;function queuePrune(){clearTimeout(_prt);_prt=setTimeout(pruneRmore,250);}
 var _mo=new MutationObserver(queuePrune);_mo.observe(document.body,{childList:true,subtree:true});window.addEventListener("resize",queuePrune);setTimeout(pruneRmore,900);
 </script>
