@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#14532D" />
+<title>Find Your Form — Christopher DeWitt's Shop</title>
+<meta name="description" content="Find the exact planner, tracker, template or guide you need — in English or Spanish. Busca el formulario exacto que necesitas." />
+<style>
+:root{
+  --green:#14532D; --green-dark:#0E3D21; --gold:#D4AF37; --gold-soft:#F6E7B8;
+  --burgundy:#7B1E2B; --bg:#FDFBF5; --surface:#FFFFFF; --surface2:#F7F3E6;
+  --ink:#22301F; --muted:#5D6B58; --line:#E5DFC8;
+  --radius:16px; --radius-lg:22px;
+  --shadow:0 2px 10px rgba(20,83,45,.07),0 10px 30px rgba(20,83,45,.06);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Public Sans","Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
+  font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:"Nunito","Trebuchet MS","Segoe UI",system-ui,sans-serif;line-height:1.15;margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 18px}
+a{color:var(--green)}
+/* header */
+header.finder{background:linear-gradient(135deg,var(--green) 0%,var(--green-dark) 100%);color:#FFFDF4;padding:22px 0 26px;border-bottom:4px solid var(--gold)}
+.backlink{display:inline-block;color:var(--gold-soft);font-weight:700;text-decoration:none;font-size:.95rem;min-height:44px;padding:10px 4px}
+.backlink:hover{text-decoration:underline;color:#fff}
+.sitename{font-size:1rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--gold);margin-top:2px}
+header.finder h1{font-size:2.1rem;font-weight:900;color:#fff;margin:4px 0 8px}
+.explainer{font-size:1.08rem;color:#F3EDD3;max-width:640px;margin:0}
+/* language toggle */
+.langtoggle{display:inline-flex;background:rgba(255,255,255,.14);border:1.5px solid var(--gold);border-radius:999px;padding:4px;margin-top:16px}
+.langtoggle button{border:0;background:transparent;color:#FFFDF4;font:inherit;font-weight:800;font-size:1rem;min-height:44px;min-width:92px;padding:8px 20px;border-radius:999px;cursor:pointer}
+.langtoggle button.active{background:var(--gold);color:#2A2100}
+/* search */
+.searchbar{margin:26px 0 6px}
+.searchbar label{font-weight:800;font-size:1.05rem;display:block;margin-bottom:8px}
+.searchrow{display:flex;gap:10px}
+.searchrow input{flex:1;font:inherit;font-size:1.1rem;padding:14px 16px;min-height:56px;border:2px solid var(--green);border-radius:14px;background:var(--surface);color:var(--ink)}
+.searchrow input:focus{outline:3px solid var(--gold);outline-offset:1px}
+.clearbtn{font:inherit;font-weight:800;min-height:56px;padding:0 20px;border-radius:14px;border:2px solid var(--burgundy);background:#fff;color:var(--burgundy);cursor:pointer;display:none}
+.clearbtn.show{display:block}
+/* category chips */
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 4px}
+.chip{font:inherit;font-weight:700;font-size:1rem;min-height:48px;padding:10px 18px;border-radius:999px;border:2px solid var(--green);background:#fff;color:var(--green-dark);cursor:pointer}
+.chip:hover{background:var(--surface2)}
+.chip.active{background:var(--green);color:#fff;border-color:var(--green)}
+.chip .n{opacity:.65;font-weight:600;font-size:.88em;margin-left:5px}
+/* results */
+.count{font-weight:700;color:var(--muted);margin:20px 0 12px;font-size:1.02rem}
+.grid{display:grid;grid-template-columns:1fr;gap:16px;padding-bottom:10px}
+@media(min-width:640px){.grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1024px){.grid{grid-template-columns:1fr 1fr 1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--gold);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;display:flex;flex-direction:column;gap:8px}
+.card h3{font-size:1.14rem;font-weight:800}
+.card p{margin:0;color:var(--muted);font-size:.99rem;flex:1}
+.meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.pricechip{background:var(--burgundy);color:#fff;font-weight:900;font-size:1.02rem;padding:5px 13px;border-radius:999px}
+.langchip{background:var(--surface2);border:1.5px solid var(--gold);color:#6B5510;font-weight:800;font-size:.82rem;letter-spacing:.05em;padding:4px 11px;border-radius:999px;text-transform:uppercase}
+.catchip{background:var(--surface2);color:var(--green-dark);font-weight:700;font-size:.82rem;padding:4px 11px;border-radius:999px}
+.buybtn{display:block;text-align:center;background:var(--green);color:#fff;text-decoration:none;font-weight:900;font-size:1.08rem;min-height:52px;padding:13px 16px;border-radius:12px;margin-top:4px}
+.buybtn:hover{background:var(--green-dark)}
+/* empty state */
+.empty{display:none;background:var(--surface);border:2px dashed var(--gold);border-radius:var(--radius-lg);padding:30px 22px;text-align:center;margin:14px 0 30px}
+.empty.show{display:block}
+.empty h2{font-size:1.35rem;color:var(--burgundy);margin-bottom:8px}
+.empty p{color:var(--muted);margin:0 auto;max-width:520px}
+footer{border-top:1px solid var(--line);margin-top:26px;padding:20px 0 34px;color:var(--muted);font-size:.92rem;text-align:center}
+footer a{font-weight:700}
+</style>
+</head>
+<body>
+<header class="finder">
+  <div class="wrap">
+    <a class="backlink" href="https://dewittinfl1-create.github.io/" data-i18n="back">← Back to the shop</a>
+    <div class="sitename">Christopher DeWitt's Shop</div>
+    <h1 data-i18n="title">Find Your Form</h1>
+    <p class="explainer" data-i18n="explainer">Type what you need — or tap a category — and we'll point you to the exact form.</p>
+    <div class="langtoggle" role="group" aria-label="Language / Idioma">
+      <button id="btnEN" class="active" type="button">English</button>
+      <button id="btnES" type="button">Español</button>
+    </div>
+  </div>
+</header>
+<main class="wrap">
+  <div class="searchbar">
+    <label for="q" data-i18n="searchlabel">What are you looking for?</label>
+    <div class="searchrow">
+      <input id="q" type="search" autocomplete="off" data-i18n-ph="searchph" placeholder="Try: budget, invoice, quinceañera, health log…" />
+      <button id="clear" class="clearbtn" type="button" data-i18n="clear">Clear</button>
+    </div>
+  </div>
+  <div class="chips" id="chips"></div>
+  <p class="count" id="count" aria-live="polite"></p>
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="empty">
+    <h2 data-i18n="emptytitle">No matches yet</h2>
+    <p data-i18n="emptymsg">Can't find it? Ask Frankie on the shop's Help page.</p>
+  </div>
+</main>
+<footer>
+  <div class="wrap">
+    <span data-i18n="foot">Every purchase checks out securely on Beacons with instant download.</span>
+    <a href="https://dewittinfl1-create.github.io/" data-i18n="back">← Back to the shop</a>
+  </div>
+</footer>
+<script>
+"use strict";
+const CATALOG = [{"t": "DSP Driver Survival Kit: New-Hire Edition", "p": 9.0, "lang": "EN", "cat": "templates", "d": "The day-one survival kit for new delivery drivers — routines, van checks, and rookie mistakes to avoid.", "id": "d0d474aa-ed66-4890-8ae3-446d916f8d6f"}, {"t": "Christmas Gift Tracker & Budget Sheet", "p": 5.0, "lang": "EN", "cat": "party", "d": "Track every gift and dollar in one sheet so Christmas spending stays calm and on budget.", "id": "97443601-70d0-42d2-8fa8-ed1339132d52"}, {"t": "Start a Small Business on a Shoestring", "p": 12.0, "lang": "EN", "cat": "business", "d": "Pick and test one simple idea, handle registration basics in order, and make your first sale.", "id": "c56b146a-30cd-4533-8f95-0d8e5a0b4fc8"}, {"t": "Small Business Daily Operations Checklist Pack", "p": 7.0, "lang": "EN", "cat": "business", "d": "Opening, closing, weekly and monthly checklists so the business runs on a system, not memory.", "id": "2f544a3a-4c21-4d2f-8544-2f48232470a6"}, {"t": "Simple Bookkeeping for Tiny Businesses", "p": 9.0, "lang": "EN", "cat": "business", "d": "Paper-simple money-in, money-out bookkeeping with ledgers, receipt filing, and a monthly profit summary.", "id": "ad21b6d8-d624-496e-9a6a-117a6284c731"}, {"t": "Price It Right: Beginner Pricing Worksheets", "p": 7.0, "lang": "EN", "cat": "business", "d": "Work out what a product or an hour really costs, then set a price that actually covers it.", "id": "d72e88b5-91b3-49e3-98ce-6a79f42a67d3"}, {"t": "Your First 10 Customers: Local Marketing Playbook", "p": 9.0, "lang": "EN", "cat": "business", "d": "A no-ad-budget playbook with outreach worksheets and word-for-word referral scripts.", "id": "dc80a5ef-9076-45ce-832f-99a384d6bc88"}, {"t": "Peak Season Money & Shift Tracker", "p": 7.0, "lang": "EN", "cat": "templates", "d": "Shift logs, overtime tracking and a season paycheck summary so you can catch payroll errors yourself.", "id": "ddd4ce33-24e2-4d0a-8c3e-f82619644eb6"}, {"t": "EDV Quick-Reference Card", "p": 4.0, "lang": "EN", "cat": "templates", "d": "Two-sided printable card for electric delivery vans: morning charge routine and end-of-day plug-in.", "id": "fe7663f7-8943-4600-b61c-bed2adf51d91"}, {"t": "Route Rescue Playbook", "p": 9.0, "lang": "EN", "cat": "templates", "d": "A trainer's guide to triaging rescues, the four key phone calls, and clean handoffs.", "id": "fdec7983-4f2f-432c-8407-6885e64aa18c"}, {"t": "Gig Driver Mileage & Expense Log", "p": 6.0, "lang": "EN", "cat": "templates", "d": "Mileage log pages, coded expense log, and a 12-month totals sheet. Organizer only — not tax advice.", "id": "325ba676-4bb0-490b-9535-fd8252476b07"}, {"t": "New Driver 30-Day Ramp Plan", "p": 7.0, "lang": "EN", "cat": "templates", "d": "A week-by-week first-month plan: routines, van organization, honest pace, and full-route ownership.", "id": "2f0392d2-6c38-4751-8baf-01ec7aada2de"}, {"t": "Tight-Budget Household Budget Kit", "p": 9.0, "lang": "EN", "cat": "money", "d": "Planned-vs-actual worksheets, a bill calendar matched to paydays, and a minimum-payments map.", "id": "69551b7c-301b-471b-a2f3-7d0051888841"}, {"t": "Debt Payoff Snowball Tracker Pack", "p": 7.0, "lang": "EN", "cat": "money", "d": "List every debt smallest to largest and roll payments forward with progress bars and milestones.", "id": "d9e22070-6bbf-406f-bf01-b1dac6b2c6c7"}, {"t": "Plasma Donor Earnings & Promo Tracker", "p": 5.0, "lang": "EN", "cat": "money", "d": "Log each donation's pay, promos and wait time for an honest dollars-per-hour picture.", "id": "b2e60ef7-8e68-40dd-aea9-16fd1854b4e1"}, {"t": "Weekly Meal Planner & Grocery Budget Sheet", "p": 5.0, "lang": "EN", "cat": "money", "d": "Four weeks of meal grids with section-by-section grocery lists and budget-vs-actual tracking.", "id": "2fe16d0b-646b-4dd4-ba9e-ad7d68960c06"}, {"t": "Home Maintenance Year-Round Checklist", "p": 6.0, "lang": "EN", "cat": "money", "d": "Monthly and seasonal upkeep checklists so filters, detectors and leaks get caught early.", "id": "3bb8d62b-7245-44d4-bb56-020c58aff966"}, {"t": "Backyard Vegetable Garden Starter Plan", "p": 8.0, "lang": "EN", "cat": "templates", "d": "A beginner's first-season plan with a South-Florida-friendly calendar and eight forgiving starter crops.", "id": "c5adfeeb-ce80-4c40-ba3f-95e2d8e30e03"}, {"t": "Raised-Bed Garden Layout Planner", "p": 6.0, "lang": "EN", "cat": "templates", "d": "Printable 4×8 grid planners, spacing cheat sheet, companion-planting chart and succession tracker.", "id": "841dd629-6270-4412-b133-267da18f3bf7"}, {"t": "Homestead Daily Chores & Animal Care Checklist", "p": 6.0, "lang": "EN", "cat": "health", "d": "Daily, weekly and seasonal chore rounds with per-species care checklists and a health log.", "id": "480b6528-7ed5-4bf4-af60-71ab5aedd509"}, {"t": "Thanksgiving Hosting Pack", "p": 6.0, "lang": "EN", "cat": "party", "d": "A complete hosting system: four-week countdown, turkey-day timeline, and two-trip shopping list.", "id": "dd428bae-292c-4eee-871e-ff3203465fa7"}, {"t": "The DeWitt Gift Playbook: 50 Gifts Under $30", "p": 12.0, "lang": "EN", "cat": "life", "d": "Fifty specific gift ideas under $30, organized by person — mom, dad, teens, coworkers and more.", "id": "e60ea127-7c69-4b63-99bf-ab00abbfe740"}, {"t": "Funny Family Caption & Meme Pack Vol. 1", "p": 6.0, "lang": "EN", "cat": "party", "d": "Fill-in caption templates for birthdays, holidays, pets and road trips, plus a simple 3-line formula.", "id": "8f36cdb8-7307-48d7-88b0-c9760477da0e"}, {"t": "Kids' Chore Chart & Reward Tracker Pack", "p": 5.0, "lang": "EN", "cat": "life", "d": "Weekly chore charts for ages 4–12, a star-bank reward tracker, and 30-day streak pages.", "id": "91b967ad-8de1-4f3d-adac-a025046a375c"}, {"t": "Family Emergency Info Binder", "p": 7.0, "lang": "EN", "cat": "health", "d": "Fill-in pages for contacts, medical info, shutoffs and document locations — everything in one binder.", "id": "8c28ce42-7110-4653-8953-058d0b5442b1"}, {"t": "Beginner Creator Content Planner", "p": 8.0, "lang": "EN", "cat": "templates", "d": "A 30-day starter plan with daily post ideas, hook formulas, and a per-post tracking table.", "id": "aa8d5d36-d112-4801-a63e-03acf70faa43"}, {"t": "Yard Sale & Resale Pricing Guide + Inventory Tracker", "p": 6.0, "lang": "EN", "cat": "business", "d": "Starting price ranges across 20 categories, plus inventory and sales logs for sale day.", "id": "e9cc0807-eda4-4c11-a5a2-ffd853758f9a"}, {"t": "ADHD-Friendly Daily Planner (Low-Friction Edition)", "p": 10.0, "lang": "EN", "cat": "health", "d": "One main thing, a top-3, and time anchors instead of an hourly grid. Restart any day, no guilt.", "id": "d130db58-4f04-4547-af62-570fa018a24f"}, {"t": "Christmas 2026 Holiday Planner & Gift-Budget Organizer", "p": 9.0, "lang": "EN", "cat": "party", "d": "Your whole Christmas in one binder: December calendar, gift & budget tracker, cards, menus, stockings.", "id": "31bd8b70-e536-418a-a0e5-7545ddef5749"}, {"t": "AI Prompts for Content Creators: Scripts, Captions & Hooks", "p": 9.0, "lang": "EN", "cat": "templates", "d": "50+ copy-paste prompts for hooks, short-video scripts, captions and a 7-day content calendar.", "id": "87bdfea1-d286-4ab5-ac7c-d61a513cfc72"}, {"t": "Boat Owner's Binder: Maintenance, Fuel & Float Plan Kit", "p": 12.0, "lang": "EN", "cat": "templates", "d": "One binder for the whole boat: checklists, fuel & hours log, trip log and a classic float plan.", "id": "4e794c42-4d7b-4871-aa62-87ac866c4f55"}, {"t": "Python for Absolute Beginners: Cheat-Sheet & 30-Day Starter Plan", "p": 8.0, "lang": "EN", "cat": "templates", "d": "Reference pages plus a day-by-day first month, with every code example actually run and verified.", "id": "260ae07e-de50-4920-a791-276a648bbb08"}, {"t": "Your First App Without Code: Launch Planner", "p": 10.0, "lang": "EN", "cat": "templates", "d": "Validate the idea, cut it to a true minimum, sketch screens, and compare seven no-code builders.", "id": "1336156e-21cb-4cbe-bc77-8e0e2506007e"}, {"t": "Automate Your Day: Beginner Automation Starter Pack", "p": 9.0, "lang": "EN", "cat": "templates", "d": "No-code shortcuts, formula cheat sheets and AI prompts that kill your most repeated clicks.", "id": "6b66879c-8a84-49d3-b7fa-d53dcf807398"}, {"t": "AI Starter Kit for Total Beginners: 60 Prompts for Everyday Life", "p": 7.0, "lang": "EN", "cat": "templates", "d": "Plain-English AI basics plus exactly 60 copy-paste prompts for emails, meals, trips and family life.", "id": "6dd9cd84-ea5a-4023-b9ed-2b0768f0b082"}, {"t": "Christmas Party Games Pack: Trivia, Bingo & Scavenger Hunt", "p": 6.0, "lang": "EN", "cat": "party", "d": "Print tonight, play tonight: 20 trivia questions with answer key, bingo, and a 20-item scavenger hunt.", "id": "4440bd44-1e0d-4acc-afea-8c23e9530b7b"}, {"t": "90-Day Gratitude & Reset Journal", "p": 8.0, "lang": "EN", "cat": "health", "d": "Five honest minutes a day with weekly resets and Day 30/60/90 checkpoints. Resume, never restart.", "id": "068bf956-32e0-4988-b91c-e98d1da1b9ae"}, {"t": "Sourdough Baking Log & Starter Journal", "p": 6.0, "lang": "EN", "cat": "health", "d": "Starter feeding log, full bake-day records, scoring guide and a troubleshooting table for classic problems.", "id": "bd699ea6-aaa0-4930-b681-ccd2a1781770"}, {"t": "Large-Print Puzzle Pack for Seniors", "p": 6.0, "lang": "EN", "cat": "health", "d": "Four big, bold word searches with a full answer key — every word computer-verified in the grid.", "id": "ba555661-94ff-421f-8b98-508556454551"}, {"t": "Fishing Trip Planner & Catch Log", "p": 6.0, "lang": "EN", "cat": "templates", "d": "Plan each trip on one page, then log species, size, bait and conditions across a full season.", "id": "b8ae864d-a4ba-4a25-bae1-7a75d2846542"}, {"t": "Saltwater Fishing Checklist: Boat & Pier (Florida)", "p": 6.0, "lang": "EN", "cat": "templates", "d": "Separate boat and pier checklists, tackle planning, and prompts to verify current FWC rules.", "id": "f251ad64-d7e4-492f-8477-9fde3a6477ac"}, {"t": "Freshwater Bass Fishing Log & Seasonal Planner", "p": 6.0, "lang": "EN", "cat": "templates", "d": "Seasonal bass patterns in plain language, plus trip logs tracking conditions, lures and depth.", "id": "a0a9054c-6061-4020-a91c-1e0efe687417"}, {"t": "Fishing Tackle Inventory & Wish List Tracker", "p": 5.0, "lang": "EN", "cat": "templates", "d": "Inventory rods, reels and lures before you buy more, with a priority-ranked wish list.", "id": "e8bfcec5-3cd3-460d-ac9f-1070e039b7fe"}, {"t": "Boat Day Checklist & Float Plan Pack", "p": 7.0, "lang": "EN", "cat": "templates", "d": "Pre-launch and safety checklists plus a full float plan with route, crew and return time.", "id": "c47cd499-e25b-48c5-bd5a-26a4a92639f5"}, {"t": "Boat Maintenance Log & Service Tracker", "p": 8.0, "lang": "EN", "cat": "templates", "d": "Engine-hours and service logs, scheduled-maintenance tracker, and a fuel log that spots burn changes.", "id": "ff9d7fa8-1795-49b6-89f8-d1f8b251b834"}, {"t": "New Boat Owner's First-Year Guide & Checklists", "p": 9.0, "lang": "EN", "cat": "templates", "d": "First-90-days checklist, priority-ranked buy lists, and a docking & launching practice plan.", "id": "bb898a09-46a8-4ada-affb-a2181421cfb0"}, {"t": "Vacation Planner: Budget, Itinerary & Packing System", "p": 9.0, "lang": "EN", "cat": "templates", "d": "A complete trip in one packet: bookings tracker, 7-day itinerary, budget worksheet and packing lists.", "id": "6f2f68f6-0b90-4a1c-98fa-3d43298956a8"}, {"t": "New Year Goal Planner 2027", "p": 8.0, "lang": "EN", "cat": "life", "d": "Guided 2026 review, goals for eight life areas, quarterly milestones and a letter to your future self.", "id": "7c354f13-5fba-4d1d-8779-3d9cb0e035eb"}, {"t": "2027 Year-at-a-Glance Planner Pack", "p": 9.0, "lang": "EN", "cat": "party", "d": "All twelve 2027 months on printable pages with holidays, important dates and birthday indexes.", "id": "d4899ba3-d277-495b-a527-97088eef5a7b"}, {"t": "Christmas Budget Planner", "p": 6.0, "lang": "EN", "cat": "party", "d": "The money side of Christmas: total budget, per-person caps, spending log and a January bill plan.", "id": "8c71e373-b113-4cb4-af56-d4ec7f24335b"}, {"t": "Holiday Home Decorating Planner", "p": 5.0, "lang": "EN", "cat": "life", "d": "Room-by-room decorating plans, a decor inventory, budget worksheet and take-down storage map.", "id": "cf2a39fb-dd1c-4076-8a41-9256f341dc1c"}, {"t": "Side Hustle Income Tracker", "p": 7.0, "lang": "EN", "cat": "money", "d": "Monthly income and expense logs by hustle, with dollars-per-hour worksheets that show what pays.", "id": "2b7b0dec-9cc2-4e05-a1b8-94453acc0408"}, {"t": "No-Spend Challenge Pack", "p": 5.0, "lang": "EN", "cat": "money", "d": "Run a 30-day no-spend challenge with your own rules, two tracking styles and weekly check-ins.", "id": "f15e6ce9-2faa-4f64-8b06-bece9d04b57d"}, {"t": "Savings Challenge Pack: $100–$10,000 Ladders", "p": 6.0, "lang": "EN", "cat": "money", "d": "Six color-in savings ladders — including the classic 52-week challenge that totals exactly $1,378.", "id": "a75ac0ee-d0c4-4c0c-8322-1a3542f828de"}, {"t": "Subscription Audit Worksheet Pack", "p": 5.0, "lang": "EN", "cat": "money", "d": "Find every subscription, total its true yearly cost, and track cancellations to freed-up money.", "id": "98b559c8-eb6d-410d-bba1-f875f437de69"}, {"t": "Road Trip Planner & Mileage Log", "p": 7.0, "lang": "EN", "cat": "templates", "d": "Leg-by-leg route planning, daily driving and mileage logs, fuel costs and a pre-trip safety check.", "id": "42dcd842-fd8f-469f-b29d-9f95b06ab603"}, {"t": "Cruise Planner & Packing Pack", "p": 8.0, "lang": "EN", "cat": "templates", "d": "Booking countdown, port-day planners with back-on-board times, and packing lists for every day type.", "id": "2e57d8e1-8552-4bca-a22d-8df7135a5668"}, {"t": "Family Vacation Budget Tracker", "p": 6.0, "lang": "EN", "cat": "templates", "d": "One honest trip budget split by category, per-day spending logs, and kids' souvenir budgets.", "id": "5112988b-36cb-4eb1-a691-9463884ecc69"}, {"t": "Camping Trip Planner & Checklist Pack", "p": 7.0, "lang": "EN", "cat": "templates", "d": "Site booking tracker, full gear checklists, meal planner, and setup/teardown checklists.", "id": "79476d10-117a-482b-b456-313bc7945473"}, {"t": "Christmas Card List & Mailing Tracker", "p": 4.0, "lang": "EN", "cat": "party", "d": "A mailing log for 55 households with written/sent/received checkboxes and a deadline planner.", "id": "142fe16e-029a-4541-9c9a-9c3565adc678"}, {"t": "Holiday Baking Planner & Recipe Organizer", "p": 6.0, "lang": "EN", "cat": "life", "d": "Plan the season's baking: bake list, recipe organizer pages, shopping builder and gift-tin tracker.", "id": "fed95212-0cb4-4814-b5d6-eb9e684b9fe6"}, {"t": "Christmas Party Planner Pack", "p": 7.0, "lang": "EN", "cat": "party", "d": "Budget, guest & RSVP tracker, potluck coordinator and a day-of timeline so the host enjoys it too.", "id": "6c9026dc-1e47-4ff5-aaf8-9af1edcaa785"}, {"t": "Secret Santa Organizer Kit", "p": 5.0, "lang": "EN", "cat": "life", "d": "Rules one-pager, sign-up sheet, cut-out name-draw slips and wish-list cards at three price levels.", "id": "4e35dd21-8c9f-4bef-a605-00a01168d286"}, {"t": "Python for Total Beginners: Cheat-Sheet Pack", "p": 7.0, "lang": "EN", "cat": "templates", "d": "Plain-English Python cheat sheets with a common-errors-decoded table and a guided first script.", "id": "6f63f7c1-06f9-4175-a060-1763b977f5f7"}, {"t": "Easy Scripts That Save You Time: 25 Beginner Automation Ideas", "p": 9.0, "lang": "EN", "cat": "spreadsheets", "d": "25 rated automation ideas — file renaming, sorting, spreadsheet cleanup — with a safety checklist.", "id": "d14eafc3-3716-43a4-b3de-39ebf6787b3b"}, {"t": "Build Your First App: No-Code Starter Guide", "p": 12.0, "lang": "EN", "cat": "templates", "d": "Idea validation, MVP planner, a comparison of five no-code builders, and a store-submission checklist.", "id": "24612cee-2a11-4d82-a4b5-9ba0aeb5f1bd"}, {"t": "Build Your First App with Code: Beginner Roadmap", "p": 10.0, "lang": "EN", "cat": "templates", "d": "Swift, Kotlin, Flutter and React Native paths compared, with a check-off 12-week learning plan.", "id": "8f32261f-9b3b-4436-9dcd-a98158a11eb4"}, {"t": "ChatGPT Prompt Pack for Everyday Work", "p": 8.0, "lang": "EN", "cat": "spreadsheets", "d": "About 40 copy-paste prompts for emails, spreadsheets, planning and job hunting — with fill-in blanks.", "id": "e359f915-fcf9-4522-b75d-a29322af00db"}, {"t": "AI Tools Starter Kit: Setup & Workflow Guide", "p": 9.0, "lang": "EN", "cat": "templates", "d": "AI tools by category with an account-safety checklist and five ready-to-use starter workflows.", "id": "b5f7b578-198e-49ab-9b36-dfe25fc58a87"}, {"t": "Excel & Google Sheets Cheat Sheets for Beginners", "p": 6.0, "lang": "EN", "cat": "spreadsheets", "d": "25 essential formulas in plain English, formatting shortcuts, and fixes for #DIV/0! and #VALUE!.", "id": "d20b0c5d-2b9c-4d3b-a0d2-4cfddd12f72a"}, {"t": "Keyboard Shortcuts & Computer Basics Pack", "p": 5.0, "lang": "EN", "cat": "templates", "d": "Side-by-side Windows and Mac shortcuts, a five-folder file system, and a slow-computer checklist.", "id": "d993445f-e218-4809-9778-62050a8b051c"}, {"t": "Theme Park Vacation Planner (Florida)", "p": 9.0, "lang": "EN", "cat": "templates", "d": "A generic any-park planner: countdown, per-day park plans, Florida-weather packing and budget tracker.", "id": "433c5d10-d74c-4e5b-bb6f-d6567dcf0610"}, {"t": "Rental Property Tenant & Maintenance Log", "p": 9.0, "lang": "EN", "cat": "money", "d": "One record book per property: tenant records, 12-month rent log, maintenance and expense logs.", "id": "890fc5f4-7965-4ea3-b88a-daca64468dd5"}, {"t": "Airbnb Host Starter Checklist & Guest Pack", "p": 9.0, "lang": "EN", "cat": "business", "d": "Before-you-list setup, turnover cleaning checklist, guest welcome pages and a booking & income log.", "id": "67ec8f10-da5c-44f8-b5fc-ffb7f697e81b"}, {"t": "ChatGPT Beginner's Guide: How to Use It Well", "p": 7.0, "lang": "EN", "cat": "templates", "d": "A friendly, plain-English starter guide to getting genuinely useful answers out of ChatGPT.", "id": "a6cbb812-7bfa-4251-866c-ded6cd3f082b"}, {"t": "Muse Beginner's Guide: Your AI Assistant, Explained", "p": 7.0, "lang": "EN", "cat": "templates", "d": "What Muse is, what it's good at, and how to ask well — explained without the jargon.", "id": "79264801-10fd-469c-83f0-11bbe428b515"}, {"t": "Claude Beginner's Guide: How to Use It Well", "p": 7.0, "lang": "EN", "cat": "templates", "d": "A practical starter guide to Claude for writing, planning, learning and everyday work.", "id": "a311a099-1e84-4262-9c37-ee267d78ca44"}, {"t": "Google Gemini Beginner's Guide: How to Use It Well", "p": 7.0, "lang": "EN", "cat": "templates", "d": "A plain-English starter guide to Gemini — what to ask, how to check answers, and what to skip.", "id": "87e942c8-b71f-491f-b9e3-a6ad4931b908"}, {"t": "Microsoft Copilot Beginner's Guide: How to Use It Well", "p": 7.0, "lang": "EN", "cat": "templates", "d": "A beginner's guide to Copilot at work and at home, in plain language with real examples.", "id": "269b2a0e-1471-4097-8b96-1d1a0b5de651"}, {"t": "Grok Beginner's Guide: How to Use It Well", "p": 7.0, "lang": "EN", "cat": "templates", "d": "A plain-English starter guide to Grok — strengths, limits, and how to get useful answers.", "id": "a9e805d8-d0dc-4e0b-a426-0c89c952eea5"}, {"t": "Perplexity Beginner's Guide: AI Search, Explained", "p": 7.0, "lang": "EN", "cat": "templates", "d": "How AI search works, how to ask research questions, and how to check the sources it cites.", "id": "8a3609ab-2693-4042-8fd8-cbe3763b57c3"}, {"t": "Baby's First Year Planner & Log", "p": 9.0, "lang": "EN", "cat": "life", "d": "Feeding and sleep logs, milestone tracker, pediatrician records and a caregiver notes page.", "id": "dee4ede8-f479-4e37-88d6-0568e51ae76f"}, {"t": "Classroom Teacher Planner Pack", "p": 9.0, "lang": "EN", "cat": "life", "d": "Weekly lesson grids, roster and seating chart, grade tracker and a substitute-teacher info page.", "id": "4ac73ce2-376d-413a-84c1-3dcb3a8666df"}, {"t": "Student Study Planner & Assignment Tracker", "p": 6.0, "lang": "EN", "cat": "life", "d": "Semester overview, weekly study grids, A/B/C priority assignment tracker and exam countdowns.", "id": "780eb031-8cb4-49b9-9ae4-91a41ff620ff"}, {"t": "Job Search Tracker & Interview Prep Pack", "p": 7.0, "lang": "EN", "cat": "business", "d": "Application tracker, STAR story builder, follow-up log and a side-by-side offer comparison.", "id": "4c2bb3bc-4df4-435f-ae1b-0d17e7afb2cb"}, {"t": "Resume Worksheet & Job Application Kit", "p": 8.0, "lang": "EN", "cat": "business", "d": "Build a resume from strong raw material: achievement bullets, layout guides and a references sheet.", "id": "a9634c81-c225-4702-afb4-215f78c46ef6"}, {"t": "Delivery Driver Daily Route Notes Log", "p": 5.0, "lang": "EN", "cat": "templates", "d": "Daily route notes for stops, gate codes and problem addresses, plus a weekly pattern summary.", "id": "ebc9d96e-24a4-4ec5-9445-731e0c2eb6fa"}, {"t": "Food Delivery Driver Earnings Tracker", "p": 6.0, "lang": "EN", "cat": "templates", "d": "Per-shift logs by app with mileage and expenses, so you see your real dollars per hour.", "id": "ddc17e01-7875-43d1-94c5-18c30b640748"}, {"t": "Rideshare Driver Shift & Earnings Log", "p": 6.0, "lang": "EN", "cat": "templates", "d": "Shift, mileage and expense logs with weekly dollars-per-hour and per-mile worksheets.", "id": "47c2572c-62a3-402d-b7ab-28062090af3c"}, {"t": "Truck Driver Trip & Hours Log", "p": 7.0, "lang": "EN", "cat": "templates", "d": "Trip records, hours grids, fuel & DEF log and maintenance notes. A personal organizer — your ELD rules govern.", "id": "46d32a94-109f-4c6d-934c-d7712ec3541a"}, {"t": "Peak Season Family Survival Planner", "p": 5.0, "lang": "EN", "cat": "life", "d": "For the household, not the worker: shared calendars, meal shortcuts and two-layer backup plans.", "id": "429c6957-4e45-4cf5-8658-66c22e66a67b"}, {"t": "Online Seller Startup Checklist (Any Platform)", "p": 8.0, "lang": "EN", "cat": "business", "d": "Platform-agnostic startup system: niche worksheets, pricing with real fees, and a first-30-days plan.", "id": "fd03a4b0-ae04-4cdb-998c-16a6b8c22c92"}, {"t": "Craft Fair Seller Kit: Pricing, Display & Sales Log", "p": 8.0, "lang": "EN", "cat": "business", "d": "Cost-plus pricing worksheet, booth layout planner, show-day checklist and profit-per-show summary.", "id": "fc33fadf-5992-4077-83ad-c4ff49019351"}, {"t": "Small Business Social Media Calendar: 90 Days", "p": 9.0, "lang": "EN", "cat": "business", "d": "90 concrete daily post prompts in three monthly themes, plus a 90-minute batching worksheet.", "id": "b5880ed8-f9ba-42db-940f-79d19a1b73d8"}, {"t": "Invoice & Receipt Record Pack", "p": 6.0, "lang": "EN", "cat": "business", "d": "Blank invoice forms plus a numbering log, payments tracker and monthly invoicing summary.", "id": "7f417cdf-da20-4a65-91a8-af25bb1e684f"}, {"t": "Customer List & Follow-Up Tracker", "p": 6.0, "lang": "EN", "cat": "business", "d": "A paper CRM for tiny businesses: customer records, follow-up schedule, referrals and VIP lists.", "id": "d849c90b-7df4-42a1-b312-21fddf739964"}, {"t": "Daily Wellness Tracker: Sleep, Water, Mood, Steps", "p": 5.0, "lang": "EN", "cat": "health", "d": "Three weeks of daily logs with weekly roll-ups to spot your own patterns. Tracker only — not medical advice.", "id": "cc7ad45d-bc11-478b-9676-eeb3217088a4"}, {"t": "Blood Pressure & Health Numbers Log", "p": 6.0, "lang": "EN", "cat": "health", "d": "Blank log tables for readings exactly as your device shows them, plus an appointment summary page.", "id": "9f0501bd-7f53-490f-ba84-2a06c3c2741a"}, {"t": "Medication & Supplement Tracker", "p": 5.0, "lang": "EN", "cat": "health", "d": "Current list, daily check-off grids and a refill tracker. Records only — not medical advice.", "id": "0cb99588-53a5-4918-8749-ed175bb1fe16"}, {"t": "Walking Challenge Tracker Pack", "p": 5.0, "lang": "EN", "cat": "health", "d": "Color-in 30-day challenge boxes, a full walking log and a 12-week tracker with milestones.", "id": "ac0012ca-607f-4f8a-9828-b4765782733e"}, {"t": "Meal Prep Planner", "p": 7.0, "lang": "EN", "cat": "health", "d": "Batch-cooking logistics: prep-session plans, freezer inventory and a use-by tracker. Planning only.", "id": "ad40fc87-bbc4-4e3a-a267-cd9feddadece"}, {"t": "Family Movie Night Planner & Review Cards", "p": 4.0, "lang": "EN", "cat": "life", "d": "End the scrolling argument: take-turns picking, watch lists, review cards and a Favorites Hall of Fame.", "id": "85e5e506-98a4-434c-88de-d949a01629ef"}, {"t": "Birthday Party Planner Pack", "p": 7.0, "lang": "EN", "cat": "party", "d": "Budget, guest & RSVP tracker, theme and food planners, split shopping lists and a day-of timeline.", "id": "23d7c9d2-e7a7-420f-aa42-e452b9081f45"}, {"t": "Road Trip Games & Activity Pack", "p": 5.0, "lang": "EN", "cat": "templates", "d": "Pencil-only printable games: license-plate game, two bingo cards, scavenger hunt and score keepers.", "id": "df971b57-dc89-4c40-ae3f-453a01dd63f1"}, {"t": "Garden Journal & Harvest Log", "p": 6.0, "lang": "EN", "cat": "templates", "d": "A season-long journal: planting records, dated observations, harvest weights and an end-of-season review.", "id": "e34705fc-16d5-44d8-95f9-4a050df1112d"}, {"t": "Recipe Keeper Binder Pack", "p": 7.0, "lang": "EN", "cat": "health", "d": "Three recipe page layouts, a category index, family favorites and a verified US conversion chart.", "id": "d2a93d1c-9911-407a-91ee-b3d24b52eae8"}, {"t": "Couples' Date Night Idea Planner", "p": 6.0, "lang": "EN", "cat": "life", "d": "Idea banks by budget, a fair take-turns system, babysitter info sheet and a favorites rating log.", "id": "da4c198b-0e2e-41fb-893c-2937ddc226d7"}, {"t": "Senior Care Family Organizer", "p": 8.0, "lang": "EN", "cat": "health", "d": "Contacts and roles, appointment and medication logs, and a documents locator for caregiving families.", "id": "a0c4c3f6-f5e7-4c8c-9f66-36c99c6dc8d7"}, {"t": "Homeschool Weekly Planner Pack", "p": 8.0, "lang": "EN", "cat": "life", "d": "Weekly grids for up to two children, attendance log, reading tracker and field trip planner.", "id": "672940e1-7df1-4b53-af2f-25ea503061cd"}, {"t": "Fantasy Football Draft & Season Tracker", "p": 6.0, "lang": "EN", "cat": "templates", "d": "Draft-day rankings grids, pick-by-pick log, and weekly lineup & waiver trackers for Weeks 1–18.", "id": "930f12d1-0fef-4409-b5ab-d46733ec1cf8"}, {"t": "Golf Score & Round Log", "p": 6.0, "lang": "EN", "cat": "templates", "d": "18-hole scorecards with putts, scoring-trend tracker, real-distances chart and personal bests.", "id": "a99d1ea6-b0a7-4d59-b697-fae5459a02cc"}, {"t": "Hunting Trip Planner & Log", "p": 6.0, "lang": "EN", "cat": "templates", "d": "Trip roster, licenses checklist with verify-current-rules prompts, scouting notes and harvest record.", "id": "edacff1a-a11a-4ca8-b8cf-6722f1b7dbcd"}, {"t": "RV Travel Planner & Campground Log", "p": 8.0, "lang": "EN", "cat": "templates", "d": "Route planner, rated campground log, systems checklists, and maintenance, fuel and expense logs.", "id": "611fdaa9-0b7e-4628-a248-408da25e4347"}, {"t": "Moving House Planner & Checklist", "p": 8.0, "lang": "EN", "cat": "money", "d": "An 8-week countdown planner: room-by-room packing plan, box inventory log, change-of-address and utility checklists.", "id": "4fdb150d-aa1d-4b47-b631-ebeb69f764be"}, {"t": "Car Payment & Auto Expense Tracker", "p": 5.0, "lang": "EN", "cat": "money", "d": "Loan snapshot, payment log, payoff progress bar, and fuel & maintenance logs with a yearly cost summary.", "id": "434c7a8b-b7ff-49b8-a4a4-7cfa37acecf0"}, {"t": "Kit de Supervivencia del Conductor: Edición para Nuevos Conductores", "p": 9.0, "lang": "ES", "cat": "templates", "d": "La edición en español del kit de supervivencia para conductores nuevos — rutinas, revisión de la furgoneta y errores de principiante que debes evitar.", "id": "34984b48-4d23-472f-a762-684a0320157a"}, {"t": "Registro de Ruta y Millas", "p": 6.0, "lang": "ES", "cat": "templates", "d": "Registro diario de ruta y millas para conductores — millas, paradas y detalles de cada jornada en un solo lugar.", "id": "b23e3ebb-e5b7-4c95-b813-4f7a79836309"}, {"t": "Planificador de Temporada Alta para Conductores", "p": 7.0, "lang": "ES", "cat": "templates", "d": "Planificador de temporada alta para conductores — horarios, metas de ingresos y preparación para las semanas de más trabajo.", "id": "fefa406c-10a3-421a-b259-f75384150070"}, {"t": "Registro de Gastos del Conductor", "p": 6.0, "lang": "ES", "cat": "templates", "d": "Control de gastos del conductor — combustible, peajes, comida y suministros, todo en un solo registro.", "id": "b4b29aaa-e7fa-4927-a0b7-7d6cca5cdc0e"}, {"t": "Registro de Mantenimiento del Auto", "p": 6.0, "lang": "ES", "cat": "money", "d": "Registro de mantenimiento del auto — servicios, fechas, millas y próximos recordatorios.", "id": "7fd516b7-4682-4ede-8dc7-1f1444c3581c"}, {"t": "Registro de Mantenimiento del Hogar", "p": 6.0, "lang": "ES", "cat": "money", "d": "Registro de mantenimiento del hogar — tareas por temporada, servicios y reparaciones en un solo lugar.", "id": "5e1f081e-1e3e-43f9-9760-7d6934bfe4d5"}, {"t": "Planificador de Gastos del Hogar", "p": 5.0, "lang": "ES", "cat": "money", "d": "Registra luz, agua, internet, renta y demás gastos del hogar con fecha de vencimiento y monto real, para que ningún recibo te tome por sorpresa.", "id": "d871e6f6-6100-487d-b667-49a40dab2d38"}, {"t": "Organizador de Emergencia Familiar", "p": 7.0, "lang": "EN", "cat": "life", "d": "Organizador de emergencia familiar — contactos, documentos, suministros y el plan de acción de tu hogar.", "id": "060ae28d-a8eb-4a8f-965a-58e7a3b1fbb2"}, {"t": "Planificador de Comidas Semanal", "p": 5.0, "lang": "ES", "cat": "health", "d": "Planificador de comidas semanal — el menú de la semana y la lista de compras en una sola hoja.", "id": "5139fa72-5085-44c5-a01b-514f3055a870"}, {"t": "Lista de Compras y Planificador de Menú", "p": 5.0, "lang": "ES", "cat": "health", "d": "Lista de compras y planificador de menú — organiza el menú de la semana y compra solo lo que necesitas.", "id": "341917cd-fc2f-4c1a-8dce-6d9017b9bb7b"}, {"t": "Home Inventory Record (Insurance-Ready)", "p": 8.0, "lang": "EN", "cat": "money", "d": "Room-by-room home inventory record — items, values and the details your insurer needs after a loss.", "id": "f7cb3ab8-32c7-4c88-8d3a-69db67cc5b37"}, {"t": "Wedding Planning Checklist & Budget Pack", "p": 12.0, "lang": "EN", "cat": "wedding", "d": "Wedding checklist and budget pack — vendors, dates, guest list and spending tracked in one place.", "id": "3cbd9ad9-aa08-4ce6-9a25-0db0d81012db"}, {"t": "Paper Password & Account Organizer (Keep-at-Home)", "p": 6.0, "lang": "EN", "cat": "money", "d": "Paper password and account organizer to keep at home — accounts, usernames and recovery details in one safe place.", "id": "562811a9-65c6-4c04-a7a1-d5c6a87f33d9"}, {"t": "Car Maintenance Log & Reminder Tracker", "p": 6.0, "lang": "EN", "cat": "money", "d": "Car maintenance log with service reminders — oil, tires, inspections and repairs tracked by date and miles.", "id": "81e2aa1a-3b0a-4319-a7ab-d6594004df6e"}, {"t": "Pet Care Planner & Vet Log", "p": 7.0, "lang": "EN", "cat": "health", "d": "Pet care planner and vet log — feeding, medication, vet visits and vaccinations in one record.", "id": "ec913f38-1190-4ab9-8322-62c28b199717"}, {"t": "Spring Cleaning System: Room by Room", "p": 6.0, "lang": "EN", "cat": "money", "d": "Room-by-room spring cleaning system — checklists that break the whole house into finishable steps.", "id": "006b87ef-7fab-4aa5-8504-075dbdd2c0eb"}, {"t": "Cómo Empezar un Negocio Pequeño con Poco Dinero", "p": 12.0, "lang": "ES", "cat": "business", "d": "Elige y prueba una idea sencilla, resuelve los pasos de registro en orden y logra tu primera venta sin gastar de más.", "id": "bfd4bac1-f099-4df5-87fb-b56d33b8e0c2"}, {"t": "La Guía DeWitt de Regalos: 50 Regalos por Menos de $30", "p": 12.0, "lang": "ES", "cat": "life", "d": "Cincuenta ideas de regalos específicos por menos de $30, organizadas por persona: mamá, papá, adolescentes, compañeros y más.", "id": "fa591e45-d567-41e8-bace-307c5f03d6f9"}, {"t": "Tarjeta de Referencia Rápida del EDV", "p": 4.0, "lang": "ES", "cat": "templates", "d": "Tarjeta imprimible de dos caras para furgonetas eléctricas de reparto: la rutina de carga de la mañana y la conexión al final del día.", "id": "610f9a88-134a-4d9d-a12a-2612dfcd69be"}, {"t": "Paquete para Recibir en Acción de Gracias", "p": 6.0, "lang": "ES", "cat": "life", "d": "El sistema completo para recibir en Acción de Gracias: cuenta regresiva de cuatro semanas, línea de tiempo del gran día y lista de compras en dos viajes.", "id": "2ddee320-34ae-4387-bef9-cf5d0bb22e4c"}, {"t": "Kit de Inicio de IA para Principiantes: 60 Prompts para la Vida Diaria", "p": 7.0, "lang": "ES", "cat": "templates", "d": "Conceptos básicos de IA en lenguaje claro, más exactamente 60 prompts listos para copiar y pegar para correos, comidas, viajes y la vida familiar.", "id": "e27734de-274d-4b39-8624-1d0ee35d06f8"}, {"t": "Guía de ChatGPT para Principiantes: Cómo Usarlo Bien", "p": 7.0, "lang": "ES", "cat": "templates", "d": "Una guía de inicio amable y en lenguaje claro para sacarle respuestas realmente útiles a ChatGPT.", "id": "6575a16c-8c82-4546-90e3-c071d346b738"}, {"t": "Guía de Claude para Principiantes: Cómo Usarlo Bien", "p": 7.0, "lang": "ES", "cat": "templates", "d": "Una guía práctica de inicio para usar Claude en la escritura, la planificación, el aprendizaje y el trabajo diario.", "id": "1d2dc06b-0250-49b5-9223-56d1f5e6cddb"}, {"t": "Guía de Google Gemini para Principiantes: Cómo Usarlo Bien", "p": 7.0, "lang": "ES", "cat": "templates", "d": "Una guía en lenguaje claro para Gemini: qué preguntar, cómo verificar las respuestas y qué evitar.", "id": "9e1ea26c-5aee-4271-b013-10f85b8a7a42"}, {"t": "Python para Principiantes Absolutos: Hoja de Referencia y Plan de 30 Días", "p": 8.0, "lang": "ES", "cat": "templates", "d": "Páginas de referencia más un primer mes día a día, con cada ejemplo de código ejecutado y verificado.", "id": "96f6c422-5900-446d-baa7-03a5b0f09656"}, {"t": "Planificador Diario Amigable para el TDAH (Edición de Baja Fricción)", "p": 10.0, "lang": "ES", "cat": "health", "d": "Una sola cosa principal, un top 3 y anclas de tiempo en lugar de una cuadrícula horaria. Reinicia cualquier día, sin culpa.", "id": "24e17d89-2133-4b39-b835-81859fc7ac0b"}, {"t": "Carpeta del Propietario de Bote: Mantenimiento, Combustible y Plan de Flotación", "p": 12.0, "lang": "ES", "cat": "templates", "d": "Una carpeta para todo el bote: listas de verificación, registro de combustible y horas, bitácora de viajes y el clásico plan de flotación.", "id": "f75857cf-af58-422f-8f05-7736065fc3b0"}, {"t": "Tu Primera App sin Código: Planificador de Lanzamiento para iPhone y Android", "p": 10.0, "lang": "ES", "cat": "templates", "d": "Valida la idea, recórtala a un mínimo real, dibuja las pantallas y compara siete creadores de aplicaciones sin código.", "id": "1d4089a4-2b12-42d0-8b22-544650a6e311"}, {"t": "Paquete de Listas de Operaciones Diarias para Negocios Pequeños", "p": 7.0, "lang": "ES", "cat": "business", "d": "Listas de apertura, cierre, semanales y mensuales para que el negocio funcione con un sistema, no de memoria.", "id": "694599b8-b63a-4bf6-9758-5d443f9a4f30"}, {"t": "Contabilidad Simple para Negocios Pequeños", "p": 9.0, "lang": "ES", "cat": "business", "d": "Contabilidad sencilla en papel: entradas y salidas de dinero, libros de registro, archivo de recibos y un resumen mensual de ganancias.", "id": "c767d0a5-d4d9-4fb9-8fa9-e47f7d07bcfe"}, {"t": "Pon el Precio Correcto: Hojas de Precios para Principiantes", "p": 7.0, "lang": "ES", "cat": "business", "d": "Calcula lo que realmente cuesta un producto o una hora de trabajo, y pon un precio que de verdad lo cubra.", "id": "91c053ab-cd81-47d0-a1e9-aefe9bde0718"}, {"t": "Tus Primeros 10 Clientes: Manual de Marketing Local", "p": 9.0, "lang": "EN", "cat": "business", "d": "Un manual sin presupuesto de publicidad, con hojas de contacto y guiones palabra por palabra para pedir referencias.", "id": "534ff21a-346a-44a1-a281-ffddd1ea873f"}, {"t": "Seguimiento de Dinero y Turnos de Temporada Alta", "p": 7.0, "lang": "EN", "cat": "templates", "d": "Registro de turnos, control de horas extra y resumen de la temporada para que detectes errores de nómina tú mismo.", "id": "406ce292-a131-477f-97b5-dd7a55a708e1"}, {"t": "Plan de Arranque de 30 Días para Conductores Nuevos", "p": 7.0, "lang": "ES", "cat": "templates", "d": "Un plan semana a semana para tu primer mes: rutinas, organización de la furgoneta, ritmo honesto y dominio total de la ruta.", "id": "9a66007a-309b-4157-a615-f592ae9e0480"}, {"t": "Presupuesto del Hogar con Poco Dinero: Kit Completo", "p": 9.0, "lang": "ES", "cat": "money", "d": "Hojas de planificado contra real, un calendario de recibos alineado con tus días de pago y un mapa de pagos mínimos.", "id": "70c64f90-fc3e-4b9c-8f51-e28e5efde4dd"}, {"t": "Seguimiento de Ganancias y Promociones para Donantes de Plasma", "p": 5.0, "lang": "ES", "cat": "money", "d": "Registra el pago, las promociones y el tiempo de espera de cada donación para ver tus dólares por hora reales.", "id": "728c9ed4-4bfd-48bd-a915-0d09f9628fef"}, {"t": "Lista de Mantenimiento del Hogar para Todo el Año", "p": 6.0, "lang": "ES", "cat": "money", "d": "Listas de mantenimiento mensuales y por temporada para detectar a tiempo filtros, detectores y fugas.", "id": "f0dc64b7-a793-4dec-a020-4b3cfcad0a84"}, {"t": "Plan para Empezar un Huerto de Verduras en el Patio", "p": 8.0, "lang": "ES", "cat": "templates", "d": "El plan de la primera temporada para principiantes, con un calendario apto para el sur de la Florida y ocho cultivos fáciles para empezar.", "id": "a6bf73f1-ede1-4340-9082-a52e0f8b3b97"}, {"t": "Planificador de Diseño de Jardín en Camas Elevadas", "p": 6.0, "lang": "ES", "cat": "templates", "d": "Planificadores imprimibles de cuadrícula 4×8, guía rápida de espaciamiento, tabla de plantas compañeras y registro de siembras sucesivas.", "id": "e3319ba1-0d31-4c5a-bc4f-e357aa9f9111"}, {"t": "Lista Diaria de Tareas de la Granja y Cuidado de Animales", "p": 6.0, "lang": "ES", "cat": "health", "d": "Rondas de tareas diarias, semanales y por temporada, con listas de cuidado por especie y un registro de salud.", "id": "37ece5af-aa16-4b07-9a85-6f68423a745a"}, {"t": "Kit de Supervivencia del Conductor DSP: Edición para Nuevos Conductores", "p": 9.0, "lang": "ES", "cat": "templates", "d": "El kit de supervivencia del primer día para conductores de reparto nuevos: rutinas, revisiones de la furgoneta y errores de principiante que debes evitar.", "id": "b636abb3-9129-4b4c-a218-6a9e8509e96b"}, {"t": "Manual de Rescate de Rutas y Asistencia en Rescates", "p": 9.0, "lang": "EN", "cat": "templates", "d": "La guía de un instructor para clasificar los rescates, las cuatro llamadas telefónicas clave y entregas limpias.", "id": "306b8f47-6e40-4cac-812e-a419355a1fa4"}, {"t": "Planificador Navideño 2026 y Organizador del Presupuesto de Regalos", "p": 9.0, "lang": "ES", "cat": "party", "d": "Toda tu Navidad en una sola carpeta: calendario de diciembre, seguimiento de regalos y presupuesto, tarjetas, menús y medias navideñas.", "id": "69c403f2-79a3-4911-b247-07d2e2f693cb"}, {"t": "Planificador de Presupuesto de Navidad", "p": 6.0, "lang": "ES", "cat": "party", "d": "El lado del dinero de la Navidad: presupuesto total, topes por persona, registro de gastos y un plan para las cuentas de enero.", "id": "40febc00-3ac4-4bce-a0fd-955190c2ec3e"}, {"t": "Seguimiento de Deudas: Método Bola de Nieve", "p": 7.0, "lang": "ES", "cat": "money", "d": "Enumera cada deuda de la menor a la mayor y ve trasladando los pagos hacia adelante con barras de progreso e hitos.", "id": "3be3e8eb-df9a-4d4c-a425-edd24a41edd7"}, {"t": "Paquete de Retos de Ahorro: Escaleras de $100 a $10,000", "p": 6.0, "lang": "EN", "cat": "money", "d": "Seis escaleras de ahorro para colorear, incluido el clásico reto de 52 semanas que suma exactamente $1,378.", "id": "c96c991a-798d-480d-98dd-20a5aaa13d6f"}, {"t": "Registro de Millas y Gastos para Conductores de Plataformas", "p": 6.0, "lang": "ES", "cat": "templates", "d": "Páginas de registro de millas, registro de gastos con códigos y una hoja de totales de 12 meses. Solo organización, no es asesoría fiscal.", "id": "6814e1e2-20de-4f45-bcfc-b9d878a49c95"}, {"t": "Planificador de Preparación de Comidas", "p": 7.0, "lang": "ES", "cat": "health", "d": "Logística de la cocina por lotes: planes de sesión de preparación, inventario del congelador y control de fechas límite de consumo. Solo planificación.", "id": "719b6699-a195-45d3-bd85-5b220934dfec"}, {"t": "Planificador Semanal de Comidas y Presupuesto de Compras", "p": 5.0, "lang": "ES", "cat": "money", "d": "Cuatro semanas de cuadrículas de comidas con listas de compras por sección y seguimiento del presupuesto frente al gasto real.", "id": "315bb718-dcf8-421f-9c63-05d9053db5cd"}, {"t": "Paquete Planificador de Fiestas de Cumpleaños", "p": 7.0, "lang": "ES", "cat": "party", "d": "Presupuesto, seguimiento de invitados y confirmaciones, planificadores de tema y comida, listas de compras separadas y un cronograma del día de la fiesta.", "id": "b4cf766f-4222-4035-9c7f-2dcaec869c10"}, {"t": "Kit de Noche de Cine en Familia: Planificador y Tarjetas de Reseñas", "p": 4.0, "lang": "ES", "cat": "life", "d": "Acaba con la discusión de buscar qué ver: elección por turnos, listas de películas, tarjetas de reseñas y un Salón de la Fama de favoritos.", "id": "07667a25-9246-4a7f-bb25-d82538647191"}, {"t": "Frases Divertidas para Fotos Familiares y Memes, Vol. 1", "p": 6.0, "lang": "ES", "cat": "party", "d": "Plantillas de frases para completar de cumpleaños, días festivos, mascotas y viajes por carretera, más una sencilla fórmula de 3 líneas.", "id": "e81686df-75a6-497d-8531-7a6fda6bf348"}, {"t": "Cuaderno de Recetas Familiar", "p": 7.0, "lang": "EN", "cat": "health", "d": "Tres formatos de página de recetas, un índice por categorías, los favoritos de la familia y una tabla verificada de equivalencias de cocina.", "id": "84623ccd-36cb-4be8-9c1a-1f0003a10918"}, {"t": "Bilingual Translation & Writing", "p": 20.0, "lang": "EN", "cat": "services", "d": "Menus, business pages, letters and documents — translated between English and Spanish, or polished in the language you already have. Written to sound like a person, not a machine.", "id": "448ef229-de77-41cf-b9ae-6effdb48aee3"}, {"t": "Resume Writing & Polish", "p": 30.0, "lang": "EN", "cat": "services", "d": "Send what you've got — even rough notes — and get back a resume that reads like a pro wrote it. Built for real hiring managers, not buzzword bingo.", "id": "f128d8a8-6a4a-4fe0-b520-b0e6b4b1b5de"}, {"t": "Social Media Content Pack", "p": 40.0, "lang": "EN", "cat": "services", "d": "A month of posts without staring at a blank screen. Captions written for your business, in English, Spanish, or both.", "id": "8b5fff39-d57e-480c-a767-735a4f798ffc"}, {"t": "Party Planning Package — Online", "p": 40.0, "lang": "EN", "cat": "services", "d": "Birthdays, cookouts, anniversaries, holiday parties — the whole party planned on paper before you spend a dime: budget, checklist, shopping list and day-of schedule.", "id": "cbaeed95-453b-48b1-a7fe-c43ffa9dc30f"}, {"t": "Wedding Planning Package — Online", "p": 75.0, "lang": "EN", "cat": "services", "d": "Your whole wedding, organized: a realistic budget, a month-by-month timeline, and every checklist in one place — so the planning feels handled, not heavy.", "id": "e20e643b-1519-42e6-8d6c-b9b7d666441c"}, {"t": "Quinceañera Planning Package — Online", "p": 50.0, "lang": "EN", "cat": "services", "d": "La quince, planned con cariño y sin estrés: budget, countdown, shopping list and the day-of schedule — in English or Spanish, for the whole familia.", "id": "1f3ebbd7-d433-4b35-8d72-8b42184ec5aa"}, {"t": "Personal Gift Finder", "p": 10.0, "lang": "EN", "cat": "services", "d": "Stuck on what to buy? Tell us who it’s for — and get five gift ideas picked for that person, not pulled from a generic list.", "id": "ab69979e-4acc-4b98-83e6-812f6a6713dd"}];
+const BUY_BASE = "https://shop.beacons.ai/christopherdewitt/";
+
+const I18N = {
+  en: {
+    back: "← Back to the shop",
+    title: "Find Your Form",
+    explainer: "Type what you need — or tap a category — and we'll point you to the exact form.",
+    searchlabel: "What are you looking for?",
+    searchph: "Try: budget, invoice, quinceañera, health log…",
+    clear: "Clear",
+    all: "All",
+    getit: "Get it",
+    results: n => n === 1 ? "1 result" : n + " results",
+    emptytitle: "No matches yet",
+    emptymsg: "Can't find it? Ask Frankie on the shop's Help page.",
+    foot: "Every purchase checks out securely on Beacons with instant download.",
+    cats: {templates:"Templates & Kits", money:"Money & Budget", health:"Health & Wellness", business:"Business", life:"Life & Home", party:"Party & Events", services:"Services", spreadsheets:"Spreadsheets", wedding:"Wedding"}
+  },
+  es: {
+    back: "← Volver a la tienda",
+    title: "Encuentra tu formulario",
+    explainer: "Escribe lo que necesitas — o toca una categoría — y te llevamos al formulario exacto.",
+    searchlabel: "¿Qué estás buscando?",
+    searchph: "Prueba: presupuesto, factura, quinceañera, registro de salud…",
+    clear: "Borrar",
+    all: "Todo",
+    getit: "Obtenerlo",
+    results: n => n === 1 ? "1 resultado" : n + " resultados",
+    emptytitle: "Sin resultados todavía",
+    emptymsg: "¿No lo encuentras? Pregúntale a Frankie en la página de Ayuda de la tienda.",
+    foot: "Cada compra se paga de forma segura en Beacons con descarga instantánea.",
+    cats: {templates:"Plantillas y kits", money:"Dinero y presupuesto", health:"Salud y bienestar", business:"Negocios", life:"Vida y hogar", party:"Fiestas y eventos", services:"Servicios", spreadsheets:"Hojas de cálculo", wedding:"Bodas"}
+  }
+};
+
+/* Bilingual synonym map: normalized term -> extra normalized terms to match.
+   Works both directions because ES words also appear as keys. */
+const SYN = {
+  "presupuesto":["budget","presupuest"],
+  "budget":["presupuesto","presupuest"],
+  "factura":["invoice","factur"],
+  "invoice":["factura","factur"],
+  "boda":["wedding"],
+  "wedding":["boda"],
+  "quinceanera":["quince","quinceanera","xv"],
+  "quince":["quinceanera"],
+  "cumpleanos":["birthday"],
+  "birthday":["cumpleanos"],
+  "salud":["health"],
+  "health":["salud"],
+  "seguro":["insurance"],
+  "insurance":["seguro"],
+  "negocio":["business"],
+  "business":["negocio"],
+  "mudanza":["moving"],
+  "moving":["mudanza"],
+  "bebe":["baby"],
+  "baby":["bebe"],
+  "duelo":["memorial","grief","funeral"],
+  "memorial":["duelo","funeral"],
+  "grief":["duelo","memorial"],
+  "funeral":["duelo","memorial"],
+  "impuesto":["tax"],
+  "tax":["impuesto"],
+  "alquiler":["rent","landlord","rental"],
+  "rent":["alquiler"],
+  "rental":["alquiler"],
+  "landlord":["alquiler"],
+  "horario":["schedule","calendar","calendario"],
+  "schedule":["horario"],
+  "limpieza":["cleaning"],
+  "cleaning":["limpieza"],
+  "dinero":["money"],
+  "money":["dinero"],
+  "fiesta":["party","fiesta"],
+  "party":["fiesta"],
+  "trabajo":["work","job","empleo"],
+  "job":["trabajo","empleo"],
+  "empleo":["job","work","trabajo"],
+  "currículum":["resume"],
+  "curriculum":["resume"],
+  "resume":["curriculum","empleo","job"],
+  "registro":["log","tracker","registro"],
+  "log":["registro"],
+  "tracker":["registro","rastreador","seguidor"],
+  "hoja":["spreadsheet","sheet"],
+  "spreadsheet":["hoja","calculo"],
+  "calculo":["spreadsheet"],
+  "boda":["wedding"],
+  "viaje":["travel","trip"],
+  "travel":["viaje"],
+  "cocina":["kitchen","recipe","receta"],
+  "kitchen":["cocina"],
+  "receta":["recipe","cocina"],
+  "recipe":["receta"],
+  "escuela":["school"],
+  "school":["escuela"],
+  "auto":["car","vehicle","vehiculo"],
+  "car":["auto","vehiculo"],
+  "mascota":["pet"],
+  "pet":["mascota"],
+  "jardin":["garden"],
+  "garden":["jardin"],
+  "entrega":["delivery","driver","conductor"],
+  "delivery":["entrega","conductor"],
+  "driver":["conductor","entrega"],
+  "conductor":["driver","delivery"],
+  "navidad":["christmas"],
+  "christmas":["navidad"],
+  "hogar":["home","casa"],
+  "home":["hogar","casa"],
+  "casa":["home","hogar"],
+  "medicamento":["medication","medicine","medicina"],
+  "medication":["medicamento"],
+  "presion":["pressure","blood"],
+  "sueno":["sleep"],
+  "sleep":["sueno"],
+  "gasto":["expense","gastos"],
+  "expense":["gasto"],
+  "gastos":["expenses","gasto"],
+  "deuda":["debt"],
+  "debt":["deuda"],
+  "ahorro":["savings","saving"],
+  "savings":["ahorro"]
+};
+
+function norm(s){
+  return (s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+}
+function queryGroups(q){
+  /* One group per query word: the word OR any of its bilingual synonyms.
+     An item matches when EVERY group has at least one hit in the item text. */
+  return norm(q).split(/[^a-z0-9ñ]+/).filter(Boolean)
+    .map(w => [w].concat((SYN[w]||[]).map(norm)));
+}
+function haystack(item, lang){
+  const catLabel = norm((I18N.en.cats[item.cat]||"") + " " + (I18N.es.cats[item.cat]||"") + " " + item.cat);
+  return norm(item.t + " " + item.d + " " + catLabel + " " + item.lang);
+}
+
+let curLang = "en";
+let curCat = "all";
+const grid = document.getElementById("grid");
+const countEl = document.getElementById("count");
+const emptyEl = document.getElementById("empty");
+const chipsEl = document.getElementById("chips");
+const qEl = document.getElementById("q");
+const clearBtn = document.getElementById("clear");
+
+const catCounts = {};
+CATALOG.forEach(it => { catCounts[it.cat] = (catCounts[it.cat]||0) + 1; });
+const catOrder = ["templates","money","health","business","life","party","spreadsheets","wedding","services"]
+  .filter(c => catCounts[c]);
+
+function buildChips(){
+  const L = I18N[curLang];
+  chipsEl.innerHTML = "";
+  const mk = (cat, label, n) => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "chip" + (curCat === cat ? " active" : "");
+    b.setAttribute("aria-pressed", curCat === cat ? "true" : "false");
+    b.innerHTML = "";
+    b.appendChild(document.createTextNode(label));
+    const s = document.createElement("span"); s.className = "n"; s.textContent = n;
+    b.appendChild(s);
+    b.addEventListener("click", () => { curCat = cat; buildChips(); render(); });
+    chipsEl.appendChild(b);
+  };
+  mk("all", L.all, CATALOG.length);
+  catOrder.forEach(c => mk(c, L.cats[c] || c, catCounts[c]));
+}
+
+function render(){
+  const L = I18N[curLang];
+  const groups = queryGroups(qEl.value);
+  const list = CATALOG.filter(it => {
+    if (curCat !== "all" && it.cat !== curCat) return false;
+    if (!groups.length) return true;
+    const h = haystack(it);
+    return groups.every(g => g.some(t => h.includes(t)));
+  });
+  countEl.textContent = L.results(list.length);
+  emptyEl.classList.toggle("show", list.length === 0);
+  clearBtn.classList.toggle("show", qEl.value.length > 0);
+  grid.innerHTML = "";
+  const frag = document.createDocumentFragment();
+  list.forEach(it => {
+    const card = document.createElement("article");
+    card.className = "card";
+    const h = document.createElement("h3"); h.textContent = it.t; card.appendChild(h);
+    const p = document.createElement("p"); p.textContent = it.d; card.appendChild(p);
+    const meta = document.createElement("div"); meta.className = "meta";
+    const price = document.createElement("span"); price.className = "pricechip";
+    price.textContent = "$" + (Number.isInteger(it.p) ? it.p : it.p.toFixed(2));
+    meta.appendChild(price);
+    const lc = document.createElement("span"); lc.className = "langchip";
+    lc.textContent = it.lang === "ES" ? "Español" : "English";
+    meta.appendChild(lc);
+    const cc = document.createElement("span"); cc.className = "catchip";
+    cc.textContent = L.cats[it.cat] || it.cat;
+    meta.appendChild(cc);
+    card.appendChild(meta);
+    const a = document.createElement("a");
+    a.className = "buybtn"; a.href = BUY_BASE + it.id; a.textContent = L.getit;
+    card.appendChild(a);
+    frag.appendChild(card);
+  });
+  grid.appendChild(frag);
+}
+
+function setLang(lang){
+  curLang = lang;
+  const L = I18N[lang];
+  document.documentElement.lang = lang === "es" ? "es" : "en";
+  document.title = (lang === "es" ? "Encuentra tu formulario" : "Find Your Form") + " — Christopher DeWitt's Shop";
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const k = el.getAttribute("data-i18n");
+    if (L[k]) el.textContent = L[k];
+  });
+  document.querySelectorAll("[data-i18n-ph]").forEach(el => {
+    const k = el.getAttribute("data-i18n-ph");
+    if (L[k]) el.setAttribute("placeholder", L[k]);
+  });
+  document.getElementById("btnEN").classList.toggle("active", lang === "en");
+  document.getElementById("btnES").classList.toggle("active", lang === "es");
+  buildChips();
+  render();
+}
+
+document.getElementById("btnEN").addEventListener("click", () => setLang("en"));
+document.getElementById("btnES").addEventListener("click", () => setLang("es"));
+qEl.addEventListener("input", render);
+clearBtn.addEventListener("click", () => { qEl.value = ""; render(); qEl.focus(); });
+
+setLang("en");
+</script>
+</body>
+</html>
