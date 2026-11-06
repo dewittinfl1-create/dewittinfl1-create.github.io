@@ -453,8 +453,10 @@ header.site a.btn{padding:6px 10px;font-size:.82rem}
 header.site nav.main{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
 header.site nav.main::-webkit-scrollbar{display:none}
 header.site nav.main a{flex:0 0 auto}
-header.site{position:static}
-.controls{position:sticky;top:0;z-index:30}
+.controls{position:sticky;top:calc(var(--hdr,104px) + 62px);z-index:30}
+.gsearch{position:sticky;top:var(--hdr,104px);z-index:31}
+body.scrolled .gsearch{padding:6px 0}
+body.scrolled .gsearch .chips,body.scrolled .gsearch .req-link{display:none}
 #grid{grid-template-columns:repeat(2,1fr);gap:12px}
 #grid .cover-art{min-height:138px;padding:12px}
 #grid .cover-art .ca-icon{font-size:1.6rem}
@@ -1813,6 +1815,7 @@ var PICK_INFO = {
     if(qEl) qEl.setAttribute("placeholder", es?"Busca todo — servicios, descargas, plantillas… prueba \u201cfiesta\u201d":"Search everything — services, downloads, templates… try \u201cparty\u201d"); },1500);
 })();
 </script>
+<script>function fitSticky(){var h=document.querySelector("header.site");if(h){document.documentElement.style.setProperty("--hdr",h.offsetHeight+"px");}}function onScr(){document.body.classList.toggle("scrolled",window.scrollY>140);}window.addEventListener("resize",fitSticky);window.addEventListener("load",fitSticky);window.addEventListener("scroll",onScr,{passive:true});fitSticky();onScr();setTimeout(fitSticky,600);</script>
 </body>
 
 </html>
