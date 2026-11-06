@@ -1698,7 +1698,9 @@ var PICK_INFO = {
   function viewOf(el){ var n=el; while(n && n!==document.body){ if(n.getAttribute && n.getAttribute('data-view')) return n.getAttribute('data-view'); n=n.parentElement; } return null; }
   function setRoute(r){
     if(!VIEWS[r]) r='downloads';
+    var prevR=document.body.getAttribute('data-route');
     document.body.setAttribute('data-route',r);
+    if(prevR!==r){window.scrollTo(0,0);}
     var tabs=document.querySelectorAll('nav.main a.tab');
     for(var i=0;i<tabs.length;i++){
       var on=tabs[i].getAttribute('data-route-link')===r;
@@ -1838,7 +1840,7 @@ var PICK_INFO = {
     if(qEl) qEl.setAttribute("placeholder", es?"Busca todo — servicios, descargas, plantillas… prueba \u201cfiesta\u201d":"Search everything — services, downloads, templates… try \u201cparty\u201d"); },1500);
 })();
 </script>
-<script>function fitSticky(){var h=document.querySelector("header.site");if(h){document.documentElement.style.setProperty("--hdr",h.offsetHeight+"px");}}var _sc=false;function onScr(){var sc=window.scrollY>140;if(sc!==_sc){_sc=sc;document.body.classList.toggle("scrolled",sc);requestAnimationFrame(fitSticky);}}window.addEventListener("resize",fitSticky);window.addEventListener("load",fitSticky);window.addEventListener("scroll",onScr,{passive:true});fitSticky();onScr();setTimeout(fitSticky,600);</script>
+<script>function fitSticky(){var h=document.querySelector("header.site");if(h){document.documentElement.style.setProperty("--hdr",h.offsetHeight+"px");}}var _sc=false;function onScr(){var sc=window.scrollY>30;if(sc!==_sc){_sc=sc;document.body.classList.toggle("scrolled",sc);requestAnimationFrame(fitSticky);}}window.addEventListener("resize",fitSticky);window.addEventListener("load",fitSticky);window.addEventListener("scroll",onScr,{passive:true});fitSticky();onScr();setTimeout(fitSticky,600);</script>
 <script>
 document.addEventListener("click",function(e){var b=(e.target&&e.target.closest)?e.target.closest(".rmore"):null;if(!b)return;e.preventDefault();e.stopPropagation();var card=b.closest(".card,.feat");if(!card)return;var open=card.classList.toggle("open");b.textContent=open?b.getAttribute("data-less"):b.getAttribute("data-more");});
 function pruneRmore(){document.querySelectorAll(".rmore").forEach(function(b){var card=b.closest(".card,.feat");if(!card||card.classList.contains("open"))return;var pp=card.querySelector(".body p,.card-body p");if(pp&&pp.scrollHeight<=pp.clientHeight+2){b.style.display="none";}});}
