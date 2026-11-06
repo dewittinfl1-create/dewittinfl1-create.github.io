@@ -1130,7 +1130,7 @@ function applyLanguage(lang){
   if(typeof renderStartHere==="function") renderStartHere();
   if(typeof renderTemplates==="function") renderTemplates();
   renderPicksLanguage();
-  var qEl=document.getElementById("q"); if(qEl) qEl.setAttribute("aria-label", currentLang==="es"?"Buscar productos":"Search products");
+  var qEl=document.getElementById("q"); if(qEl) qEl.setAttribute("aria-label", currentLang==="es"?"Buscar productos":"Search products"); var gqEl=document.getElementById("gq"); if(gqEl) gqEl.setAttribute("aria-label", currentLang==="es"?"Buscar todo":"Search everything");
 }
 
 var CATS = {

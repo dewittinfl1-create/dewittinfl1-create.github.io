@@ -248,7 +248,7 @@ function haystack(item, lang){
   return norm(item.t + " " + item.d + " " + catLabel + " " + item.lang);
 }
 
-let curLang = "en";
+let curLang = (function(){ try{ var v=localStorage.getItem("cdw-lang"); if(v==="es"||v==="en") return v; }catch(e){} return "en"; })();
 let curCat = "all";
 const grid = document.getElementById("grid");
 const countEl = document.getElementById("count");
@@ -321,6 +321,7 @@ function render(){
 
 function setLang(lang){
   curLang = lang;
+  try{ localStorage.setItem("cdw-lang", lang); }catch(e){}
   const L = I18N[lang];
   document.documentElement.lang = lang === "es" ? "es" : "en";
   document.title = (lang === "es" ? "Encuentra tu formulario" : "Find Your Form") + " — Christopher DeWitt's Shop";
@@ -343,7 +344,7 @@ document.getElementById("btnES").addEventListener("click", () => setLang("es"));
 qEl.addEventListener("input", render);
 clearBtn.addEventListener("click", () => { qEl.value = ""; render(); qEl.focus(); });
 
-setLang("en");
+setLang(curLang);
 </script>
 </body>
 </html>
