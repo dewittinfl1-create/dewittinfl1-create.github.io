@@ -6,14 +6,16 @@
        homepage URL. Per-product checkout URLs are hosted on Beacons (different domain),
        so they cannot be listed in this domain's sitemap. Every page below is bilingual
        EN/ES via the on-page language toggle. -->
-  <url><loc>https://dewittinfl1-create.github.io/</loc><lastmod>2026-11-05</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
-  <url><loc>https://dewittinfl1-create.github.io/finder.html</loc><lastmod>2026-11-05</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://dewittinfl1-create.github.io/printable-templates.html</loc><lastmod>2026-11-05</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://dewittinfl1-create.github.io/budget-planner.html</loc><lastmod>2026-11-05</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://dewittinfl1-create.github.io/party-planning.html</loc><lastmod>2026-11-05</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://dewittinfl1-create.github.io/wedding-planning.html</loc><lastmod>2026-11-05</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://dewittinfl1-create.github.io/quinceanera-planning.html</loc><lastmod>2026-11-05</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://dewittinfl1-create.github.io/resume-help.html</loc><lastmod>2026-11-05</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://dewittinfl1-create.github.io/translation-services.html</loc><lastmod>2026-11-05</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://dewittinfl1-create.github.io/delivery-driver.html</loc><lastmod>2026-11-05</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dewittinfl1-create.github.io/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
+  <url><loc>https://dewittinfl1-create.github.io/finder.html</loc><lastmod>2026-11-06</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dewittinfl1-create.github.io/printable-templates.html</loc><lastmod>2026-11-06</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://dewittinfl1-create.github.io/budget-planner.html</loc><lastmod>2026-11-06</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dewittinfl1-create.github.io/party-planning.html</loc><lastmod>2026-11-06</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dewittinfl1-create.github.io/wedding-planning.html</loc><lastmod>2026-11-06</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dewittinfl1-create.github.io/quinceanera-planning.html</loc><lastmod>2026-11-06</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dewittinfl1-create.github.io/resume-help.html</loc><lastmod>2026-11-06</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dewittinfl1-create.github.io/translation-services.html</loc><lastmod>2026-11-06</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dewittinfl1-create.github.io/delivery-driver.html</loc><lastmod>2026-11-06</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dewittinfl1-create.github.io/tools/debt-payoff-calculator.html</loc><lastmod>2026-11-06</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dewittinfl1-create.github.io/tools/budget-calculator.html</loc><lastmod>2026-11-06</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>
