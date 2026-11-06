@@ -453,10 +453,8 @@ header.site a.btn{padding:6px 10px;font-size:.82rem}
 header.site nav.main{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
 header.site nav.main::-webkit-scrollbar{display:none}
 header.site nav.main a{flex:0 0 auto}
-.controls{position:sticky;top:calc(var(--hdr,104px) + 62px);z-index:30}
+.controls{position:static}
 .gsearch{position:sticky;top:var(--hdr,104px);z-index:31}
-body.scrolled .gsearch{padding:6px 0}
-body.scrolled .gsearch .chips,body.scrolled .gsearch .req-link{display:none}
 body.scrolled header.site .brand,body.scrolled header.site .lang-toggle,body.scrolled header.site .btn{display:none}
 #grid{grid-template-columns:repeat(2,1fr);gap:12px}
 #grid .cover-art{min-height:138px;padding:12px}
@@ -497,6 +495,8 @@ body.scrolled header.site .brand,body.scrolled header.site .lang-toggle,body.scr
 @media(min-width:641px){
 .topbar .tb-left{flex-direction:column;align-items:center;text-align:center;gap:6px}
 }
+.rmore{background:none;border:none;color:#14532D;font-weight:700;font-size:.86rem;padding:5px 0 0;cursor:pointer;text-decoration:underline;display:block}
+#grid .card.open .card-body p,#grid .card.open .body p,#featGrid .feat.open .body p,#startGrid .feat.open .body p,#tplGroups .card.open .card-body p,#tplGroups .card.open .body p{-webkit-line-clamp:unset;display:block;overflow:visible}
 </style>
 </head>
 <body data-route="downloads">
@@ -1304,6 +1304,7 @@ function pairUrls(x){
   for(var k in ES_EDITIONS){ if(ES_EDITIONS[k]===id) return {en:B+k, es:x.u}; }
   return null;
 }
+function rmoreHtml(x){if(!x.d||x.d.length<=130)return "";var es=(typeof currentLang!=="undefined"&&currentLang==="es");var more=es?"Leer más":"Read more";var less=es?"Mostrar menos":"Show less";return '<button class="rmore" type="button" data-more="'+more+'" data-less="'+less+'">'+more+"</button>";}
 function buyButtons(x, mainCls, altCls){
   var pr = pairUrls(x); if(!pr) return "";
   var esView = currentLang==="es";
@@ -1348,7 +1349,7 @@ function renderFeat(){
   var feat = PRODUCTS.filter(function(x){return x.f;});
   var html = ""; var u=ui();
   feat.forEach(function(x){
-    html += '<article class="feat">' + (x.i ? '<div class="feat-photo"><img src="'+x.i+'" alt="'+esc(x.t)+'" loading="lazy"></div><div style="display:none">' : '<div class="cover" style="background:'+CATS[x.c].color+'">') + '<span class="cat">'+CATS[x.c].icon+' '+catLabel(x.c)+' · '+u.printablePDF+'</span><span class="fc-icon" aria-hidden="true">'+CATS[x.c].icon+'</span><h3>'+esc(x.t)+'</h3><span class="fc-foot">PDF · '+x.pg+' '+u.pages+' · '+u.instant+'</span></div><div class="body"><p>'+esc(x.d)+'</p>'+chipRowHtml(x)+featTail(x,u)+'</div></article>';
+    html += '<article class="feat">' + (x.i ? '<div class="feat-photo"><img src="'+x.i+'" alt="'+esc(x.t)+'" loading="lazy"></div><div style="display:none">' : '<div class="cover" style="background:'+CATS[x.c].color+'">') + '<span class="cat">'+CATS[x.c].icon+' '+catLabel(x.c)+' · '+u.printablePDF+'</span><span class="fc-icon" aria-hidden="true">'+CATS[x.c].icon+'</span><h3>'+esc(x.t)+'</h3><span class="fc-foot">PDF · '+x.pg+' '+u.pages+' · '+u.instant+'</span></div><div class="body"><p>'+esc(x.d)+'</p>'+rmoreHtml(x)+chipRowHtml(x)+featTail(x,u)+'</div></article>';
   });
   document.getElementById("featGrid").innerHTML = html;
 }
@@ -1374,7 +1375,7 @@ function render(){
       + '<span class="ca-foot">PDF · '+x.pg+' '+ui().pages+' · '+ui().instant+'</span></div>'
       + '<div class="card-body">'
       + '<div class="top"><span class="cat">'+CATS[x.c].icon+' '+catLabel(x.c)+'</span><span class="pr">$'+x.p+'</span></div>'
-      + '<h3>'+esc(x.t)+'</h3><p>'+esc(x.d)+'</p>'+chipRowHtml(x)
+      + '<h3>'+esc(x.t)+'</h3><p>'+esc(x.d)+'</p>'+rmoreHtml(x)+chipRowHtml(x)
       + '<details class="spec"><summary>'+ui().fullDetails+'</summary><dl class="spec-list">'
       + '<div><dt>'+ui().format+'</dt><dd>'+ui().formatVal+'</dd></div>'
       + '<div><dt>'+(currentLang==='es'?'Páginas':'Pages')+'</dt><dd>'+x.pg+'</dd></div>'
@@ -1410,16 +1411,14 @@ function startCard(x){
     + (x.i ? '<div class="card-photo"><img src="'+x.i+'" alt="'+esc(x.t)+'" loading="lazy"><span class="cp-price">$'+x.p+'</span></div>' : '<div class="cover-art" style="background:'+CATS[x.c].color+'"><span class="ca-title">'+esc(x.t)+'</span></div>')
     + '<div class="card-body"><span class="start-badge">'+(currentLang==="es"?"Empieza aqu\u00ed":"Start here")+'</span>'
     + '<div class="top"><span class="cat">'+CATS[x.c].icon+' '+catLabel(x.c)+'</span><span class="pr">$'+x.p+'</span></div>'
-    + '<h3>'+esc(x.t)+'</h3><p>'+esc(x.d)+'</p>'+chipRowHtml(x)+footHtml(x)+'</div></article>';
+    + '<h3>'+esc(x.t)+'</h3><p>'+esc(x.d)+'</p>'+rmoreHtml(x)+chipRowHtml(x)+footHtml(x)+'</div></article>';
 }
 function renderStartHere(){
   var grid=document.getElementById("startGrid"); if(!grid) return;
   var es=currentLang==="es"; var u=ui();
   var finder='<article class="card finder-card"><div class="card-body">'
-    + '<span class="start-badge">'+(es?"Gratis":"Free")+'</span>'
     + '<h3>'+(es?"\ud83d\udd0d Buscador de Formularios":"\ud83d\udd0d Form Finder")+'</h3>'
     + '<p>'+(es?"Contesta un par de toques y te llevamos al formulario o plantilla exacta que necesitas \u2014 en ingl\u00e9s o espa\u00f1ol.":"Answer a couple of taps and we take you straight to the exact form or template you need \u2014 in English or Spanish.")+'</p>'
-    + '<div class="chiprow"><span class="chip price">'+(es?"Gratis":"Free")+'</span><span class="chip">'+(es?"Sin cuenta":"No account")+'</span><span class="chip lang">\ud83c\udf10 EN \u00b7 ES</span></div>'
     + '<div class="foot"><a class="buy" style="background:var(--brand-gold);color:#231A04" href="finder.html">'+(es?"Abrir el Buscador":"Open the Finder")+'</a></div>'
     + '</div></article>';
   var quince='<article class="card"><div class="card-body">'
@@ -1447,7 +1446,7 @@ function tplCard(x){
   return '<article class="card">'
    + (x.i ? '<div class="card-photo"><img src="'+x.i+'" alt="'+esc(x.t)+'" loading="lazy"><span class="cp-price">$'+x.p+'</span></div>' : '<div class="cover-art" style="background:'+CATS[x.c].color+'"><span class="ca-title">'+esc(x.t)+'</span></div>')
    + '<div class="card-body"><div class="top"><span class="cat">'+CATS[x.c].icon+' '+catLabel(x.c)+'</span><span class="pr">$'+x.p+'</span></div>'
-   + '<h3>'+esc(x.t)+'</h3><p>'+esc(x.d)+'</p>'+chipRowHtml(x)+footHtml(x)+'</div></article>';
+   + '<h3>'+esc(x.t)+'</h3><p>'+esc(x.d)+'</p>'+rmoreHtml(x)+chipRowHtml(x)+footHtml(x)+'</div></article>';
 }
 function renderTemplates(){
   var host=document.getElementById("tplGroups"); if(!host) return;
@@ -1775,7 +1774,7 @@ var PICK_INFO = {
      + (x.i ? '<div class="card-photo"><img src="'+x.i+'" alt="'+esc(x.t)+'" loading="lazy"><span class="cp-price">$'+x.p+'</span></div>' : '<div class="cover-art" style="background:'+CATS[x.c].color+'"><span class="ca-title">'+esc(x.t)+'</span></div>')
      + '<div class="card-body"><span class="gs-badge">'+(L()==="es"?"Descarga":"Download")+'</span>'
      + '<div class="top"><span class="cat">'+CATS[x.c].icon+' '+catLabel(x.c)+'</span><span class="pr">$'+x.p+'</span></div>'
-     + '<h3>'+esc(x.t)+'</h3><p>'+esc(x.d)+'</p>'+((typeof chipRowHtml==="function")?chipRowHtml(x):"")+footHtml(x)+'</div></article>';
+     + '<h3>'+esc(x.t)+'</h3><p>'+esc(x.d)+'</p>'+rmoreHtml(x)+((typeof chipRowHtml==="function")?chipRowHtml(x):"")+footHtml(x)+'</div></article>';
   }
   function svcCard(sv){
     var es=L()==="es";
@@ -1838,6 +1837,12 @@ var PICK_INFO = {
 })();
 </script>
 <script>function fitSticky(){var h=document.querySelector("header.site");if(h){document.documentElement.style.setProperty("--hdr",h.offsetHeight+"px");}}var _sc=false;function onScr(){var sc=window.scrollY>140;if(sc!==_sc){_sc=sc;document.body.classList.toggle("scrolled",sc);requestAnimationFrame(fitSticky);}}window.addEventListener("resize",fitSticky);window.addEventListener("load",fitSticky);window.addEventListener("scroll",onScr,{passive:true});fitSticky();onScr();setTimeout(fitSticky,600);</script>
+<script>
+document.addEventListener("click",function(e){var b=(e.target&&e.target.closest)?e.target.closest(".rmore"):null;if(!b)return;e.preventDefault();e.stopPropagation();var card=b.closest(".card,.feat");if(!card)return;var open=card.classList.toggle("open");b.textContent=open?b.getAttribute("data-less"):b.getAttribute("data-more");});
+function pruneRmore(){document.querySelectorAll(".rmore").forEach(function(b){var card=b.closest(".card,.feat");if(!card||card.classList.contains("open"))return;var pp=card.querySelector(".body p,.card-body p");if(pp&&pp.scrollHeight<=pp.clientHeight+2){b.style.display="none";}});}
+var _prt=null;function queuePrune(){clearTimeout(_prt);_prt=setTimeout(pruneRmore,250);}
+var _mo=new MutationObserver(queuePrune);_mo.observe(document.body,{childList:true,subtree:true});window.addEventListener("resize",queuePrune);setTimeout(pruneRmore,900);
+</script>
 </body>
 
 </html>
