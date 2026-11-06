@@ -373,6 +373,7 @@ p.trust-strip{display:block}
 [data-view]{display:none!important}
 body[data-route="downloads"] [data-view="downloads"],body[data-route="shop"] [data-view="shop"],body[data-route="services"] [data-view="services"],body[data-route="how"] [data-view="how"],body[data-route="help"] [data-view="help"]{display:block!important}
 body[data-route="search"] [data-view="search"]{display:block!important}
+body[data-route="downloads"] [data-view="earn"],body[data-route="earn"] [data-view="earn"]{display:block!important}
 body[data-route="templates"] [data-view="templates"]{display:block!important}
 body[data-route="earn"] [data-view="earn"]{display:block!important}
 nav.main a.tab.active{background:#2F7DE1;color:#fff}
@@ -1837,13 +1838,13 @@ var PICK_INFO = {
    (#shop, #picks, #refund-policy, ...) route to the view that holds them. */
 (function(){
   var VIEWS={downloads:1,shop:1,services:1,templates:1,how:1,help:1,search:1,earn:1};
-  var MAP={'help-top':'help','seasonal':'downloads','top-picks':'downloads','categories':'downloads','shop':'downloads','picks':'shop','services':'services','how':'how','help':'help','install-app':'help','search-results':'search','start-here':'downloads','freeTools':'downloads','licencesStrip':'downloads','affStrip':'downloads','what-downloads':'downloads','trust-strip':'downloads','templates':'templates','earn':'earn'};
+  var MAP={'help-top':'help','seasonal':'downloads','top-picks':'downloads','categories':'downloads','shop':'downloads','picks':'shop','services':'services','how':'how','help':'help','install-app':'help','search-results':'search','start-here':'downloads','freeTools':'downloads','licencesStrip':'downloads','affStrip':'downloads','what-downloads':'downloads','trust-strip':'downloads','templates':'templates','earn':'downloads'};
   function tag(){
     for(var id in MAP){ var el=document.getElementById(id); if(el) el.setAttribute('data-view',MAP[id]); }
     var hero=document.querySelector('.hero'); if(hero) hero.setAttribute('data-view','downloads');
     var ms=document.querySelector('.muse-strip'); if(ms) ms.setAttribute('data-view','downloads');
     var tb=document.querySelector('.topbar'); if(tb) tb.setAttribute('data-view','downloads');
-    var ern=document.getElementById('earn'); if(ern) ern.setAttribute('data-view','downloads');
+    var ern=document.getElementById('earn'); if(ern) ern.setAttribute('data-view','earn');
   }
   function viewOf(el){ var n=el; while(n && n!==document.body){ if(n.getAttribute && n.getAttribute('data-view')) return n.getAttribute('data-view'); n=n.parentElement; } return null; }
   function setRoute(r){
