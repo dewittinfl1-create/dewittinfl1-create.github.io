@@ -195,7 +195,7 @@ es: {
   pointerBtn: "Ver el Kit de Presupuesto →",
   footerNote: "Una herramienta gratis de Christopher DeWitt's Shop — planificadores, registros y guías imprimibles en inglés y español."
 }};
-var lang = "en";
+var lang = (function(){ try{ var v=localStorage.getItem("cdw-lang"); if(v==="es"||v==="en") return v; }catch(e){} return "en"; })();
 function t(k){ return STR[lang][k]; }
 function locale(){ return lang === "es" ? "es-US" : "en-US"; }
 function fmtMoney(n){
@@ -270,7 +270,7 @@ function calc(){
 }
 function setLang(l){
   lang = l;
-  document.documentElement.lang = (l === "es" ? "es" : "en");
+  document.documentElement.lang = (l === "es" ? "es" : "en"); try{ localStorage.setItem("cdw-lang", lang); }catch(e){}
   document.title = t("docTitle");
   document.getElementById("btnEn").className = (l === "en" ? "on" : "");
   document.getElementById("btnEs").className = (l === "es" ? "on" : "");
