@@ -1,0 +1,36 @@
+# Christopher DeWitt's Shop
+
+> Bilingual (English & Spanish) printable-download shop: 206 printable planners, budget templates, trackers, logs and gift guides sold as instant PDF downloads. Checkout and delivery are handled securely on Beacons. Every download has an English and a Spanish edition. Prices run $4-$67. All sales are final (no refunds on digital downloads); genuine problems are fixed or replaced with another download of the customer's choice.
+
+## Main pages
+- Shop home / full catalog (206 products): https://dewittinfl1-create.github.io/
+- Form Finder (search every download, service and Spanish edition): https://dewittinfl1-create.github.io/finder.html
+- Printable templates & planners overview: https://dewittinfl1-create.github.io/printable-templates.html
+
+## Seasonal guides
+- Christmas printables & planners: https://dewittinfl1-create.github.io/christmas-printables.html
+- Imprimibles de Navidad (Christmas printables in Spanish): https://dewittinfl1-create.github.io/imprimibles-navidad.html
+- Advent calendar printables: https://dewittinfl1-create.github.io/advent-printables.html
+- Christmas gift guide: https://dewittinfl1-create.github.io/christmas-gift-guide.html
+- Bundles, deals & licences: https://dewittinfl1-create.github.io/deals.html
+
+## Popular categories
+- Budget planner printables: https://dewittinfl1-create.github.io/budget-planner.html
+- Party planning printables: https://dewittinfl1-create.github.io/party-planning.html
+- Wedding planning printables: https://dewittinfl1-create.github.io/wedding-planning.html
+- Quinceañera planning printables: https://dewittinfl1-create.github.io/quinceanera-planning.html
+
+## Free tools
+- Monthly budget calculator: https://dewittinfl1-create.github.io/tools/budget-calculator.html
+- Debt payoff calculator: https://dewittinfl1-create.github.io/tools/debt-payoff-calculator.html
+
+## Services (done-for-you, by email)
+- Bilingual translation & writing EN/ES: https://dewittinfl1-create.github.io/translation-services.html
+- Resume help: https://dewittinfl1-create.github.io/resume-help.html
+
+## Group licences (schools, daycares, churches, clinics, nonprofits, businesses)
+- https://dewittinfl1-create.github.io/licences/
+
+## Contact
+- Email: dewitt3089@hotmail.com
+- Store (checkout): https://beacons.ai/christopherdewitt

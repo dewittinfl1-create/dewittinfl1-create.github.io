@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Christopher DeWitt's Shop — full page map (regenerated 2026-11-05, redesign pass).
-       The full 168-product catalog lives on the homepage (Downloads view) and in the
+  <!-- Christopher DeWitt's Shop — full page map (regenerated 2026-11-06, overnight traffic ops).
+       The full 206-product catalog lives on the homepage (Downloads view) and in the
        Form Finder; the Templates / Services / Shop views are hash routes on the same
        homepage URL. Per-product checkout URLs are hosted on Beacons (different domain),
-       so they cannot be listed in this domain's sitemap. Every page below is bilingual
-       EN/ES via the on-page language toggle. -->
+       so they cannot be listed in this domain's sitemap. Pages are bilingual EN/ES. -->
   <url><loc>https://dewittinfl1-create.github.io/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
   <url><loc>https://dewittinfl1-create.github.io/finder.html</loc><lastmod>2026-11-06</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://dewittinfl1-create.github.io/printable-templates.html</loc><lastmod>2026-11-06</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://dewittinfl1-create.github.io/christmas-printables.html</loc><lastmod>2026-11-06</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dewittinfl1-create.github.io/imprimibles-navidad.html</loc><lastmod>2026-11-06</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dewittinfl1-create.github.io/advent-printables.html</loc><lastmod>2026-11-06</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://dewittinfl1-create.github.io/christmas-gift-guide.html</loc><lastmod>2026-11-06</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dewittinfl1-create.github.io/deals.html</loc><lastmod>2026-11-06</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://dewittinfl1-create.github.io/budget-planner.html</loc><lastmod>2026-11-06</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://dewittinfl1-create.github.io/party-planning.html</loc><lastmod>2026-11-06</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://dewittinfl1-create.github.io/wedding-planning.html</loc><lastmod>2026-11-06</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
