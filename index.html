@@ -2487,7 +2487,7 @@ var PICK_INFO = {
     if(qEl) qEl.setAttribute("placeholder", es?"Busca todo…":"Search everything…"); },1500);
 })();
 </script>
-<script>function fitSticky(){var h=document.querySelector("header.site");if(h){document.documentElement.style.setProperty("--hdr",h.offsetHeight+"px");}}var _sc=false;function onScr(){var sc=window.scrollY>30;if(sc!==_sc){_sc=sc;document.body.classList.toggle("scrolled",sc);requestAnimationFrame(fitSticky);}}window.addEventListener("resize",fitSticky);window.addEventListener("load",fitSticky);window.addEventListener("scroll",onScr,{passive:true});fitSticky();onScr();setTimeout(fitSticky,600);</script>
+<script>/* HDRFIX 2026-11-09: no scroll-state toggle. The old scrollY>30 body.scrolled toggle collapsed the in-flow sticky header (96px->28px at 390px wide), which removed layout height, shifted all page content up, fed back into scrollY and oscillated near the threshold: language pill flicker, vertical lurching, and a stale --hdr letting content slide under the search bar. Header height is now constant at every scroll depth; fitSticky runs only on load/resize/language change. */function fitSticky(){var h=document.querySelector("header.site");if(h){document.documentElement.style.setProperty("--hdr",h.offsetHeight+"px");}}window.addEventListener("resize",fitSticky);window.addEventListener("load",fitSticky);document.addEventListener("click",function(e){if(e.target&&e.target.closest&&e.target.closest(".lang-toggle"))setTimeout(fitSticky,350);});fitSticky();setTimeout(fitSticky,600);setTimeout(fitSticky,1500);</script>
 <script>
 document.addEventListener("click",function(e){var b=(e.target&&e.target.closest)?e.target.closest(".rmore"):null;if(!b)return;e.preventDefault();e.stopPropagation();var card=b.closest(".card,.feat");if(!card)return;var open=card.classList.toggle("open");b.textContent=open?b.getAttribute("data-less"):b.getAttribute("data-more");});
 function pruneRmore(){document.querySelectorAll(".rmore").forEach(function(b){var card=b.closest(".card,.feat");if(!card||card.classList.contains("open"))return;var pp=card.querySelector(".body p,.card-body p");if(!pp||!pp.clientHeight)return;var cl=pp.cloneNode(true);var rb=cl.querySelector(".rmore");if(rb)rb.remove();cl.style.cssText+=";position:absolute;visibility:hidden;height:auto;max-height:none;-webkit-line-clamp:unset;line-clamp:unset;overflow:visible;width:"+pp.clientWidth+"px";pp.parentNode.appendChild(cl);var full=cl.scrollHeight;cl.remove();b.style.display=(full<=pp.clientHeight+2)?"none":"";});}
@@ -3551,5 +3551,31 @@ function init(){ wrapDl("mfGoCat","GoCat"); wrapDl("mfGoSub","GoSub");
 if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",function(){ setTimeout(init,350); }); else setTimeout(init,350);
 })();
 </script>
+<style>
+/* ===== HDRFIX 2026-11-09: permanently slim, constant-height sticky header on phone widths =====
+   At <=820px the header + search stack is the SAME height at scroll 0 and at any depth:
+   brand title + language pill + compact nav row, then search form only. The language pill
+   never disappears; Popular chips / request link leave the sticky zone (their destinations
+   also live in the Home category tiles). Every body.scrolled rule is mirrored to this same
+   slim state, so the legacy class can never change the visuals even if it is ever added. */
+@media(max-width:820px){
+  header.site .wrap{padding-top:6px!important;padding-bottom:6px!important;row-gap:4px!important}
+  header.site .brand span{display:none!important}
+  header.site nav.main{flex-wrap:nowrap!important;overflow-x:auto!important;margin:2px 0 0!important;width:100%!important}
+  header.site .lang-toggle{display:inline-flex!important;margin-left:auto!important}
+  .gsearch{padding-top:5px!important;padding-bottom:5px!important}
+  .gsearch .chips{display:none!important}
+  .gsearch .req-link{display:none!important}
+  body.scrolled header.site .wrap{padding-top:6px!important;padding-bottom:6px!important;row-gap:4px!important}
+  body.scrolled header.site .brand{display:block!important}
+  body.scrolled header.site .brand span{display:none!important}
+  body.scrolled header.site .lang-toggle{display:inline-flex!important}
+  body.scrolled header.site .btn{display:none!important}
+  body.scrolled header.site .tagline{display:none!important}
+  body.scrolled .gsearch{padding-top:5px!important;padding-bottom:5px!important}
+  body.scrolled .gsearch .chips{display:none!important}
+  body.scrolled .gsearch .req-link{display:none!important}
+}
+</style>
 
 </html>
