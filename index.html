@@ -794,7 +794,7 @@ footer{background:var(--surface)}
 <div class="season-banner" id="seasonBanner" style="background:#E8590C">
   <div class="wrap"><span id="seasonBannerText">🦃 <strong>Thanksgiving is coming</strong> — hosting packs, baking planners and recipe keepers for the big day.</span><a href="#/shop" id="seasonBannerLink">Shop Thanksgiving picks ↓</a></div>
 </div>
-<script>/* BANNERTOP 2026-11-09: Chris asked for the seasonal banner at the very top of the page. Move it to be the first element in body; it scrolls away (not sticky). */(function(){var b=document.getElementById("seasonBanner");if(b&&document.body){document.body.insertBefore(b,document.body.firstChild);}})();</script>
+<script>/* BANNERTOP v1 superseded by BANNERTOP2 inside orderHome (2026-11-09). */</script>
 
 <div class="topbar">
   <div class="wrap">
@@ -3597,13 +3597,13 @@ function homeCatsHtml(){
    +'<h4 class="mf-cats-sub">🛒 '+(L()==="es"?"Compras — selecciones de las tiendas":"Shopping — store picks")+'</h4>'+sh;
 }
 function buildHomeCats(){ var box=document.createElement("div"); box.id="mfHomeCats"; box.className="wrap home-cats"; box.setAttribute("data-view","home"); box.innerHTML=homeCatsHtml(); return box; }
-function orderHome(){ var main=document.getElementById("top"); if(!main) return; var hero=main.querySelector(".hero"); if(!hero) return;
+function orderHome(){ var bn=document.getElementById("seasonBanner"); if(bn&&document.body&&document.body.firstElementChild!==bn){ bn.setAttribute("data-view","home"); document.body.insertBefore(bn,document.body.firstElementChild); } /* BANNERTOP2 2026-11-09: seasonal banner pinned as the very first element of the page, above the sticky header; it is NOT re-homed into <main> and scrolls away naturally. */ var main=document.getElementById("top"); if(!main) return; var hero=main.querySelector(".hero"); if(!hero) return;
   var cats=document.getElementById("mfHomeCats"); if(!cats) cats=buildHomeCats();
   var fh=main.querySelector('.about-card [data-i18n="svc.frankie.title"]'); var frankie=fh?fh.closest(".about-card"):null;
   var signup=document.getElementById("email-signup");
   if(frankie) frankie.setAttribute("data-view","home");
   if(signup) signup.setAttribute("data-view","home");
-  var seq=[document.getElementById("aaStrip"),document.getElementById("seasonBanner"),document.getElementById("mfTwoWay"),cats,document.getElementById("top-picks"),document.getElementById("homeSteps"),document.getElementById("homeWhy"),document.getElementById("homePromise"),frankie,main.querySelector(".muse-strip"),signup];
+  var seq=[document.getElementById("aaStrip"),document.getElementById("mfTwoWay"),cats,document.getElementById("top-picks"),document.getElementById("homeSteps"),document.getElementById("homeWhy"),document.getElementById("homePromise"),frankie,main.querySelector(".muse-strip"),signup];
   var anchor=hero; seq.forEach(function(n){ if(n){ anchor.after(n); anchor=n; } });
   ["seasonal","start-here","homeChips","mfShelves"].forEach(function(id){ var el=document.getElementById(id); if(el){ el.style.display="none"; el.setAttribute("data-view","archive"); } });
   var extra=document.getElementById("mfHomeExtra"); if(extra){ extra.style.display="none"; extra.setAttribute("data-view","archive"); }
