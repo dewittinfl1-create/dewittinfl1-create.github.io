@@ -788,6 +788,16 @@ footer{background:var(--surface)}
   #picks .pick-list a .pm{font-size:.76rem}
 }
 </style>
+
+<style id="dlorg-fix">
+/* DLORG FIX Nov 9, 2026 - Downloads page tidy: even tiles, real section bars */
+.mf-tiles-h{font-size:1.12rem;font-weight:900;margin:26px 0 4px;padding:11px 14px;background:#EEF4FB;border:1px solid #D8E4F2;border-radius:12px}
+.mf-tiles-h:first-child{margin-top:6px}
+.mf-tilegrid{align-items:stretch}
+.mf-tile{min-height:118px!important;height:100%}
+.mf-tile>span:nth-child(2){font-weight:800;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.mf-tile .chev{margin-top:auto;align-self:flex-end;font-size:1.3rem;line-height:1;color:#8AA0B5}
+</style>
 </head>
 <body data-route="downloads">
 
@@ -2828,7 +2838,7 @@ function tilesHtml(){
     {en:"Home, Health & Outdoors",es:"Hogar, salud y exterior",ic:"🏡",cats:["health","outdoors","travel"]},
     {en:"Seasonal, Tech & Spanish",es:"Temporada, tecnología y español",ic:"🎄",cats:["seasonal","tech","spanish"]}
   ];
-  function tile(cid){ var c=FINE_CATS.filter(function(k){return k.id===cid;})[0]; return '<button type="button" class="mf-tile" onclick="mfGoCat(\''+cid+'\')"><span class="mf-t-ic" aria-hidden="true">'+c.ic+'</span><span>'+fineLabel(cid)+'</span><span class="mf-t-ct">'+(m[cid]||0)+'</span><span class="chev" aria-hidden="true">›</span></button>'; }
+  function tile(cid){ var c=FINE_CATS.filter(function(k){return k.id===cid;})[0]; return '<button type="button" class="mf-tile" onclick="mfGoCat(\''+cid+'\')"><span class="mf-t-ic" aria-hidden="true">'+c.ic+'</span><span>'+fineLabel(cid)+'</span><span class="mf-t-ct">'+(m[cid]||0)+' '+(L()==="es"?"productos":"products")+'</span><span class="chev" aria-hidden="true">›</span></button>'; }
   return groups.map(function(g){
     return '<h3 class="mf-tiles-h">'+g.ic+' '+(L()==="es"?g.es:g.en)+'</h3><div class="mf-tilegrid">'+g.cats.map(tile).join("")+'</div>';
   }).join("");
