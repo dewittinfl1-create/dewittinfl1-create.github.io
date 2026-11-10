@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="manifest" href="manifest.webmanifest" />
+<meta name="theme-color" content="#1D6FE0" />
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<title>Privacy Policy — Christopher DeWitt's Shop | Política de Privacidad</title>
+<meta name="description" content="How Christopher DeWitt's Shop handles your information: anonymous visit counts, email only if you join the list, checkout handled by Beacons and Stripe. We never sell personal data." />
+<link rel="canonical" href="https://dewittinfl1-create.github.io/privacy.html" />
+<meta property="og:title" content="Privacy Policy — Christopher DeWitt's Shop" />
+<meta property="og:description" content="What we collect, what we never collect, and your choices. Plain language, English & Spanish." />
+<meta property="og:url" content="https://dewittinfl1-create.github.io/privacy.html" />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --bg:#F7FAFF; --bg2:#EAF1FB; --surface:#FFFFFF; --surface2:#F2F7FF;
+  --ink:#1E2A3A; --muted:#5B6B82; --line:#DCE6F2;
+  --teal:#1D6FE0; --teal-dark:#1559B8; --navy:#1D6FE0; --navy2:#2B83F0;
+  --amber:#F59E0B; --amber-bg:#FEF3C7; --price:#E05B21; --gold:#FFC53D;
+  --radius:16px; --radius-lg:22px;
+  --shadow:0 2px 10px rgba(30,42,58,.06),0 10px 30px rgba(30,42,58,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0E1622; --bg2:#14202F; --surface:#182635; --surface2:#1D2D40;
+    --ink:#EDF3FA; --muted:#9FB0C3; --line:#2A3D55;
+    --teal:#5EA8FF; --teal-dark:#9CC8FF; --navy:#12325E; --navy2:#1D4E89;
+    --amber:#FFC53D; --amber-bg:#3A2E12; --price:#FFB59A;
+    --shadow:0 2px 10px rgba(0,0,0,.35),0 10px 30px rgba(0,0,0,.3);
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Public Sans",system-ui,-apple-system,Segoe UI,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:"Nunito",system-ui,sans-serif;line-height:1.15;letter-spacing:-.01em;margin:0}
+a{color:var(--teal-dark)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 18px}
+header.site{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;gap:16px;padding-top:12px;padding-bottom:12px}
+.brand{font-family:"Nunito",sans-serif;font-weight:900;font-size:1.08rem;color:var(--ink);text-decoration:none;line-height:1.1}
+.brand span{display:block;font-family:"Public Sans",sans-serif;font-weight:600;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+nav.main{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+nav.main a{color:var(--ink);text-decoration:none;font-weight:600;font-size:.92rem;padding:8px 11px;border-radius:999px}
+nav.main a:hover{background:var(--bg2)}
+.lang-toggle{display:inline-flex;align-items:center;background:var(--surface);border:1.5px solid var(--line);border-radius:999px;padding:4px;gap:3px;margin-left:8px;flex:0 0 auto}
+.lang-toggle>span{font-size:1rem;padding:0 2px 0 6px}
+.lang-toggle button{border:0;background:transparent;color:var(--ink);font:inherit;font-weight:800;font-size:.95rem;padding:10px 15px;min-height:44px;border-radius:999px;cursor:pointer}
+.lang-toggle button[aria-pressed="true"]{background:#146EB4;color:#fff;box-shadow:0 1px 4px rgba(20,30,60,.25)}
+@media (prefers-color-scheme: dark){.lang-toggle button[aria-pressed="true"]{background:var(--teal);color:#081511}}
+@media(max-width:820px){header.site .wrap{flex-wrap:wrap}nav.main{display:none}.lang-toggle{margin-left:auto}}
+@media(max-width:400px){.lang-toggle button{padding:10px 11px;font-size:.9rem}}
+main.doc{max-width:820px;margin:0 auto;padding:34px 18px 10px}
+main.doc h1{font-size:clamp(1.8rem,4.5vw,2.5rem);font-weight:900}
+.updated{color:var(--muted);font-size:.92rem;margin:8px 0 0}
+.doc-card{background:var(--surface);border:1.5px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow);padding:26px 28px;margin-top:22px}
+.doc-card h2{font-size:1.28rem;font-weight:800;margin:30px 0 8px}
+.doc-card h2:first-child{margin-top:0}
+.doc-card p{margin:0 0 12px}
+.doc-card ul{margin:0 0 14px;padding-left:22px}
+.doc-card li{margin-bottom:7px}
+.shortver{background:var(--amber-bg);border:1.5px solid var(--gold);border-radius:var(--radius);padding:16px 18px;margin:20px 0 4px}
+.shortver p{margin:0}
+.backlink{display:inline-block;margin-top:26px;font-weight:700}
+footer{margin-top:52px;border-top:1px solid var(--line);background:var(--surface)}
+footer .wrap{padding-top:28px;padding-bottom:34px;display:grid;grid-template-columns:1.25fr .85fr .85fr 1fr;gap:22px}
+@media(max-width:820px){footer .wrap{grid-template-columns:1fr}}
+footer h2{font-size:.95rem;margin:0 0 8px}
+footer a{display:block;color:var(--muted);text-decoration:none;padding:3px 0;font-size:.93rem}
+footer a:hover{color:var(--ink);text-decoration:underline}
+footer p{color:var(--muted);font-size:.9rem;margin:0}
+.foot-note{border-top:1px solid var(--line);margin-top:6px}
+.foot-note .wrap{display:block;padding-top:14px;padding-bottom:18px;font-size:.82rem;color:var(--muted)}
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="index.html">Christopher DeWitt's Shop<span data-i18n="brand.tag">Printable planners · logs · guides</span></a>
+    <nav class="main" aria-label="Main">
+      <a href="index.html#/downloads" data-i18n="nav.downloads">Downloads</a>
+      <a href="index.html#/services" data-i18n="nav.services">Services</a>
+      <a href="index.html#/shop" data-i18n="nav.shop">Shop</a>
+      <a href="finder.html" data-i18n="nav.finder">🔍 Finder</a>
+      <a href="index.html#/help" data-i18n="nav.help">Help &amp; support</a>
+    </nav>
+    <div class="lang-toggle" role="group" aria-label="Language / Idioma"><span aria-hidden="true">🌐</span><button type="button" id="langEnBtn" aria-pressed="true">English</button><span aria-hidden="true">|</span><button type="button" id="langEsBtn" aria-pressed="false">Español</button></div>
+  </div>
+</header>
+
+<main class="doc">
+  <h1 data-i18n="p.title">Privacy Policy</h1>
+  <p class="updated" data-i18n="p.updated">Effective November 10, 2026</p>
+
+  <div class="shortver"><p data-i18n="p.short"><strong>The short version:</strong> this shop counts visits anonymously, takes your email only if you give it to us, and lets Beacons and Stripe handle checkout — we never see or store your card number, and we never sell personal data.</p></div>
+
+  <div class="doc-card">
+    <h2 data-i18n="p.h1">Who runs this shop</h2>
+    <p data-i18n="p.who">This website (dewittinfl1-create.github.io) is the storefront of Christopher DeWitt's Shop, run by Christopher DeWitt. It sells digital downloads (printable planners, trackers, spreadsheets and guides) and done-for-you services. Questions about this policy: email <a href="mailto:dewitt3089@hotmail.com">dewitt3089@hotmail.com</a>.</p>
+
+    <h2 data-i18n="p.h2">What we collect — and why</h2>
+    <ul>
+      <li data-i18n="p.c1"><strong>Visit counts.</strong> We use GoatCounter, a privacy-friendly counter, to see how many people visit each page and roughly where they came from. It works in aggregate — it does not build a profile of you and does not track you across other websites.</li>
+      <li data-i18n="p.c2"><strong>Your email address — only if you give it.</strong> If you join the email list (for example, to get the free Weekly Money Snapshot sample), we receive the email address you enter in the Google Form. If you email us, we see your address so we can reply.</li>
+      <li data-i18n="p.c3"><strong>Order information.</strong> Checkout, payment and file delivery are handled by Beacons and Stripe. They share the order details we need to deliver your purchase and help you afterwards — your name, email address, and what you bought. <strong>We never see or store your full card number.</strong></li>
+      <li data-i18n="p.c4"><strong>Your language choice.</strong> If you switch this site between English and Spanish, that choice is stored in your own browser (local storage) so the site remembers it. It stays on your device.</li>
+    </ul>
+
+    <h2 data-i18n="p.h3">What we do NOT collect</h2>
+    <ul>
+      <li data-i18n="p.n1">There are no user accounts on this site, so we hold no passwords or profiles for you here.</li>
+      <li data-i18n="p.n2">We do not run advertising trackers, and we do not buy or sell personal data. <strong>We never sell your information — to anyone, ever.</strong></li>
+      <li data-i18n="p.n3">We do not ask for sensitive information (health, financial account details, government IDs) through this site.</li>
+    </ul>
+
+    <h2 data-i18n="p.h4">Cookies</h2>
+    <p data-i18n="p.cookies">This site does not set advertising cookies. GoatCounter counts visits without using cookies. The site is hosted on GitHub Pages, which may keep standard technical server logs (see GitHub's privacy statement). When you move to checkout (Beacons), or follow a link to Amazon or Walmart, those sites use their own cookies under their own policies.</p>
+
+    <h2 data-i18n="p.h5">Affiliate links (FTC disclosure)</h2>
+    <p data-i18n="p.aff">Some links on this site are affiliate links to Amazon and Walmart. If you buy through one of those links, we may earn a commission — it never changes the price you pay. We point this out here and near the picks themselves, because we'd want to know.</p>
+
+    <h2 data-i18n="p.h6">Who your information is shared with</h2>
+    <p data-i18n="p.share">Only the services that make the shop run, and only what each one needs: <strong>Beacons</strong> (storefront, checkout and download delivery), <strong>Stripe</strong> (payment processing), <strong>Google Forms</strong> (email-list signups), <strong>GoatCounter</strong> (anonymous visit counts) and <strong>GitHub</strong> (website hosting). We do not share your information with marketers, and we do not sell it.</p>
+
+    <h2 data-i18n="p.h7">How long we keep it</h2>
+    <p data-i18n="p.retain">If you join the email list, we keep your email address until you unsubscribe or ask us to remove it. Order records are kept as long as needed for customer support and ordinary business and tax records. Visit counts are kept only as combined totals.</p>
+
+    <h2 data-i18n="p.h8">Your choices</h2>
+    <ul>
+      <li data-i18n="p.ch1"><strong>Unsubscribe anytime</strong> — every email-list message includes an unsubscribe link, and leaving takes one click.</li>
+      <li data-i18n="p.ch2"><strong>Ask about your data</strong> — email <a href="mailto:dewitt3089@hotmail.com">dewitt3089@hotmail.com</a> to ask what we hold about you, or to have your email address deleted from the list. We'll take care of it.</li>
+      <li data-i18n="p.ch3"><strong>Block cookies</strong> — your browser settings can block cookies on any site, including the third-party sites linked from here; this site itself will keep working.</li>
+    </ul>
+
+    <h2 data-i18n="p.h9">Children</h2>
+    <p data-i18n="p.kids">This shop is meant for adults buying planners, guides and services. It is not directed at children under 13, and we do not knowingly collect their information.</p>
+
+    <h2 data-i18n="p.h10">Changes to this policy</h2>
+    <p data-i18n="p.changes">If this policy changes, the updated version will be posted on this page with a new effective date.</p>
+
+    <h2 data-i18n="p.h11">Contact</h2>
+    <p data-i18n="p.contact">Christopher DeWitt's Shop — <a href="mailto:dewitt3089@hotmail.com">dewitt3089@hotmail.com</a>. See also our <a href="terms.html">Terms of Service</a>.</p>
+  </div>
+
+  <a class="backlink" href="index.html" data-i18n="p.back">← Back to the shop</a>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h2>Christopher DeWitt's Shop</h2>
+      <p data-i18n="f.desc">Printable planners, logs &amp; guides — instant download. New downloads added regularly.</p>
+    </div>
+    <div>
+      <h2 data-i18n="f.shop">Shop</h2>
+      <a href="index.html#/downloads" data-i18n="f.s1">All downloads</a>
+      <a href="index.html#/shop" data-i18n="f.s2">Shop my picks</a>
+      <a href="index.html#/deals" data-i18n="f.s3">Deals &amp; bundles</a>
+      <a href="index.html#/services" data-i18n="f.s4">Services</a>
+      <a href="finder.html" data-i18n="f.s5">🔍 Finder</a>
+    </div>
+    <div>
+      <h2 data-i18n="f.help">Help &amp; follow</h2>
+      <a href="terms.html" data-i18n="f.h1">Terms of Service</a>
+      <a href="privacy.html" data-i18n="f.h2">Privacy Policy</a>
+      <a href="mailto:dewitt3089@hotmail.com">✉️ dewitt3089@hotmail.com</a>
+      <a href="https://www.youtube.com/@ChristopherDewitt-p1v" target="_blank" rel="noopener">YouTube — @ChristopherDewitt-p1v ↗</a>
+    </div>
+    <div>
+      <h2 data-i18n="f.buy">How buying works</h2>
+      <p data-i18n="f.buyText">Checkout, payment and file delivery are handled securely by Beacons and Stripe. This site never sees your card number.</p>
+    </div>
+  </div>
+  <div class="foot-note"><div class="wrap" data-i18n="f.note">© 2026 Christopher DeWitt's Shop. Prices and the catalog reflect the live listings.</div></div>
+</footer>
+
+<script data-goatcounter="https://dewittshop.goatcounter.com/count"
+        async src="https://gc.zgo.at/count.js"></script>
+<script>
+(function(){
+  var ES = {
+    "brand.tag":"Planificadores imprimibles · registros · guías",
+    "nav.downloads":"Descargas","nav.services":"Servicios","nav.shop":"Tienda","nav.finder":"🔍 Buscador","nav.help":"Ayuda y soporte",
+    "p.title":"Política de Privacidad",
+    "p.updated":"Vigente desde el 10 de noviembre de 2026",
+    "p.short":"<strong>En resumen:</strong> esta tienda cuenta las visitas de forma anónima, toma tu correo solo si tú nos lo das, y deja el pago en manos de Beacons y Stripe — nunca vemos ni guardamos tu número de tarjeta, y nunca vendemos datos personales.",
+    "p.h1":"Quién administra esta tienda",
+    "p.who":"Este sitio web (dewittinfl1-create.github.io) es la tienda de Christopher DeWitt's Shop, administrada por Christopher DeWitt. Vende descargas digitales (planificadores imprimibles, registros, hojas de cálculo y guías) y servicios hechos por encargo. Preguntas sobre esta política: escribe a <a href=\"mailto:dewitt3089@hotmail.com\">dewitt3089@hotmail.com</a>.",
+    "p.h2":"Qué recopilamos — y por qué",
+    "p.c1":"<strong>Conteo de visitas.</strong> Usamos GoatCounter, un contador respetuoso con la privacidad, para saber cuántas personas visitan cada página y, en general, de dónde llegaron. Funciona con totales agregados: no crea un perfil tuyo ni te sigue por otros sitios web.",
+    "p.c2":"<strong>Tu correo electrónico — solo si tú lo das.</strong> Si te unes a la lista de correo (por ejemplo, para recibir la muestra gratis Weekly Money Snapshot), recibimos el correo que escribes en el formulario de Google. Si nos escribes, vemos tu dirección para poder responderte.",
+    "p.c3":"<strong>Información del pedido.</strong> El pago y la entrega de archivos los manejan Beacons y Stripe. Ellos comparten con nosotros los datos del pedido que necesitamos para entregarte tu compra y ayudarte después: tu nombre, tu correo y lo que compraste. <strong>Nunca vemos ni guardamos tu número completo de tarjeta.</strong>",
+    "p.c4":"<strong>Tu elección de idioma.</strong> Si cambias este sitio entre inglés y español, esa elección se guarda en tu propio navegador (almacenamiento local) para que el sitio la recuerde. Se queda en tu dispositivo.",
+    "p.h3":"Qué NO recopilamos",
+    "p.n1":"No hay cuentas de usuario en este sitio, así que aquí no guardamos contraseñas ni perfiles tuyos.",
+    "p.n2":"No usamos rastreadores publicitarios y no compramos ni vendemos datos personales. <strong>Nunca vendemos tu información — a nadie, nunca.</strong>",
+    "p.n3":"No pedimos información sensible (salud, datos de cuentas financieras, documentos de identidad) a través de este sitio.",
+    "p.h4":"Cookies",
+    "p.cookies":"Este sitio no instala cookies publicitarias. GoatCounter cuenta las visitas sin usar cookies. El sitio está alojado en GitHub Pages, que puede guardar registros técnicos estándar del servidor (consulta la declaración de privacidad de GitHub). Cuando pasas al pago (Beacons) o sigues un enlace a Amazon o Walmart, esos sitios usan sus propias cookies bajo sus propias políticas.",
+    "p.h5":"Enlaces de afiliados (aviso FTC)",
+    "p.aff":"Algunos enlaces de este sitio son enlaces de afiliados de Amazon y Walmart. Si compras a través de uno de esos enlaces, es posible que ganemos una comisión — nunca cambia el precio que pagas. Lo indicamos aquí y junto a las propias recomendaciones, porque a nosotros nos gustaría saberlo.",
+    "p.h6":"Con quién se comparte tu información",
+    "p.share":"Solo con los servicios que hacen funcionar la tienda, y solo lo que cada uno necesita: <strong>Beacons</strong> (tienda, pago y entrega de descargas), <strong>Stripe</strong> (procesamiento de pagos), <strong>Google Forms</strong> (registro a la lista de correo), <strong>GoatCounter</strong> (conteo anónimo de visitas) y <strong>GitHub</strong> (alojamiento del sitio). No compartimos tu información con empresas de marketing, y no la vendemos.",
+    "p.h7":"Cuánto tiempo la guardamos",
+    "p.retain":"Si te unes a la lista de correo, guardamos tu correo hasta que canceles la suscripción o nos pidas eliminarlo. Los registros de pedidos se guardan el tiempo necesario para atención al cliente y para los registros normales del negocio e impuestos. Los conteos de visitas se guardan solo como totales combinados.",
+    "p.h8":"Tus opciones",
+    "p.ch1":"<strong>Cancela cuando quieras</strong> — cada mensaje de la lista incluye un enlace para cancelar la suscripción, y salir toma un clic.",
+    "p.ch2":"<strong>Pregunta por tus datos</strong> — escribe a <a href=\"mailto:dewitt3089@hotmail.com\">dewitt3089@hotmail.com</a> para saber qué guardamos sobre ti, o para que eliminemos tu correo de la lista. Nos encargamos de ello.",
+    "p.ch3":"<strong>Bloquea las cookies</strong> — la configuración de tu navegador puede bloquear cookies en cualquier sitio, incluidos los sitios de terceros enlazados desde aquí; este sitio seguirá funcionando.",
+    "p.h9":"Menores",
+    "p.kids":"Esta tienda está pensada para adultos que compran planificadores, guías y servicios. No está dirigida a menores de 13 años y no recopilamos su información a sabiendas.",
+    "p.h10":"Cambios a esta política",
+    "p.changes":"Si esta política cambia, la versión actualizada se publicará en esta página con una nueva fecha de vigencia.",
+    "p.h11":"Contacto",
+    "p.contact":"Christopher DeWitt's Shop — <a href=\"mailto:dewitt3089@hotmail.com\">dewitt3089@hotmail.com</a>. Consulta también nuestros <a href=\"terms.html\">Términos del Servicio</a>.",
+    "p.back":"← Volver a la tienda",
+    "f.desc":"Planificadores, registros y guías imprimibles — descarga instantánea. Se agregan descargas nuevas con regularidad.",
+    "f.shop":"Tienda","f.s1":"Todas las descargas","f.s2":"Mis recomendaciones","f.s3":"Ofertas y paquetes","f.s4":"Servicios","f.s5":"🔍 Buscador",
+    "f.help":"Ayuda y seguir","f.h1":"Términos del Servicio","f.h2":"Política de Privacidad",
+    "f.buy":"Cómo funciona la compra","f.buyText":"El pago y la entrega de archivos los manejan de forma segura Beacons y Stripe. Este sitio nunca ve tu número de tarjeta.",
+    "f.note":"© 2026 Christopher DeWitt's Shop. Los precios y el catálogo reflejan las publicaciones activas."
+  };
+  var currentLang = (function(){ try{ var sv=null; try{ sv=localStorage.getItem("cdw-lang"); }catch(e2){} if(sv==="es"||sv==="en") return sv; var langs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language||"en"]; for(var i=0;i<langs.length;i++){ if(langs[i] && langs[i].toLowerCase().indexOf("es")===0) return "es"; } }catch(e){} return "en"; })();
+  var enB=document.getElementById("langEnBtn"), esB=document.getElementById("langEsBtn");
+  var nodes=document.querySelectorAll("[data-i18n]");
+  var enCache={};
+  nodes.forEach(function(n){ enCache[n.getAttribute("data-i18n")]=n.innerHTML; });
+  function apply(lang){
+    currentLang = (lang==="es") ? "es" : "en";
+    nodes.forEach(function(n){
+      var k=n.getAttribute("data-i18n");
+      if(currentLang==="es" && ES[k]!==undefined) n.innerHTML=ES[k];
+      else if(enCache[k]!==undefined) n.innerHTML=enCache[k];
+    });
+    document.documentElement.lang = currentLang;
+    document.title = (currentLang==="es") ? "Política de Privacidad — Christopher DeWitt's Shop" : "Privacy Policy — Christopher DeWitt's Shop | Política de Privacidad";
+    if(enB) enB.setAttribute("aria-pressed", currentLang==="en" ? "true" : "false");
+    if(esB) esB.setAttribute("aria-pressed", currentLang==="es" ? "true" : "false");
+    try{ localStorage.setItem("cdw-lang", currentLang); }catch(e){}
+  }
+  if(enB) enB.addEventListener("click", function(){ apply("en"); });
+  if(esB) esB.addEventListener("click", function(){ apply("es"); });
+  apply(currentLang);
+})();
+</script>
+</body>
+</html>
