@@ -1022,8 +1022,8 @@ footer{background:var(--surface)}
       <div class="sec-head">
         <div><p class="kicker" data-i18n="topPicks.kicker">Top downloads</p><h2 data-i18n="topPicks.title">Most useful first</h2><p data-i18n="topPicks.desc">Proven starters from across the shop — each one shows its cover, what it is, and its price. Each button goes straight to that product — check out and download instantly.</p></div>
       </div>
-      <!-- STATIC TOP DOWNLOADS — plain HTML so first paint shows real products with prices before JS runs (conversion fix 2026-11-10) -->
-      <div id="staticTop" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin:14px 0 18px">
+      <!-- STATIC TOP DOWNLOADS — plain HTML so first paint shows real products with prices before JS runs (conversion fix 2026-11-10); shown as a swipe carousel via the .intl-carousel pattern (carousel extension 2026-11-10) -->
+      <div id="staticTop" style="margin:14px 0 18px">
         <article style="border:1px solid var(--line,#ddd);border-radius:12px;padding:14px;background:var(--bg2,#fff)"><h3 style="margin:0 0 6px;font-size:1rem;line-height:1.25">All-Access Pass — Every Download in the Shop (English Edition)</h3><p style="margin:0 0 10px;color:var(--muted,#555)"><strong style="color:var(--ink,#111)">$67</strong> · Instant download</p><a href="https://shop.beacons.ai/christopherdewitt/1aa24492-cc75-4a15-ac04-99fe6d5306b2" target="_blank" rel="noopener">Get it now →</a></article>
         <article style="border:1px solid var(--line,#ddd);border-radius:12px;padding:14px;background:var(--bg2,#fff)"><h3 style="margin:0 0 6px;font-size:1rem;line-height:1.25">Debt Payoff Snowball Tracker Pack</h3><p style="margin:0 0 10px;color:var(--muted,#555)"><strong style="color:var(--ink,#111)">$7</strong> · Instant download</p><a href="https://shop.beacons.ai/christopherdewitt/d9e22070-6bbf-406f-bf01-b1dac6b2c6c7" target="_blank" rel="noopener">Get it now →</a></article>
         <article style="border:1px solid var(--line,#ddd);border-radius:12px;padding:14px;background:var(--bg2,#fff)"><h3 style="margin:0 0 6px;font-size:1rem;line-height:1.25">US Citizenship Test Study Kit</h3><p style="margin:0 0 10px;color:var(--muted,#555)"><strong style="color:var(--ink,#111)">$12</strong> · Instant download</p><a href="https://shop.beacons.ai/christopherdewitt/c786ad9d-02f1-4bb8-98a3-2901d931bf7e" target="_blank" rel="noopener">Get it now →</a></article>
@@ -1739,6 +1739,13 @@ footer{background:var(--surface)}
 #international .intl-carousel::-webkit-scrollbar-thumb{background:rgba(27,67,53,.3);border-radius:3px}
 #international .intl-carousel>article{flex:0 0 31%;scroll-snap-align:start;box-sizing:border-box}
 @media (max-width:700px){#international .intl-carousel>article{flex-basis:78%}}
+/* CAROUSEL EXTENSION 2026-11-10: the .intl-carousel swipe pattern above, extended to the Top Downloads strip (#staticTop + #featGrid inside #top-picks) and the intl language-guides shelf (#intlLangShelf) — identical declarations, compact shelf-weight cards only. #startGrid (Start Here) and the intl services shelf are deliberately NOT included. */
+#top-picks #staticTop,#top-picks #featGrid,#international #intlLangShelf{display:flex;gap:12px;align-items:stretch;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:8px;scrollbar-width:thin;scrollbar-color:rgba(27,67,53,.35) transparent}
+#top-picks #staticTop::-webkit-scrollbar,#top-picks #featGrid::-webkit-scrollbar,#international #intlLangShelf::-webkit-scrollbar{height:6px}
+#top-picks #staticTop::-webkit-scrollbar-track,#top-picks #featGrid::-webkit-scrollbar-track,#international #intlLangShelf::-webkit-scrollbar-track{background:transparent}
+#top-picks #staticTop::-webkit-scrollbar-thumb,#top-picks #featGrid::-webkit-scrollbar-thumb,#international #intlLangShelf::-webkit-scrollbar-thumb{background:rgba(27,67,53,.3);border-radius:3px}
+#top-picks #staticTop>article,#top-picks #featGrid>article,#international #intlLangShelf>article{flex:0 0 31%;scroll-snap-align:start;box-sizing:border-box}
+@media (max-width:700px){#top-picks #staticTop>article,#top-picks #featGrid>article,#international #intlLangShelf>article{flex-basis:78%}}
     </style>
         <section id="international" data-view="international" style="padding-top:30px;padding-bottom:26px">
       <!-- INTL HERO BAND (look pass 2026-11-10) -->
@@ -1766,7 +1773,7 @@ footer{background:var(--surface)}
         <p><a class="buy" href="https://shop.beacons.ai/christopherdewitt/448ef229-de77-41cf-b9ae-6effdb48aee3" target="_blank" rel="noopener" data-i18n="intl.cta">Get a document in your language →</a></p>
         <!-- INTL LANGUAGE GUIDES SHELF (identity pass 2026-11-10) -->
         <h3 data-i18n="intl.guides.h" style="margin:22px 0 0">🗣️ Language guides — ready now</h3>
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin:12px 0 10px">
+        <div id="intlLangShelf" style="margin:12px 0 10px">
           <article style="border:1px solid var(--line,#ddd);border-radius:12px;padding:14px;background:var(--bg2,#fff)"><h3 style="margin:0 0 6px;font-size:1rem;line-height:1.25">Everyday Spanish for Life in the USA — Complete Guide: 1,000 Phrases + 1,000 Words (with Audio)</h3><p style="margin:0 0 10px;color:var(--muted,#555)">1,000 phrases + 1,000 words for real life in the USA — printable PDF + editable DOCX + listen-and-repeat audio companion.</p><p style="margin:0"><strong style="color:var(--ink,#111)">$15</strong> · Instant download</p><p style="margin:8px 0 0"><a class="buy" href="https://shop.beacons.ai/christopherdewitt/6f6c1e43-dc9c-4d1e-afb3-c015b22d7f7c" target="_blank" rel="noopener">Get it now →</a></p></article>
           <article style="border:1px solid var(--line,#ddd);border-radius:12px;padding:14px;background:var(--bg2,#fff)"><h3 style="margin:0 0 6px;font-size:1rem;line-height:1.25">Inglés Práctico para la Vida en USA — Guía Completa: 1.000 Frases + 1.000 Palabras (con Audio)</h3><p style="margin:0 0 10px;color:var(--muted,#555)">1.000 frases + 1.000 palabras para la vida real en USA — PDF imprimible + DOCX editable + audio para escuchar y repetir.</p><p style="margin:0"><strong style="color:var(--ink,#111)">$15</strong> · Instant download</p><p style="margin:8px 0 0"><a class="buy" href="https://shop.beacons.ai/christopherdewitt/16ca52d6-018f-4dbf-a367-59d55e3fb9db" target="_blank" rel="noopener">Get it now →</a></p></article>
         </div>
