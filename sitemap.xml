@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Christopher DeWitt's Shop — full page map (regenerated 2026-11-06, overnight traffic ops).
-       The full 206-product catalog lives on the homepage (Downloads view) and in the
-       Form Finder; the Templates / Services / Shop views are hash routes on the same
-       homepage URL. Per-product checkout URLs are hosted on Beacons (different domain),
+  <!-- Christopher DeWitt's Shop — full page map (regenerated 2026-11-12).
+       The homepage carries the full live catalog: 413 buyable download products
+       plus 190 Coming Soon listings, and 32 services; the Templates / Services /
+       Shop views are hash routes on the same homepage URL. The Form Finder
+       carries 803 entries (413 products + 190 coming soon + 200 shop picks).
+       Per-product checkout URLs are hosted on Beacons (different domain),
        so they cannot be listed in this domain's sitemap. Pages are bilingual EN/ES. -->
-  <url><loc>https://dewittinfl1-create.github.io/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
-  <url><loc>https://dewittinfl1-create.github.io/finder.html</loc><lastmod>2026-11-06</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://dewittinfl1-create.github.io/printable-templates.html</loc><lastmod>2026-11-06</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://dewittinfl1-create.github.io/</loc><lastmod>2026-11-12</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
+  <url><loc>https://dewittinfl1-create.github.io/finder.html</loc><lastmod>2026-11-12</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dewittinfl1-create.github.io/printable-templates.html</loc><lastmod>2026-11-05</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://dewittinfl1-create.github.io/christmas-printables.html</loc><lastmod>2026-11-06</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://dewittinfl1-create.github.io/imprimibles-navidad.html</loc><lastmod>2026-11-06</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://dewittinfl1-create.github.io/advent-printables.html</loc><lastmod>2026-11-06</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://dewittinfl1-create.github.io/christmas-gift-guide.html</loc><lastmod>2026-11-06</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://dewittinfl1-create.github.io/deals.html</loc><lastmod>2026-11-06</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://dewittinfl1-create.github.io/budget-planner.html</loc><lastmod>2026-11-06</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://dewittinfl1-create.github.io/party-planning.html</loc><lastmod>2026-11-06</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://dewittinfl1-create.github.io/wedding-planning.html</loc><lastmod>2026-11-06</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://dewittinfl1-create.github.io/quinceanera-planning.html</loc><lastmod>2026-11-06</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://dewittinfl1-create.github.io/resume-help.html</loc><lastmod>2026-11-06</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://dewittinfl1-create.github.io/translation-services.html</loc><lastmod>2026-11-06</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://dewittinfl1-create.github.io/delivery-driver.html</loc><lastmod>2026-11-06</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dewittinfl1-create.github.io/budget-planner.html</loc><lastmod>2026-11-05</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dewittinfl1-create.github.io/party-planning.html</loc><lastmod>2026-11-05</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dewittinfl1-create.github.io/wedding-planning.html</loc><lastmod>2026-11-05</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dewittinfl1-create.github.io/quinceanera-planning.html</loc><lastmod>2026-11-05</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dewittinfl1-create.github.io/resume-help.html</loc><lastmod>2026-11-05</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dewittinfl1-create.github.io/translation-services.html</loc><lastmod>2026-11-05</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dewittinfl1-create.github.io/delivery-driver.html</loc><lastmod>2026-11-05</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://dewittinfl1-create.github.io/tools/debt-payoff-calculator.html</loc><lastmod>2026-11-06</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://dewittinfl1-create.github.io/tools/budget-calculator.html</loc><lastmod>2026-11-06</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://dewittinfl1-create.github.io/licences/</loc><lastmod>2026-11-06</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
@@ -28,6 +30,6 @@
   <url><loc>https://dewittinfl1-create.github.io/licences/nonprofits.html</loc><lastmod>2026-11-06</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://dewittinfl1-create.github.io/licences/clinics.html</loc><lastmod>2026-11-06</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://dewittinfl1-create.github.io/licences/businesses.html</loc><lastmod>2026-11-06</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://dewittinfl1-create.github.io/privacy.html</loc></url>
-  <url><loc>https://dewittinfl1-create.github.io/terms.html</loc></url>
+  <url><loc>https://dewittinfl1-create.github.io/privacy.html</loc><lastmod>2026-11-10</lastmod></url>
+  <url><loc>https://dewittinfl1-create.github.io/terms.html</loc><lastmod>2026-11-10</lastmod></url>
 </urlset>
