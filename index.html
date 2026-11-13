@@ -811,9 +811,6 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
 </head>
 <body data-route="downloads">
 
-<div class="season-banner" id="seasonBanner" style="background:#E8590C">
-  <div class="wrap"><span id="seasonBannerText">🦃 <strong>Thanksgiving is coming</strong> — hosting packs, baking planners and recipe keepers for the big day.</span><a href="#/shop" id="seasonBannerLink">Shop Thanksgiving picks ↓</a></div>
-</div>
 <script>/* BANNERTOP v1 superseded by BANNERTOP2 inside orderHome (2026-11-09). */</script>
 
 <div class="topbar">
@@ -850,7 +847,10 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
 </div></div>
 
 <main id="top">
-    <div id="trustbar" data-i18n-html="trustbar.line" style="background:#123524;color:#eaf5ec;text-align:center;padding:8px 12px;font-size:.9rem;line-height:1.35;max-width:1180px;margin:8px auto 0;border-radius:12px">🔒 <b>Secure checkout</b> through Beacons &amp; Stripe · ⚡ <b>Instant delivery</b> by email · 🛡️ Problems? We <b>fix it or replace it free</b> · ✉️ dewitt3089@hotmail.com</div>
+    <div class="season-banner" id="seasonBanner" style="background:#E8590C;max-width:1180px;margin:8px auto 0;border-radius:12px 12px 0 0">
+  <div class="wrap"><span id="seasonBannerText">🦃 <strong>Thanksgiving is coming</strong> — hosting packs, baking planners and recipe keepers for the big day.</span><a href="#/shop" id="seasonBannerLink">Shop Thanksgiving picks ↓</a></div>
+</div>
+    <div id="trustbar" data-i18n-html="trustbar.line" style="background:#123524;color:#eaf5ec;text-align:center;padding:8px 12px;font-size:.9rem;line-height:1.35;max-width:1180px;margin:0 auto;border-radius:0 0 12px 12px">🔒 <b>Secure checkout</b> through Beacons &amp; Stripe · ⚡ <b>Instant delivery</b> by email · 🛡️ Problems? We <b>fix it or replace it free</b> · ✉️ dewitt3089@hotmail.com</div>
   <!-- AFFILIATES BANNER -->
   <div id="affBanner" style="max-width:1180px;margin:18px auto 0;padding:0 18px">
     <div style="background:linear-gradient(135deg,#D4AF37,#B8860B);border-radius:14px;padding:16px 20px;text-align:center;color:#1A1206;box-shadow:0 4px 16px rgba(212,175,55,.35)">
@@ -4669,7 +4669,7 @@ function homeCatsHtml(){
    +'<h4 class="mf-cats-sub">🛒 '+(L()==="es"?"Compras — selecciones de las tiendas":"Shopping — store picks")+'</h4>'+sh;
 }
 function buildHomeCats(){ var box=document.createElement("div"); box.id="mfHomeCats"; box.className="wrap home-cats"; box.setAttribute("data-view","home"); box.innerHTML=homeCatsHtml(); return box; }
-function orderHome(){ var bn=document.getElementById("seasonBanner"); if(bn&&document.body&&document.body.firstElementChild!==bn){ bn.setAttribute("data-view","home"); document.body.insertBefore(bn,document.body.firstElementChild); } /* BANNERTOP2 2026-11-09: seasonal banner pinned as the very first element of the page, above the sticky header; it is NOT re-homed into <main> and scrolls away naturally. */ var main=document.getElementById("top"); if(!main) return; var hero=main.querySelector(".hero"); if(!hero) return;
+function orderHome(){ var bn=document.getElementById("seasonBanner"); var tb=document.getElementById("trustbar"); if(bn&&tb&&tb.parentNode){ bn.setAttribute("data-view","home"); if(bn.nextElementSibling!==tb){ tb.parentNode.insertBefore(bn,tb); } } /* BANNERMID 2026-11-12 (Chris's layout call, supersedes BANNERTOP2): the seasonal banner sits below the header + search, directly above and connected to the secure-checkout strip at the top of <main>; it scrolls away naturally. */ var main=document.getElementById("top"); if(!main) return; var hero=main.querySelector(".hero"); if(!hero) return;
   var cats=document.getElementById("mfHomeCats"); if(!cats) cats=buildHomeCats();
   var fh=main.querySelector('.about-card [data-i18n="svc.frankie.title"]'); var frankie=fh?fh.closest(".about-card"):null;
   var signup=document.getElementById("email-signup");
