@@ -3686,8 +3686,10 @@ function fnCatOf(x){
   return "homefamily";
 }
 function fineCounts(){ var m={}; PRODUCTS.forEach(function(x){ var c=fnCatOf(x); m[c]=(m[c]||0)+1; }); var sp=0; PRODUCTS.forEach(function(x){ if(isSpanish(x)) sp++; }); m.spanish=sp; return m; }
+function fineCountsCS(){ var m={}; COMING_SOON.forEach(function(x){ var c=fnCatOf(x); m[c]=(m[c]||0)+1; }); var sp=0; COMING_SOON.forEach(function(x){ if(x.lg==="es") sp++; }); m.spanish=sp; return m; }
+function tileCt(lv,cs){ var es=(L()==="es"); if(cs>0) return (lv>0?(lv+" "+(es?"productos":"products")+" · "):"")+cs+" "+(es?"muy pronto":"coming soon"); return lv+" "+(es?"productos":"products"); }
 function fineLabel(id){ var c=FINE_CATS.filter(function(k){return k.id===id;})[0]; return c?(L()==="es"?c.es:c.en):id; }
-window.__fine={cats:FINE_CATS,catOf:fnCatOf,counts:fineCounts,isSpanish:isSpanish};
+window.__fine={cats:FINE_CATS,catOf:fnCatOf,counts:fineCounts,countsCS:fineCountsCS,isSpanish:isSpanish};
 var SUBCATS={
  budget:[{id:"debt",en:"Debt Payoff",es:"Pago de deudas",re:/debt|deuda|snowball|bola de nieve|payoff|credit card|tarjeta de cr/i},{id:"budgets",en:"Budgets & Planners",es:"Presupuestos y planificadores",re:/budget|presupuesto|planner|planificador|monthly|mensual|binder/i},{id:"trackers",en:"Trackers & Worksheets",es:"Registros y hojas de trabajo",re:/tracker|track|registro|log|worksheet|hoja|saving|ahorr|bill|factura|expense|gasto|envelope|sobre/i}],
  bookkeeping:[{id:"bookkeeping",en:"Bookkeeping & Ledgers",es:"Contabilidad y libros",re:/bookkeep|contabilidad|ledger|invoice|factura|receipt|recibo|profit|ganancia|tax|impuesto/i},{id:"forms",en:"Forms & Contracts",es:"Formularios y contratos",re:/form|formulario|contract|contrato|agreement|acuerdo|intake|waiver|consent|autoriza|proposal|propuesta/i},{id:"marketing",en:"Marketing & Customers",es:"Marketing y clientes",re:/marketing|client|customer|cliente|social|redes|brand|marca|sales|ventas|pricing|precio|customer/i}],
@@ -3818,7 +3820,7 @@ function mfApplyFilter(){
   if(chips){ chips.querySelectorAll("[data-dlchip]").forEach(function(b){ b.classList.toggle("on",b.getAttribute("data-dlchip")===id); }); }
 }
 function tilesHtml(){
-  var m=fineCounts();
+  var m=fineCounts(); var mc=fineCountsCS();
   var groups=[
     {en:"Money",es:"Dinero",ic:"💰",cats:["budget"]},
     {en:"Business & Work",es:"Negocios y trabajo",ic:"💼",cats:["bookkeeping","contractor","driver"]},
@@ -3826,7 +3828,7 @@ function tilesHtml(){
     {en:"Home, Health & Outdoors",es:"Hogar, salud y exterior",ic:"🏡",cats:["health","outdoors","travel"]},
     {en:"Seasonal, Tech & Spanish",es:"Temporada, tecnología y español",ic:"🎄",cats:["seasonal","tech","spanish"]}
   ];
-  function tile(cid){ var c=FINE_CATS.filter(function(k){return k.id===cid;})[0]; return '<button type="button" class="mf-tile" onclick="mfGoCat(\''+cid+'\')"><span class="mf-t-ic" aria-hidden="true">'+c.ic+'</span><span>'+fineLabel(cid)+'</span><span class="mf-t-ct">'+(m[cid]||0)+' '+(L()==="es"?"productos":"products")+'</span><span class="chev" aria-hidden="true">›</span></button>'; }
+  function tile(cid){ var c=FINE_CATS.filter(function(k){return k.id===cid;})[0]; var ct=tileCt(m[cid]||0, mc[cid]||0); return '<button type="button" class="mf-tile" onclick="mfGoCat(\''+cid+'\')"><span class="mf-t-ic" aria-hidden="true">'+c.ic+'</span><span>'+fineLabel(cid)+'</span><span class="mf-t-ct">'+ct+'</span><span class="chev" aria-hidden="true">›</span></button>'; }
   return groups.map(function(g){
     return '<h3 class="mf-tiles-h">'+g.ic+' '+(L()==="es"?g.es:g.en)+'</h3><div class="mf-tilegrid">'+g.cats.map(tile).join("")+'</div>';
   }).join("");
@@ -4666,7 +4668,7 @@ function syncTabHelp(){ var sp=document.querySelector('.tabbar a[data-route-link
 
 function homeCatsHtml(){
   var fine=window.__fine, counts=fine?fine.counts():{};
-  var dl=(fine?fine.cats:[]).map(function(c){ return '<button type="button" class="mf-tile" onclick="mfGoCat(\''+c.id+'\')"><span class="mf-t-ic" aria-hidden="true">'+c.ic+'</span><span>'+(L()==="es"?c.es:c.en)+'</span><span class="mf-t-ct">'+(counts[c.id]||0)+'</span><span class="chev" aria-hidden="true">›</span></button>'; }).join("");
+  var countsCS=(fine&&fine.countsCS)?fine.countsCS():{}; var dl=(fine?fine.cats:[]).map(function(c){ return '<button type="button" class="mf-tile" onclick="mfGoCat(\''+c.id+'\')"><span class="mf-t-ic" aria-hidden="true">'+c.ic+'</span><span>'+(L()==="es"?c.es:c.en)+'</span><span class="mf-t-ct">'+tileCt(counts[c.id]||0,countsCS[c.id]||0)+'</span><span class="chev" aria-hidden="true">›</span></button>'; }).join("");
   var sh=SHOP_SECTIONS.map(function(ps){ var ts=ps.cats.filter(function(i){ return shopGroups[i]&&groupItems(shopGroups[i]).length; }).map(function(i){ return '<button type="button" class="mf-tile" onclick="mfShopCat('+i+');location.hash=\'#/shop\'"><span class="mf-t-ic" aria-hidden="true">'+groupName(shopGroups[i]).split(" ")[0]+'</span><span>'+groupName(shopGroups[i]).replace(/^\S+\s+/,"")+'</span><span class="mf-t-ct">'+groupItems(shopGroups[i]).length+'</span><span class="chev" aria-hidden="true">›</span></button>'; }).join("");
     return ts?('<h4 class="mf-cats-sub">'+ps.ic+" "+(L()==="es"?ps.es:ps.en)+'</h4><div class="mf-tilegrid">'+ts+"</div>"):""; }).join("");
   return '<h3 class="mf-tiles-h">'+(L()==="es"?"Explora por categoría":"Browse by category")+'</h3>'
