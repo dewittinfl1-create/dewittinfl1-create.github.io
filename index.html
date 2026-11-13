@@ -4225,10 +4225,20 @@ if(document.readyState==="loading") document.addEventListener("DOMContentLoaded"
 #mfSubcats{position:relative;z-index:6;background:var(--bg,#F6F7F9)}
 /* --- Downloads pin merged into the persistent All-Access strip --- */
 #mfAllAccess{display:none!important}
-/* --- bottom tab bar: six entries, labels never clipped at 390px --- */
-.tabbar a{min-height:56px;padding:6px 1px 5px;font-size:.68rem;line-height:1.15}
-.tabbar a span[data-i18n]{white-space:nowrap}
-.tabbar .tb-ic{font-size:1.08rem;line-height:1.2}
+/* --- bottom tab bar: SEVEN entries (International was added after the
+   six-entry sizing below it was written) — weighted flex per tab + smaller
+   labels so nothing clips or collides at 360px/390px in EN or ES
+   (longest labels: International / Internacional, Downloads / Descargas) --- */
+.tabbar a{min-height:56px;min-width:0;padding:6px 0 5px;font-size:.58rem;line-height:1.15;letter-spacing:-.01em}
+.tabbar a span[data-i18n]{white-space:nowrap;min-width:0}
+.tabbar .tb-ic{font-size:1.05rem;line-height:1.2}
+.tabbar a[data-route-link="home"]{flex:.78 1 0}
+.tabbar a[data-route-link="downloads"]{flex:1.22 1 0}
+.tabbar a[data-route-link="shop"]{flex:1 1 0}
+.tabbar a[data-route-link="deals"]{flex:.82 1 0}
+.tabbar a[data-route-link="services"]{flex:1.14 1 0}
+.tabbar a[data-route-link="international"]{flex:1.55 1 0}
+.tabbar a[data-route-link="help"]{flex:.72 1 0}
 /* --- All-Access strip (top of Home/Downloads/Deals/Shop only) --- */
 #aaStrip{display:none;align-items:center;gap:10px;max-width:1180px;margin:10px auto 0;
   padding:8px 12px;background:#FFF7DB;border:1.5px solid #C9A227;border-radius:12px;
