@@ -201,7 +201,7 @@ select.sort{font:inherit;font-weight:600;color:var(--ink);background:var(--surfa
 .about-art{border-radius:14px;width:100%;height:auto;display:block;margin-bottom:14px}
 .card .foot{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:auto;padding-top:6px}
 .card .buy{font-weight:700;font-size:.9rem;text-decoration:none;background:var(--teal);color:#fff;padding:8px 14px;border-radius:999px;white-space:nowrap}
-.cs-badge{display:inline-block;font-weight:700;font-size:.9rem;background:#FBF3D9;color:#7A5B00;padding:8px 14px;border-radius:999px;border:1.5px dashed #C9A227;white-space:nowrap}
+.cs-badge{display:inline-block;font-weight:700;font-size:.82rem;line-height:1.25;background:#FBF3D9;color:#7A5B00;padding:8px 10px;border-radius:999px;border:1.5px dashed #C9A227;max-width:100%;box-sizing:border-box;text-align:center;overflow-wrap:break-word}
 .card .foot .cs-badge{flex:1;text-align:center}
 @media (prefers-color-scheme: dark){.card .buy{color:#081511}}
 .card .buy:hover{opacity:.88}
@@ -3095,6 +3095,19 @@ function filtered(){
   var list = PRODUCTS.concat(COMING_SOON);
   if(state.cat!=="all"){list = list.filter(function(x){return x.c===state.cat;});}
   if(state.q){var q = mfFold(state.q.toLowerCase()); list = list.filter(function(x){return mfFold((searchText(x)+" "+catLabelBoth(x.c)).toLowerCase()).indexOf(q)>-1;});} /* MF: fold BOTH sides here — EN titles/descs carry accents too (e.g. Quinceañera as a standalone ES product) */
+  if(state.sort==="featured"){
+    /* CS-INTERLEAVE 2026-11-12: in the default view, spread the Coming Soon
+       cards evenly through the live products (inside whatever category or
+       search filter is active) instead of appending all 190 after the last
+       live product, where nobody ever scrolled to them. */
+    var live=list.filter(function(x){return !x.cs;}), soon=list.filter(function(x){return x.cs;});
+    if(soon.length&&live.length){
+      var merged=[], step=Math.max(1,Math.floor(live.length/soon.length)), si=0;
+      live.forEach(function(x,i){ merged.push(x); if((i+1)%step===0&&si<soon.length) merged.push(soon[si++]); });
+      while(si<soon.length) merged.push(soon[si++]);
+      list=merged;
+    }
+  }
   if(state.sort==="az"){list.sort(function(a,b){return dispT(a).localeCompare(dispT(b));});}
   if(state.sort==="low"){list.sort(function(a,b){return (a.p||0)-(b.p||0);});}
   if(state.sort==="high"){list.sort(function(a,b){return (b.p||0)-(a.p||0);});}
@@ -4229,16 +4242,22 @@ if(document.readyState==="loading") document.addEventListener("DOMContentLoaded"
    six-entry sizing below it was written) — weighted flex per tab + smaller
    labels so nothing clips or collides at 360px/390px in EN or ES
    (longest labels: International / Internacional, Downloads / Descargas) --- */
-.tabbar a{min-height:56px;min-width:0;padding:6px 0 5px;font-size:.58rem;line-height:1.15;letter-spacing:-.01em}
-.tabbar a span[data-i18n]{white-space:nowrap;min-width:0}
-.tabbar .tb-ic{font-size:1.05rem;line-height:1.2}
-.tabbar a[data-route-link="home"]{flex:.78 1 0}
-.tabbar a[data-route-link="downloads"]{flex:1.22 1 0}
-.tabbar a[data-route-link="shop"]{flex:1 1 0}
-.tabbar a[data-route-link="deals"]{flex:.82 1 0}
-.tabbar a[data-route-link="services"]{flex:1.14 1 0}
-.tabbar a[data-route-link="international"]{flex:1.55 1 0}
-.tabbar a[data-route-link="help"]{flex:.72 1 0}
+/* SWIPE BAR (Chris, Nov 12, 2026): same seven tabs, same order and look,
+   but the bar now scrolls sideways with a finger swipe — tabs keep their
+   natural label widths (no shrinking, no clipping) and the row overflows
+   the screen on purpose; scrollbar hidden. */
+.tabbar{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none}
+.tabbar::-webkit-scrollbar{display:none}
+.tabbar a{flex:0 0 auto;min-height:56px;padding:6px 10px 5px;font-size:.66rem;line-height:1.15}
+.tabbar a span[data-i18n]{white-space:nowrap}
+.tabbar .tb-ic{font-size:1.08rem;line-height:1.2}
+.tabbar a[data-route-link="home"]{min-width:58px}
+.tabbar a[data-route-link="downloads"]{min-width:88px}
+.tabbar a[data-route-link="shop"]{min-width:80px}
+.tabbar a[data-route-link="deals"]{min-width:56px}
+.tabbar a[data-route-link="services"]{min-width:80px}
+.tabbar a[data-route-link="international"]{min-width:108px}
+.tabbar a[data-route-link="help"]{min-width:52px}
 /* --- All-Access strip (top of Home/Downloads/Deals/Shop only) --- */
 #aaStrip{display:none;align-items:center;gap:10px;max-width:1180px;margin:10px auto 0;
   padding:8px 12px;background:#FFF7DB;border:1.5px solid #C9A227;border-radius:12px;
