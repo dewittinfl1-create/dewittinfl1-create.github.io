@@ -866,7 +866,7 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
         <h1 data-i18n-html="hero.title">Printables that organize your money, home &amp; work</h1>
         <p class="lede" data-i18n="hero.lede">AI tools + editable planners, trackers & spreadsheets in English & Spanish — budget, small business, home, classroom, health, weddings & parties. Instant downloads.</p>
         <div class="hero-actions">
-          <a class="btn btn-gold" href="#/downloads" data-i18n="hero.browse">Browse all 14 products ↓</a>
+          <a class="btn btn-gold" href="#/downloads" data-i18n="hero.browse">Browse all products ↓</a>
           <a class="btn btn-outline" href="#/shop" data-i18n="hero.picksBtn">Shop my picks</a>
           </div>
         <div class="hero-stats" aria-label="Shop facts">
@@ -1085,7 +1085,7 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
       <div class="mf-tiles" id="mfTiles"></div>
     </div>
       <div class="sec-head">
-        <div><p class="kicker" data-i18n="shop.kicker">Full catalog</p><h2 data-i18n="shop.title">All 14 live products</h2><p data-i18n="shop.desc">Every product shows its cover picture, a full description of what you get, its price and page count, and its complete details — format, delivery and how you use it — one tap away on the card. Every card links directly to its own product page. Prices are the live shop prices.</p></div>
+        <div><p class="kicker" data-i18n="shop.kicker">Full catalog</p><h2 data-i18n="shop.title">All live products</h2><p data-i18n="shop.desc">Every product shows its cover picture, a full description of what you get, its price and page count, and its complete details — format, delivery and how you use it — one tap away on the card. Every card links directly to its own product page. Prices are the live shop prices.</p></div>
       </div>
       <div class="controls">
         <div class="search-row">
@@ -1976,7 +1976,7 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
     </div>
     <div>
       <h2 data-i18n="footer.shopTitle">Shop</h2>
-      <a href="#shop" data-i18n="footer.shop1">All 14 products</a>
+      <a href="#shop" data-i18n="footer.shop1">All products</a>
       <a href="#top-picks" data-i18n="footer.shop2">Top downloads</a>
       <a href="#/downloads" data-i18n="footer.shop3">All downloads</a>
       <a href="#how" data-i18n="footer.shop4">How buying works</a>
@@ -2074,6 +2074,7 @@ function applyLanguage(lang){
   try{ localStorage.setItem("cdw-lang", currentLang); }catch(e){}
   document.documentElement.lang = currentLang;
   var dict = I18N[currentLang];
+  if(typeof PRODUCTS!=="undefined" && typeof langVisible==="function"){ var nv=String(PRODUCTS.filter(langVisible).length); for(var kk in dict){ if(typeof dict[kk]==="string" && dict[kk].indexOf("{N}")>=0) dict[kk]=dict[kk].split("{N}").join(nv); } }
   var nodes=document.querySelectorAll("[data-i18n]");
   for(var i=0;i<nodes.length;i++){ var k=nodes[i].getAttribute("data-i18n"); if(dict[k]!=null) nodes[i].textContent=dict[k]; }
   var hnodes=document.querySelectorAll("[data-i18n-html]");
@@ -2129,10 +2130,7 @@ var PRODUCTS = [
    token in the i18n strings resolves to PRODUCTS.length at load, so the
    counts (hero, shop title, topbar, footer) can never go stale when the
    sync lists new stock. */
-(function(){ if(typeof PRODUCTS==="undefined"||typeof I18N==="undefined") return;
-  var n=String(PRODUCTS.length);
-  for(var lg in I18N){ var d=I18N[lg]; for(var k in d){ if(typeof d[k]==="string" && d[k].indexOf("{N}")>=0) d[k]=d[k].split("{N}").join(n); } }
-})();
+(function(){ /* LANG-FILTER FIX 2026-11-13: {N} resolves per-language inside applyLanguage using the langVisible count, not raw PRODUCTS.length. */ })();
 /* Spanish-edition routing (Chris, Nov 5, 2026): in ES view, a download that has a
    live Spanish edition on Beacons must send the buyer to the SPANISH listing so the
    PDF they download is in Spanish. Map: English product id -> Spanish product id.
@@ -2719,7 +2717,7 @@ var COMING_SOON=[{"t": "Complete Car-Buying Binder", "p": 14, "c": "money", "pg"
 {"t": "Registro de Viaje por Carretera", "p": 7, "c": "travel", "pg": 5, "d": "La ruta por tramos, las millas y la gasolina anotadas, el equipaje tachado al subirlo al auto y la información de emergencia en la guantera: un registro completo para rodar tranquilo y cerrar el viaje con su resumen final. Listo para imprimir en Carta (US Letter) y A4, con versión editable (se abre en Word, Excel, Google Docs y Sheets, o Apple Pages y Numbers) e indicaciones de IA listas para pegar en ChatGPT, Claude o Gemini en los archivos donde estén incluidas.", "cs": 1, "lg": "es", "u": "cs:flip-registro-de-viaje-por-carretera-207"},
 {"t": "Planificador de Presupuesto Quincenal: Vive de Quincena en Quincena", "p": 7, "c": "money", "pg": 5, "d": "Si te pagan cada dos semanas, el presupuesto mensual no te sirve — este sí: está hecho para tus 26 cheques al año, con un sistema sencillo para repartir cada cheque y dejar de llegar justo al siguiente. Listo para imprimir en Carta (US Letter) y A4, con versión editable (se abre en Word, Excel, Google Docs y Sheets, o Apple Pages y Numbers) e indicaciones de IA listas para pegar en ChatGPT, Claude o Gemini en los archivos donde estén incluidas.", "cs": 1, "lg": "es", "u": "cs:flip-planificador-de-presupuesto-quincenal-vi-208"},
 {"t": "Planificador de Quinceañera", "p": 9, "c": "family", "pg": 5, "d": "Quince años se celebran una sola vez: presupuesto, padrinos y sus aportaciones, corte de honor y cronograma del gran día, todo en un solo cuaderno — con reservas con meses de anticipación y confirmación final una semana antes. Listo para imprimir en Carta (US Letter) y A4, con versión editable (se abre en Word, Excel, Google Docs y Sheets, o Apple Pages y Numbers) e indicaciones de IA listas para pegar en ChatGPT, Claude o Gemini en los archivos donde estén incluidas.", "cs": 1, "lg": "es", "u": "cs:flip-planificador-de-quinceanera-209"},
-{"t": "Reto de Ahorro: Escaleras de $100 a $10,000", "p": 6, "c": "money", "pg": 5, "d": "Escaleras pequeñas que suben paso a paso: elige tu meta, marca cada semana en cuanto apartes el dinero y mira cómo crece el total — los totales acumulados ya vienen calculados semana a semana. Listo para imprimir en Carta (US Letter) y A4, con versión editable (se abre en Word, Excel, Google Docs y Sheets, o Apple Pages y Numbers) e indicaciones de IA listas para pegar en ChatGPT, Claude o Gemini en los archivos donde estén incluidas.", "cs": 1, "lg": "en", "u": "cs:flip-reto-de-ahorro-escaleras-de-100-a-10-000-210"},
+{"t": "Reto de Ahorro: Escaleras de $100 a $10,000", "p": 6, "c": "money", "pg": 5, "d": "Escaleras pequeñas que suben paso a paso: elige tu meta, marca cada semana en cuanto apartes el dinero y mira cómo crece el total — los totales acumulados ya vienen calculados semana a semana. Listo para imprimir en Carta (US Letter) y A4, con versión editable (se abre en Word, Excel, Google Docs y Sheets, o Apple Pages y Numbers) e indicaciones de IA listas para pegar en ChatGPT, Claude o Gemini en los archivos donde estén incluidas.", "cs": 1, "lg": "es", "u": "cs:flip-reto-de-ahorro-escaleras-de-100-a-10-000-210"},
 {"t": "Planificador de Contenido para Redes Sociales: 30 Días", "p": 8, "c": "business", "pg": 5, "d": "Treinta días de publicaciones sin quedarte en blanco: tres temas fijos, una idea por día en el calendario, trabajo por tandas y un registro de lo que sí funcionó — para que la próxima tanda tenga más de lo mejor. Listo para imprimir en Carta (US Letter) y A4, con versión editable (se abre en Word, Excel, Google Docs y Sheets, o Apple Pages y Numbers) e indicaciones de IA listas para pegar en ChatGPT, Claude o Gemini en los archivos donde estén incluidas.", "cs": 1, "lg": "es", "u": "cs:flip-planificador-de-contenido-para-redes-soc-211"},
 {"t": "Planificador de Vacaciones: Presupuesto e Itinerario", "p": 9, "c": "travel", "pg": 5, "d": "El viaje completo en un solo lugar: presupuesto total repartido por categoría, cada reserva con su confirmación, itinerario día a día con huecos libres y listas de maletas. Imprime una copia para llevar y deja otra en casa. Listo para imprimir en Carta (US Letter) y A4, con versión editable (se abre en Word, Excel, Google Docs y Sheets, o Apple Pages y Numbers) e indicaciones de IA listas para pegar en ChatGPT, Claude o Gemini en los archivos donde estén incluidas.", "cs": 1, "lg": "es", "u": "cs:flip-planificador-de-vacaciones-presupuesto-e-212"},
 {"t": "Registro de Ingresos de Negocio Pequeño", "p": 7, "c": "business", "pg": 5, "d": "Ingresos y gastos de tu negocio, mes por mes y trimestre por trimestre: anota cada ingreso el día que entra, cada gasto con su categoría, y cierra cada mes y trimestre sumando las columnas — números claros para decidir con la cabeza fría. Listo para imprimir en Carta (US Letter) y A4, con versión editable (se abre en Word, Excel, Google Docs y Sheets, o Apple Pages y Numbers) e indicaciones de IA listas para pegar en ChatGPT, Claude o Gemini en los archivos donde estén incluidas.", "cs": 1, "lg": "es", "u": "cs:flip-registro-de-ingresos-de-negocio-pequeno-213"},
@@ -3191,7 +3189,7 @@ function prodLang(x){
   return /[\u00e1\u00e9\u00ed\u00f3\u00fa\u00f1\u00bf\u00a1]/.test(x.t) || /^(Registro|Planificador|Gu\u00eda|Paquete|Lista|Seguimiento|C\u00f3mo|Organizador|Presupuesto|Contabilidad|Pon el|Tus |Tu |La Gu\u00eda|Carpeta|Manual|Tarjeta|Cuaderno|Frases|Kit de|Plan para)/.test(x.t) ? "es" : "en";
 }
 function ownLang(x){
-  if(x.cs && x.lg) return x.lg;
+  if(x.cs) return (x.lg==="es" || prodLang(x)==="es") ? "es" : "en";
   var id = x.u.indexOf(B)===0 ? x.u.slice(B.length) : x.u;
   if(typeof ES_EDITIONS!=="undefined"){
     if(ES_EDITIONS[id]) return "en";
@@ -3200,12 +3198,12 @@ function ownLang(x){
   return prodLang(x);
 }
 function langVisible(x){
-  if(x.cs && x.lg) return x.lg===currentLang;
+  if(x.cs) return ownLang(x)===currentLang;
   if(pairUrls(x)) return ownLang(x)==="en";
   return ownLang(x)===currentLang;
 }
 function spanishFacing(x){
-  if(x.cs) return x.lg==="es";
+  if(x.cs) return ownLang(x)==="es";
   if(currentLang==="es") return !!pairUrls(x)||ownLang(x)==="es";
   return ownLang(x)==="es"&&!pairUrls(x);
 }
