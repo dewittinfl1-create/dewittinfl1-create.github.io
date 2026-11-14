@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free AI Coach — DeWitt Printables</title>
+<meta name="description" content="Try the AI coach experience free: answer a few questions and get a personalized prompt that turns ChatGPT, Claude or Gemini into your coach. Every DeWitt Printables download includes a ready-made AI coach built in.">
+<style>
+  :root{--green:#0E3D21;--green2:#14532d;--cream:#FBF6EA;--gold:#C9A227;--ink:#1c2420;--bg:#f6f1e7;--card:#ffffff;--line:#e3dcc9}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Georgia,'Times New Roman',serif;background:var(--bg);color:var(--ink)}
+  header{background:var(--green);color:var(--cream);padding:22px 16px 18px;text-align:center;border-bottom:4px solid var(--gold);position:relative}
+  header h1{margin:0;font-size:2rem;letter-spacing:.5px}
+  header p{margin:6px 0 0;font-style:italic;opacity:.92}
+  .toggle{position:absolute;top:14px;right:14px;background:var(--gold);color:#231a00;border:none;border-radius:999px;padding:7px 14px;font-weight:bold;cursor:pointer;font-family:inherit}
+  .back{display:inline-block;margin:14px 16px 0;color:var(--green2);font-weight:bold;text-decoration:none}
+  main{max-width:760px;margin:0 auto;padding:10px 16px 40px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin-top:18px;box-shadow:0 2px 8px rgba(14,61,33,.07)}
+  h2{color:var(--green);margin:0 0 10px;font-size:1.35rem}
+  .steps{display:grid;gap:8px;margin:10px 0 0;padding:0;list-style:none}
+  .steps li{background:#f1ead8;border-radius:10px;padding:10px 12px}
+  label{display:block;font-weight:bold;margin:14px 0 5px;color:var(--green)}
+  select,input{width:100%;padding:11px;border:1px solid #c9c2ab;border-radius:9px;font-family:inherit;font-size:1rem;background:#fffdf7}
+  textarea{width:100%;min-height:170px;padding:12px;border:1px solid #c9c2ab;border-radius:9px;font-family:inherit;font-size:.98rem;background:#fffdf7}
+  .btn{display:inline-block;border:none;border-radius:10px;padding:12px 18px;font-family:inherit;font-size:1rem;font-weight:bold;cursor:pointer;text-decoration:none;margin:8px 8px 0 0}
+  .btn-main{background:var(--green);color:var(--cream)}
+  .btn-gold{background:var(--gold);color:#231a00}
+  .btn-ghost{background:#fff;border:2px solid var(--green);color:var(--green)}
+  .note{font-size:.92rem;opacity:.85}
+  footer{background:var(--green);color:var(--cream);text-align:center;padding:22px 16px;margin-top:30px}
+  footer a{color:var(--gold)}
+  .hidden{display:none}
+</style>
+</head>
+<body>
+<header>
+  <button class="toggle" id="langBtn" onclick="toggleLang()">Español</button>
+  <h1>DeWitt Printables</h1>
+  <p data-t="tagline">Printable Planners, Trackers &amp; Templates</p>
+</header>
+<a class="back" href="index.html" data-t="back">← Back to the shop</a>
+<main>
+  <section class="card">
+    <h2 data-t="h1">🤖 Try the AI coach — free</h2>
+    <p data-t="intro">Every download in our shop includes a ready-made AI coach that teaches you how to use your planner for your own situation. This page lets you taste that experience right now, free: answer a few questions, and we build you a personalized prompt that turns a free AI app into your coach.</p>
+    <ul class="steps">
+      <li data-t="s1"><b>Step 1.</b> Pick your topic and answer the questions below.</li>
+      <li data-t="s2"><b>Step 2.</b> Tap “Build my prompt” — your personal coach prompt appears, written for your answers.</li>
+      <li data-t="s3"><b>Step 3.</b> Open it in ChatGPT, Gemini or Claude (all free) and follow along — it asks, you answer, it walks you through.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2 data-t="h2">Build your coach prompt</h2>
+    <label for="topic" data-t="topicL">Choose your topic</label>
+    <select id="topic" onchange="renderQuestions()"></select>
+    <div id="questions"></div>
+    <button class="btn btn-main" onclick="buildPrompt()" data-t="build">✨ Build my prompt</button>
+    <div id="outWrap" class="hidden">
+      <label for="output" data-t="yourP">Your personalized prompt</label>
+      <textarea id="output" readonly></textarea>
+      <div>
+        <button class="btn btn-gold" onclick="copyPrompt()" data-t="copy">📋 Copy my prompt</button>
+        <a class="btn btn-ghost" id="chatgptLink" href="#" target="_blank" rel="noopener" data-t="cgpt">Open in ChatGPT →</a>
+        <a class="btn btn-ghost" href="https://gemini.google.com/app" target="_blank" rel="noopener" data-t="gem">Open Gemini (paste it there) →</a>
+        <a class="btn btn-ghost" href="https://claude.ai/new" target="_blank" rel="noopener" data-t="cla">Open Claude (paste it there) →</a>
+      </div>
+      <p class="note" data-t="tip">Tip: ChatGPT opens with your prompt already filled in. In Gemini or Claude, paste it after copying. All three are free to use.</p>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 data-t="h3">Already bought one of our downloads?</h2>
+    <p data-t="buyer">Then you already own the full version of this: your personal, ready-made AI coach for that exact planner — no prompt to build or paste. Open the <b>Start Here</b> guide inside your download and tap the coach link (or scan the QR code). It already knows your planner and walks you through setup and check-ins, step by step.</p>
+    <a class="btn btn-main" href="index.html" data-t="shop">Browse the downloads →</a>
+  </section>
+</main>
+<footer>
+  <p><b>DeWitt Printables</b> — <span data-t="foot">Printable planners, logs &amp; guides — from $4, instant download. Every download includes a built-in AI coach + prompt kit.</span></p>
+  <p><a href="index.html" data-t="home">Home</a> · <a href="mailto:dewitt3089@hotmail.com">dewitt3089@hotmail.com</a></p>
+</footer>
+
+<script>
+var LANG='en';
+var STR={
+en:{tagline:"Printable Planners, Trackers & Templates",back:"← Back to the shop",
+h1:"🤖 Try the AI coach — free",
+intro:"Every download in our shop includes a ready-made AI coach that teaches you how to use your planner for your own situation. This page lets you taste that experience right now, free: answer a few questions, and we build you a personalized prompt that turns a free AI app into your coach.",
+s1:"<b>Step 1.</b> Pick your topic and answer the questions below.",
+s2:"<b>Step 2.</b> Tap “Build my prompt” — your personal coach prompt appears, written for your answers.",
+s3:"<b>Step 3.</b> Open it in ChatGPT, Gemini or Claude (all free) and follow along — it asks, you answer, it walks you through.",
+h2:"Build your coach prompt",topicL:"Choose your topic",build:"✨ Build my prompt",yourP:"Your personalized prompt",
+copy:"📋 Copy my prompt",cgpt:"Open in ChatGPT →",gem:"Open Gemini (paste it there) →",cla:"Open Claude (paste it there) →",
+tip:"Tip: ChatGPT opens with your prompt already filled in. In Gemini or Claude, paste it after copying. All three are free to use.",
+h3:"Already bought one of our downloads?",
+buyer:"Then you already own the full version of this: your personal, ready-made AI coach for that exact planner — no prompt to build or paste. Open the <b>Start Here</b> guide inside your download and tap the coach link (or scan the QR code). It already knows your planner and walks you through setup and check-ins, step by step.",
+shop:"Browse the downloads →",foot:"Printable planners, logs & guides — from $4, instant download. Every download includes a built-in AI coach + prompt kit.",home:"Home",copied:"Copied ✓"},
+es:{tagline:"Planificadores imprimibles, registros y plantillas",back:"← Volver a la tienda",
+h1:"🤖 Prueba el coach de IA — gratis",
+intro:"Cada descarga de nuestra tienda incluye un coach de IA listo para usar que te enseña a usar tu planificador según tu situación. Esta página te deja probar esa experiencia ahora mismo, gratis: responde unas preguntas y te creamos un prompt personalizado que convierte una app de IA gratuita en tu coach.",
+s1:"<b>Paso 1.</b> Elige tu tema y responde las preguntas.",
+s2:"<b>Paso 2.</b> Toca «Crear mi prompt» — aparece tu prompt de coach personal, escrito con tus respuestas.",
+s3:"<b>Paso 3.</b> Ábrelo en ChatGPT, Gemini o Claude (todos gratis) y sigue la guía — él pregunta, tú respondes, y te lleva paso a paso.",
+h2:"Crea tu prompt de coach",topicL:"Elige tu tema",build:"✨ Crear mi prompt",yourP:"Tu prompt personalizado",
+copy:"📋 Copiar mi prompt",cgpt:"Abrir en ChatGPT →",gem:"Abrir Gemini (pégalo allí) →",cla:"Abrir Claude (pégalo allí) →",
+tip:"Consejo: ChatGPT se abre con tu prompt ya escrito. En Gemini o Claude, pégalo después de copiarlo. Los tres son gratis.",
+h3:"¿Ya compraste una de nuestras descargas?",
+buyer:"Entonces ya tienes la versión completa: tu coach de IA personal y listo para usar, hecho para ese planificador exacto — sin prompt que crear ni pegar. Abre la guía <b>Empieza Aquí</b> dentro de tu descarga y toca el enlace del coach (o escanea el código QR). Ya conoce tu planificador y te guía en la configuración y los controles, paso a paso.",
+shop:"Ver las descargas →",foot:"Planificadores, registros y guías imprimibles — desde $4, descarga instantánea. Cada descarga incluye un coach de IA integrado y un kit de prompts.",home:"Inicio",copied:"Copiado ✓"}
+};
+var TOPICS={
+debt:{en:{name:"💳 Pay off my debt (snowball method)",qs:["How much do you owe in total? (roughly is fine)","How many separate debts is that?","How much extra can you put toward debt each month beyond the minimums?","What worries you most about your debt?"],
+tpl:"Act as my personal debt-payoff coach using the snowball method (smallest balance first). My situation: total debt {0}; number of debts {1}; extra money I can add each month beyond minimums {2}; my biggest worry {3}. First ask me for the list of my debts with balances and minimum payments if you need it. Then build my payoff order, tell me exactly what to do in the next 7 days, and give me a short weekly check-in I can paste back to you with my new balances."},
+es:{name:"💳 Salir de deudas (método bola de nieve)",qs:["¿Cuánto debes en total? (un estimado está bien)","¿En cuántas deudas separadas está?","¿Cuánto extra puedes aportar al mes además de los mínimos?","¿Qué es lo que más te preocupa de tu deuda?"],
+tpl:"Actúa como mi coach personal para salir de deudas con el método bola de nieve (primero el saldo más pequeño). Mi situación: deuda total {0}; número de deudas {1}; dinero extra que puedo aportar al mes además de los mínimos {2}; mi mayor preocupación {3}. Primero pídeme la lista de mis deudas con saldos y pagos mínimos si la necesitas. Luego arma mi orden de pago, dime exactamente qué hacer en los próximos 7 días, y dame un control semanal corto que pueda pegarte con mis saldos nuevos."}},
+budget:{en:{name:"💰 Fix my monthly budget",qs:["What is your monthly take-home pay?","Where does money leak out the most? (food, cards, subscriptions…)","What is one thing you want your budget to make possible?","Do you get paid weekly, every two weeks, or monthly?"],
+tpl:"Act as my personal budget coach. My situation: monthly take-home pay {0}; my biggest money leak {1}; what I want my budget to make possible {2}; I get paid {3}. Ask me anything you still need, then build me a simple monthly budget I can actually keep, tell me the first 3 changes to make this week, and give me a weekly check-in I can paste back to you."},
+es:{name:"💰 Ordenar mi presupuesto mensual",qs:["¿Cuál es tu ingreso neto mensual?","¿Por dónde se escapa más el dinero? (comida, tarjetas, suscripciones…)","¿Qué quieres que tu presupuesto haga posible?","¿Te pagan semanal, cada dos semanas, o mensual?"],
+tpl:"Actúa como mi coach personal de presupuesto. Mi situación: ingreso neto mensual {0}; mi mayor fuga de dinero {1}; lo que quiero que mi presupuesto haga posible {2}; me pagan {3}. Pregúntame lo que aún necesites, luego créame un presupuesto mensual simple que sí pueda cumplir, dime los primeros 3 cambios para esta semana, y dame un control semanal que pueda pegarte."}},
+savings:{en:{name:"🎯 Reach a savings goal",qs:["What are you saving for?","How much do you need in total?","How much have you saved so far?","How much can you set aside each paycheck?"],
+tpl:"Act as my personal savings coach. My situation: I am saving for {0}; total needed {1}; already saved {2}; I can set aside per paycheck {3}. Do the math with me: tell me when I reach the goal at this pace, show me a milestone ladder I can check off, suggest two honest ways to speed it up, and give me a weekly check-in I can paste back to you."},
+es:{name:"🎯 Alcanzar una meta de ahorro",qs:["¿Para qué estás ahorrando?","¿Cuánto necesitas en total?","¿Cuánto has ahorrado hasta ahora?","¿Cuánto puedes apartar en cada pago?"],
+tpl:"Actúa como mi coach personal de ahorro. Mi situación: estoy ahorrando para {0}; total que necesito {1}; ya ahorrado {2}; puedo apartar en cada pago {3}. Haz las cuentas conmigo: dime cuándo alcanzo la meta a este ritmo, muéstrame una escalera de hitos para marcar, sugiere dos formas honestas de acelerar, y dame un control semanal que pueda pegarte."}},
+meals:{en:{name:"🍽️ Meal planning on a budget",qs:["How many people are you feeding?","What is your weekly grocery budget?","Any foods to avoid or strong dislikes?","How many nights a week can you realistically cook?"],
+tpl:"Act as my personal meal-planning coach. My situation: feeding {0} people; weekly grocery budget {1}; foods to avoid or dislikes {2}; nights I can realistically cook per week {3}. Build me this week's dinner plan inside my budget, the grocery list that matches it, and one prep session that makes the week easy. Keep everything simple and cheap, and check in with me at the end about what worked."},
+es:{name:"🍽️ Plan de comidas con presupuesto",qs:["¿Para cuántas personas cocinas?","¿Cuál es tu presupuesto semanal de supermercado?","¿Algún alimento a evitar o que no les guste?","¿Cuántas noches por semana puedes cocinar de verdad?"],
+tpl:"Actúa como mi coach personal de planificación de comidas. Mi situación: cocino para {0} personas; presupuesto semanal de supermercado {1}; alimentos a evitar o que no gustan {2}; noches que puedo cocinar por semana {3}. Créame el plan de cenas de esta semana dentro de mi presupuesto, la lista de compras que va con él, y una sesión de preparación que haga fácil la semana. Todo simple y económico, y al final pregúntame qué funcionó."}},
+business:{en:{name:"🧾 Small business money & books",qs:["What kind of business do you run?","Roughly how much comes in per month?","How do you track money right now? (notebook, app, nothing…)","What is your biggest money headache?"],
+tpl:"Act as my personal small-business bookkeeping coach. My situation: my business is {0}; monthly income roughly {1}; I currently track money with {2}; my biggest money headache {3}. Give me a paper-simple system to record money in and out, the weekly 15-minute routine to keep it current, what to set aside for taxes, and a monthly summary habit. Keep it plain — no accounting degree."},
+es:{name:"🧾 Dinero y libros de mi negocio pequeño",qs:["¿Qué tipo de negocio tienes?","¿Cuánto entra al mes, más o menos?","¿Cómo llevas el dinero ahora? (libreta, app, nada…)","¿Cuál es tu mayor dolor de cabeza con el dinero?"],
+tpl:"Actúa como mi coach personal de contabilidad para negocios pequeños. Mi situación: mi negocio es {0}; ingresos mensuales aproximados {1}; ahora llevo el dinero con {2}; mi mayor dolor de cabeza {3}. Dame un sistema simple en papel para registrar entradas y salidas, la rutina semanal de 15 minutos para mantenerlo al día, cuánto apartar para impuestos, y el hábito del resumen mensual. Todo en lenguaje simple — sin título de contabilidad."}},
+wedding:{en:{name:"💍 Plan my wedding without the stress spiral",qs:["What is your wedding date (or rough month)?","How many guests, roughly?","What is your total budget?","What matters most to you two? (photos, food, music…)"],
+tpl:"Act as my personal wedding-planning coach. My situation: wedding date {0}; guests roughly {1}; total budget {2}; what matters most to us {3}. Build me a budget split that protects what matters most, a month-by-month task timeline from now to the wedding, and the first 5 things to book or decide. Flag the costs couples usually forget."},
+es:{name:"💍 Planear mi boda sin el estrés",qs:["¿Cuál es la fecha de tu boda (o el mes aproximado)?","¿Cuántos invitados, más o menos?","¿Cuál es tu presupuesto total?","¿Qué es lo más importante para ustedes? (fotos, comida, música…)"],
+tpl:"Actúa como mi coach personal de planificación de bodas. Mi situación: fecha de la boda {0}; invitados aproximadamente {1}; presupuesto total {2}; lo más importante para nosotros {3}. Créame una división del presupuesto que proteja lo más importante, un calendario de tareas mes a mes hasta la boda, y las primeras 5 cosas para reservar o decidir. Señala los costos que las parejas suelen olvidar."}},
+general:{en:{name:"📋 Any planner — coach me on my goal",qs:["What do you want to get organized or achieve?","Describe your situation in one or two sentences.","What timeframe are you working with?","What is your biggest obstacle right now?"],
+tpl:"Act as my personal coach. My goal: {0}. My situation: {1}. My timeframe: {2}. My biggest obstacle: {3}. Ask me anything you still need, then give me a simple step-by-step plan for the first 7 days, a way to track progress on paper, and a weekly check-in I can paste back to you."},
+es:{name:"📋 Cualquier planificador — guíame en mi meta",qs:["¿Qué quieres organizar o lograr?","Describe tu situación en una o dos frases.","¿Con qué plazo cuentas?","¿Cuál es tu mayor obstáculo ahora?"],
+tpl:"Actúa como mi coach personal. Mi meta: {0}. Mi situación: {1}. Mi plazo: {2}. Mi mayor obstáculo: {3}. Pregúntame lo que aún necesites, luego dame un plan simple paso a paso para los primeros 7 días, una forma de llevar el progreso en papel, y un control semanal que pueda pegarte."}}
+};
+function applyLang(){
+  var s=STR[LANG];
+  document.querySelectorAll('[data-t]').forEach(function(el){var k=el.getAttribute('data-t'); if(s[k]) el.innerHTML=s[k];});
+  document.getElementById('langBtn').textContent=(LANG==='en')?'Español':'English';
+  var sel=document.getElementById('topic'); var cur=sel.value||'debt'; sel.innerHTML='';
+  Object.keys(TOPICS).forEach(function(key){var o=document.createElement('option');o.value=key;o.textContent=TOPICS[key][LANG].name;sel.appendChild(o);});
+  sel.value=cur; renderQuestions();
+}
+function toggleLang(){LANG=(LANG==='en')?'es':'en'; document.documentElement.lang=LANG; applyLang();}
+function renderQuestions(){
+  var key=document.getElementById('topic').value||'debt';
+  var qs=TOPICS[key][LANG].qs; var wrap=document.getElementById('questions'); wrap.innerHTML='';
+  qs.forEach(function(q,i){var l=document.createElement('label');l.textContent=q;var inp=document.createElement('input');inp.id='q'+i;inp.type='text';wrap.appendChild(l);wrap.appendChild(inp);});
+}
+function buildPrompt(){
+  var key=document.getElementById('topic').value||'debt';
+  var t=TOPICS[key][LANG]; var out=t.tpl;
+  t.qs.forEach(function(q,i){var v=document.getElementById('q'+i).value.trim()||'—'; out=out.split('{'+i+'}').join(v);});
+  document.getElementById('output').value=out;
+  document.getElementById('chatgptLink').href='https://chatgpt.com/?q='+encodeURIComponent(out);
+  document.getElementById('outWrap').classList.remove('hidden');
+  document.getElementById('outWrap').scrollIntoView({behavior:'smooth'});
+}
+function copyPrompt(){
+  var ta=document.getElementById('output'); ta.select();
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(ta.value);}
+  else{document.execCommand('copy');}
+  var b=event.target; var old=b.textContent; b.textContent=STR[LANG].copied; setTimeout(function(){b.textContent=old;},1600);
+}
+applyLang();
+</script>
+</body>
+</html>
