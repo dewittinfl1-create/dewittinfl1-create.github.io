@@ -4640,7 +4640,7 @@ function renderStrip(){ var st=document.getElementById("aaStrip"); if(!st) retur
     : '<span class="aa-strip-txt">⭐ <b>All-Access Pass</b> · $67 · Every download in the shop · unlimited · 7-day link</span><span class="aa-strip-cta">Get the pass ›</span>'); }
 function buildAA(){ if(document.getElementById("aaStrip")) return;
   var strip=document.createElement("a"); strip.id="aaStrip"; strip.href="#/all-access";
-  var header=document.querySelector("header.site"); if(header) header.after(strip); renderStrip();
+  var gs=document.querySelector(".gsearch"); var header=document.querySelector("header.site"); if(gs) gs.after(strip); else if(header) header.after(strip); renderStrip(); /* Nov 14, 2026 (Chris): search sits directly under the DeWitt heading; the Pass strip goes below the search. */
   if(!document.getElementById("allAccess")){
     var sec=document.createElement("section"); sec.id="allAccess"; sec.setAttribute("data-view","all-access");
     sec.innerHTML='<div class="wrap" style="padding-top:22px;padding-bottom:26px">'
