@@ -1,0 +1,17 @@
+name: Swap final8 to index
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  swap:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Swap merged-index-final8.html to index.html
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git mv -f merged-index-final8.html index.html
+          git commit -m "Deploy merged-index-final8 as index.html (54 services correction)"
+          git push
