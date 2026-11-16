@@ -41,8 +41,8 @@
   --bg:#F7FAFF; --bg2:#EAF1FB; --surface:#FFFFFF; --surface2:#F2F7FF;
   --ink:#1E2A3A; --muted:#5B6B82; --line:#DCE6F2;
   --teal:#1D6FE0; --teal-dark:#1559B8; --navy:#1D6FE0; --navy2:#2B83F0;
-  --amber:#F59E0B; --amber-bg:#FEF3C7; --price:#E05B21; --gold:#FFC53D; --burgundy:#E0497B;
-  --coral:#FF6B57; --mint:#0DB5A6; --sun:#FFC53D;
+  --amber:#2F7DE1; --amber-bg:#FEF3C7; --price:#E05B21; --gold:#7FB8F0; --burgundy:#E0497B;
+  --coral:#FF6B57; --mint:#2F7DE1; --sun:#7FB8F0;
   --radius:16px; --radius-lg:22px;
   --shadow:0 2px 10px rgba(30,42,58,.06),0 10px 30px rgba(30,42,58,.05);
 }
@@ -51,7 +51,7 @@
     --bg:#0E1622; --bg2:#14202F; --surface:#182635; --surface2:#1D2D40;
     --ink:#EDF3FA; --muted:#9FB0C3; --line:#2A3D55;
     --teal:#5EA8FF; --teal-dark:#9CC8FF; --navy:#12325E; --navy2:#1D4E89;
-    --amber:#FFC53D; --amber-bg:#3A2E12; --price:#FFB59A; --gold:#FFC53D; --burgundy:#F28BB0;
+    --amber:#7FB8F0; --amber-bg:#3A2E12; --price:#FFB59A; --gold:#7FB8F0; --burgundy:#F28BB0;
     --shadow:0 2px 10px rgba(0,0,0,.35),0 10px 30px rgba(0,0,0,.3);
   }
 }
@@ -68,7 +68,7 @@ img{max-width:100%}
 .topbar a{color:#D6E9FB;font-weight:700;text-decoration:none}
 .topbar a:hover{text-decoration:underline}
 .topbar .tb-left{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center}
-.tb-badge{background:linear-gradient(135deg,#F8E08E 0%,#F0C75E 55%,#DFAE3E 100%);color:#0B3C6C;font-weight:700;font-size:1rem;letter-spacing:.01em;text-transform:none;line-height:1.35;padding:10px 18px;border-radius:14px;border:1px solid #C79A2E;box-shadow:0 2px 10px rgba(0,0,0,.28);display:inline-block}
+.tb-badge{background:linear-gradient(135deg,#F8E08E 0%,#BFDDF7 55%,#9CCBF5 100%);color:#0B3C6C;font-weight:700;font-size:1rem;letter-spacing:.01em;text-transform:none;line-height:1.35;padding:10px 18px;border-radius:14px;border:1px solid #7FB8F0;box-shadow:0 2px 10px rgba(0,0,0,.28);display:inline-block}
 /* header */
 header.site{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 header.site .wrap{display:flex;align-items:center;gap:16px;padding-top:12px;padding-bottom:12px}
@@ -81,7 +81,7 @@ nav.main a:hover{background:var(--bg2)}
 .btn{display:inline-flex;align-items:center;gap:8px;border:0;cursor:pointer;text-decoration:none;font-weight:700;border-radius:999px;padding:12px 20px;font-size:.98rem;font-family:inherit}
 .btn-primary{background:var(--teal);color:#fff}
 .btn-primary:hover{background:var(--teal-dark);color:#fff}
-@media (prefers-color-scheme: dark){.btn-primary{color:#081511}}
+@media (prefers-color-scheme: dark){.btn-primary{color:#0A1622}}
 .btn-gold{background:#FF6B57;color:#fff}
 .btn-gold:hover{background:#FF826E;color:#fff}
 .btn-outline{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
@@ -90,7 +90,7 @@ nav.main a:hover{background:var(--bg2)}
 .lang-toggle span{font-size:.72rem;font-weight:700;color:var(--muted);padding:0 4px 0 7px}
 .lang-toggle button{border:0;background:transparent;color:var(--muted);font:inherit;font-weight:800;font-size:.84rem;padding:6px 12px;border-radius:999px;cursor:pointer;letter-spacing:.02em}
 .lang-toggle button[aria-pressed="true"]{background:var(--navy);color:#fff}
-@media (prefers-color-scheme: dark){.lang-toggle button[aria-pressed="true"]{background:var(--teal);color:#081511}}
+@media (prefers-color-scheme: dark){.lang-toggle button[aria-pressed="true"]{background:var(--teal);color:#0A1622}}
 @media(max-width:820px){header.site .wrap{flex-wrap:wrap}.lang-toggle{margin-left:auto}}
 /* hero */
 .hero{background:#DBEAFE;color:#1E2A3A;overflow:hidden}
@@ -177,7 +177,7 @@ select.sort{font:inherit;font-weight:600;color:var(--ink);background:var(--surfa
 .cover-art{color:#fff;padding:14px 16px 12px;min-height:158px;display:flex;flex-direction:column;position:relative}
 .cover-art::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.22) 1.6px,transparent 1.7px);background-size:18px 18px;pointer-events:none}
 .cover-art .ca-top{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:.66rem;font-weight:800;letter-spacing:.11em;text-transform:uppercase;opacity:.92}
-.cover-art .ca-price{background:rgba(255,255,255,.94);color:#1C2321;border-radius:999px;padding:3px 10px;font-family:"Nunito",sans-serif;font-size:.86rem;letter-spacing:0}
+.cover-art .ca-price{background:rgba(255,255,255,.94);color:#1A2430;border-radius:999px;padding:3px 10px;font-family:"Nunito",sans-serif;font-size:.86rem;letter-spacing:0}
 .cover-art .ca-icon{font-size:2rem;line-height:1;margin-top:12px}
 .cover-art .ca-title{font-family:"Nunito",sans-serif;font-weight:800;font-size:1.04rem;line-height:1.22;margin-top:6px;max-width:22ch}
 .cover-art .ca-foot{margin-top:auto;padding-top:10px;font-size:.72rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;opacity:.9}
@@ -201,7 +201,7 @@ select.sort{font:inherit;font-weight:600;color:var(--ink);background:var(--surfa
 .card .buy{font-weight:700;font-size:.9rem;text-decoration:none;background:var(--teal);color:#fff;padding:8px 14px;border-radius:999px;white-space:nowrap}
 .cs-badge{display:inline-block;font-weight:700;font-size:.82rem;line-height:1.25;background:#FBF3D9;color:#7A5B00;padding:8px 10px;border-radius:999px;border:1.5px dashed #7FB8F0;max-width:100%;box-sizing:border-box;text-align:center;overflow-wrap:break-word}
 .card .foot .cs-badge{flex:1;text-align:center}
-@media (prefers-color-scheme: dark){.card .buy{color:#081511}}
+@media (prefers-color-scheme: dark){.card .buy{color:#0A1622}}
 .card .buy:hover{opacity:.88}
 .lang-pair{display:flex;gap:6px}
 .card .foot .lang-pair{flex:1}
@@ -362,7 +362,7 @@ footer p{color:var(--muted);font-size:.9rem;margin:0}
 .trust-strip p{margin:0;font-size:.98rem}
 .trust-strip .t-ic{font-size:1.3rem;line-height:1}
 p.trust-strip{display:block}
-.finder-card{background:linear-gradient(135deg,#0F4C81,#1E6B3C);border-color:#0F4C81;color:#fff}
+.finder-card{background:linear-gradient(135deg,#0F4C81,#146EB4);border-color:#0F4C81;color:#fff}
 .finder-card h3{color:#fff}
 .finder-card p{color:rgba(255,255,255,.9)}
 .finder-card .chip{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.35);color:#fff}
@@ -377,7 +377,7 @@ p.trust-strip{display:block}
 /* Standalone build: every card shows the item's real photo, large. */
 .card-photo{position:relative;background:var(--bg2)}
 .card-photo img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}
-.card-photo .cp-price{position:absolute;top:10px;right:10px;background:rgba(255,255,255,.95);color:#1C2321;border-radius:999px;padding:3px 11px;font-family:"Nunito",sans-serif;font-weight:800;font-size:.9rem;box-shadow:0 1px 4px rgba(0,0,0,.18)}
+.card-photo .cp-price{position:absolute;top:10px;right:10px;background:rgba(255,255,255,.95);color:#1A2430;border-radius:999px;padding:3px 11px;font-family:"Nunito",sans-serif;font-weight:800;font-size:.9rem;box-shadow:0 1px 4px rgba(0,0,0,.18)}
 .feat-photo{background:var(--bg2)}
 .feat-photo img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
 .s-item img.s-photo{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:8px;margin-bottom:8px;display:block}
@@ -584,7 +584,7 @@ body.scrolled header.site .brand,body.scrolled header.site .lang-toggle,body.scr
 .mf-shelf-h{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
 .mf-shelf-h h3{margin:0}
 .mf-viewall{background:none;border:0;color:#2F7DE1;font:inherit;font-weight:800;font-size:.85rem;cursor:pointer;padding:8px 2px;white-space:nowrap;min-height:44px}
-.mf-dealtag{display:inline-block;background:#1E7A34;color:#fff;font-size:.72rem;font-weight:800;border-radius:999px;padding:3px 9px;margin:8px 0 2px 10px;letter-spacing:.02em}
+.mf-dealtag{display:inline-block;background:#1D6FE0;color:#fff;font-size:.72rem;font-weight:800;border-radius:999px;padding:3px 9px;margin:8px 0 2px 10px;letter-spacing:.02em}
 @media(max-width:820px){[data-view="services"] .svc-grid{grid-template-columns:1fr!important}}
 </style>
 
@@ -627,7 +627,7 @@ header.site{background:var(--surface);border-bottom:1px solid var(--line)}
 .mf-viewall,.dl-catlink,.svc-catlink{color:#146EB4!important}
 .mf-strip-b.on,.mf-fchip.on,.mf-dlchip.on{background:#146EB4!important;border-color:#146EB4!important;color:#fff!important}
 .mf-dlchip.back{background:#1F2937!important;border-color:#1F2937!important;color:#fff!important}
-#affiliates .aff-hero,#affiliates .aff-banner{background:#FBF6E3!important;color:var(--ink)!important;border:1.5px solid #D9BE5C!important;box-shadow:none!important}
+#affiliates .aff-hero,#affiliates .aff-banner{background:#FBF6E3!important;color:var(--ink)!important;border:1.5px solid #BFDDF7!important;box-shadow:none!important}
 footer{background:var(--surface)}
 @media (prefers-color-scheme: dark){
 :root{--bg:#10141A;--bg2:#171D26;--surface:#1B222C;--ink:#E8EDF3;--muted:#A7B3C0;--line:#333D49;--teal:#4FA3E3;--teal-dark:#8FC3F0}
@@ -850,7 +850,7 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
     <div class="season-banner" id="seasonBanner" style="background:#E8590C;max-width:1180px;margin:8px auto 0;border-radius:12px 12px 0 0">
   <div class="wrap"><span id="seasonBannerText">🦃 <strong>Thanksgiving is coming</strong> — hosting packs, baking planners and recipe keepers for the big day.</span><a href="#/shop" id="seasonBannerLink">Shop Thanksgiving picks ↓</a></div>
 </div>
-    <div id="trustbar" data-i18n-html="trustbar.line" style="background:#123524;color:#eaf5ec;text-align:center;padding:8px 12px;font-size:.9rem;line-height:1.35;max-width:1180px;margin:0 auto;border-radius:0 0 12px 12px">🔒 <b>Secure checkout</b> through Beacons &amp; Stripe · ⚡ <b>Instant delivery</b> by email · 🛡️ Problems? We <b>fix it or replace it free</b> · ✉️ dewitt3089@hotmail.com</div>
+    <div id="trustbar" data-i18n-html="trustbar.line" style="background:#0B3C6C;color:#E8F1FA;text-align:center;padding:8px 12px;font-size:.9rem;line-height:1.35;max-width:1180px;margin:0 auto;border-radius:0 0 12px 12px">🔒 <b>Secure checkout</b> through Beacons &amp; Stripe · ⚡ <b>Instant delivery</b> by email · 🛡️ Problems? We <b>fix it or replace it free</b> · ✉️ dewitt3089@hotmail.com</div>
   <!-- AFFILIATES BANNER -->
   <div id="affBanner" style="max-width:1180px;margin:18px auto 0;padding:0 18px">
     <div style="background:linear-gradient(135deg,#8FC3F5,#4A90D9);border-radius:14px;padding:16px 20px;text-align:center;color:#0B3C6C;box-shadow:0 4px 16px rgba(212,175,55,.35)">
@@ -906,7 +906,7 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
     <!-- GROUP LICENCES STRIP (added 2026-11-06) -->
     <section id="licencesStrip" style="background:#0F4C81;border-radius:22px;padding:22px 20px;margin:18px 0;color:#fff">
       <h2 style="color:#fff;font-size:1.35rem;margin:0 0 2px" data-i18n="lic.title">🏫 Group licences for organizations</h2>
-      <p style="margin:0 0 14px;color:#EAF3E8;font-size:.95rem" data-i18n="lic.sub">One licence covers your whole group — print the pack once and share it with your families, students, patients or members for a full year.</p>
+      <p style="margin:0 0 14px;color:#E8F1FA;font-size:.95rem" data-i18n="lic.sub">One licence covers your whole group — print the pack once and share it with your families, students, patients or members for a full year.</p>
       <div style="display:flex;flex-wrap:wrap;gap:10px">
         <a href="licences/" data-i18n="lic.schools" style="background:#8FC3F5;color:#0B3C6C;font-weight:800;text-decoration:none;padding:11px 18px;border-radius:999px">Schools →</a>
         <a href="licences/daycares.html" data-i18n="lic.daycares" style="background:#8FC3F5;color:#0B3C6C;font-weight:800;text-decoration:none;padding:11px 18px;border-radius:999px">Daycares &amp; Preschools →</a>
@@ -918,7 +918,7 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
     </section>
     <section id="freeTools" style="background:#0F4C81;border-radius:22px;padding:22px 20px;margin:18px 0;color:#fff">
       <h2 style="color:#fff;font-size:1.35rem;margin:0 0 6px" data-i18n="tools.title">🧮 Free tools — no sign-up, no cost</h2>
-      <p style="margin:0 0 14px;color:#EAF3E8" data-i18n="tools.sub">Two calculators that run right on your phone. Your numbers never leave your device.</p>
+      <p style="margin:0 0 14px;color:#E8F1FA" data-i18n="tools.sub">Two calculators that run right on your phone. Your numbers never leave your device.</p>
       <div style="display:flex;flex-wrap:wrap;gap:10px">
         <a href="tools/debt-payoff-calculator.html" style="background:#8FC3F5;color:#0B3C6C;font-weight:800;text-decoration:none;padding:11px 18px;border-radius:999px" data-i18n="tools.debt">💳 Debt Payoff Calculator →</a>
         <a href="tools/budget-calculator.html" style="background:#8FC3F5;color:#0B3C6C;font-weight:800;text-decoration:none;padding:11px 18px;border-radius:999px" data-i18n="tools.budget">💰 Monthly Budget Calculator →</a>
@@ -997,7 +997,7 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
       <h2 data-i18n="why.title">What you get with every download</h2>
       <div style="background:#0B3C6C;border:1.5px solid #8FC3F5;border-radius:14px;padding:16px 18px;margin-top:14px;color:#FFF9EB">
         <b style="font-size:1.12rem">🤖 <span data-i18n="why.aiT">AI coach built into every download</span></b>
-        <p data-i18n="why.aiX" style="margin:6px 0 0;color:#E9F5EC">Every download includes a ready-made AI coach that teaches you how to use your planner for your situation — plus step-by-step instructions and an AI prompt kit. You never write a prompt: tap the link, answer its questions, and it walks you through setup and check-ins.</p>
+        <p data-i18n="why.aiX" style="margin:6px 0 0;color:#EAF2FA">Every download includes a ready-made AI coach that teaches you how to use your planner for your situation — plus step-by-step instructions and an AI prompt kit. You never write a prompt: tap the link, answer its questions, and it walks you through setup and check-ins.</p>
         <p style="margin:12px 0 0"><a href="coach.html" data-i18n="why.aiTry" style="display:inline-block;background:#8FC3F5;color:#0B3C6C;font-weight:700;border-radius:999px;padding:9px 18px;text-decoration:none">🧪 Try the free AI coach — build your prompt →</a></p>
       </div>
       <div class="hf-grid5">
@@ -1038,13 +1038,13 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
     </div>
 
     <!-- TOP PICKS -->
-    <style id="home-svc-css">#homeServices .hs-row{display:flex;gap:12px;overflow-x:auto;padding:8px 2px 14px;scrollbar-width:none}#homeServices .hs-row::-webkit-scrollbar{display:none}#homeServices .hs-card{flex:0 0 62%;max-width:62%;background:var(--surface,#fff);border-radius:14px;padding:14px;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:6px;box-shadow:0 1px 4px rgba(20,30,60,.14)}@media(min-width:821px){#homeServices .hs-card{flex-basis:23%;max-width:23%}}#homeServices .hs-ic{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px}#homeServices .hs-t{font-weight:800;line-height:1.25}#homeServices .hs-f{color:var(--muted,#555);font-size:.9rem;line-height:1.35}#homeServices .hs-p{font-weight:900;color:#166534}#homeServices .hs-all{justify-content:center;border:2px dashed #8FC3F5}#services .dir-link{font-weight:700;margin-right:8px}</style>
+    <style id="home-svc-css">#homeServices .hs-row{display:flex;gap:12px;overflow-x:auto;padding:8px 2px 14px;scrollbar-width:none}#homeServices .hs-row::-webkit-scrollbar{display:none}#homeServices .hs-card{flex:0 0 62%;max-width:62%;background:var(--surface,#fff);border-radius:14px;padding:14px;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:6px;box-shadow:0 1px 4px rgba(20,30,60,.14)}@media(min-width:821px){#homeServices .hs-card{flex-basis:23%;max-width:23%}}#homeServices .hs-ic{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px}#homeServices .hs-t{font-weight:800;line-height:1.25}#homeServices .hs-f{color:var(--muted,#555);font-size:.9rem;line-height:1.35}#homeServices .hs-p{font-weight:900;color:#0F4C81}#homeServices .hs-all{justify-content:center;border:2px dashed #8FC3F5}#services .dir-link{font-weight:700;margin-right:8px}</style>
   <section id="homeServices" data-view="home" style="padding-top:30px">
     <div class="wrap">
       <p class="kicker" data-i18n="home2.svc.kicker">Done for you</p>
       <h2 data-i18n="home2.svc.title">Services — we do the work</h2>
       <p data-i18n="home2.svc.sub">53 services in English &amp; Spanish: translation, business growth, media, paperwork and more — ordered here, delivered by email.</p>
-      <div class="hs-row"><a class="hs-card" data-route-link="services" href="#/services"><span class="hs-ic" style="background:#166534">🤝</span><span class="hs-t" data-i18n="svc.retainer.title">Bilingual Business Retainer</span><span class="hs-f" data-i18n="svc.retainer.foot">Monthly · Posts, menus & updates in EN + ES</span><span class="hs-p">$99</span></a><a class="hs-card" data-route-link="services" href="#/services"><span class="hs-ic" style="background:#146EB4">⭐</span><span class="hs-t" data-i18n="svc.reviews.title">Review Replies — English & Spanish</span><span class="hs-f" data-i18n="svc.reviews.foot">Monthly · Every review answered in a day</span><span class="hs-p">$49</span></a><a class="hs-card" data-route-link="services" href="#/services"><span class="hs-ic" style="background:#2F7DE1">💬</span><span class="hs-t" data-i18n="svc.aichat.title">AI Chat Widget Setup — Bilingual</span><span class="hs-f" data-i18n="svc.aichat.foot">One-time setup · Answers day & night</span><span class="hs-p">$60</span></a><a class="hs-card" data-route-link="services" href="#/services"><span class="hs-ic" style="background:#2563EB">📍</span><span class="hs-t" data-i18n="svc.gbptuneup.title">Google Business Profile Tune-Up</span><span class="hs-f" data-i18n="svc.gbptuneup.foot">One-time · Categories, services, photos & more</span><span class="hs-p">$40</span></a><a class="hs-card hs-all" data-route-link="services" href="#/services"><span class="hs-t" data-i18n="home2.svc.all">See all 53 services →</span></a></div>
+      <div class="hs-row"><a class="hs-card" data-route-link="services" href="#/services"><span class="hs-ic" style="background:#0F4C81">🤝</span><span class="hs-t" data-i18n="svc.retainer.title">Bilingual Business Retainer</span><span class="hs-f" data-i18n="svc.retainer.foot">Monthly · Posts, menus & updates in EN + ES</span><span class="hs-p">$99</span></a><a class="hs-card" data-route-link="services" href="#/services"><span class="hs-ic" style="background:#146EB4">⭐</span><span class="hs-t" data-i18n="svc.reviews.title">Review Replies — English & Spanish</span><span class="hs-f" data-i18n="svc.reviews.foot">Monthly · Every review answered in a day</span><span class="hs-p">$49</span></a><a class="hs-card" data-route-link="services" href="#/services"><span class="hs-ic" style="background:#2F7DE1">💬</span><span class="hs-t" data-i18n="svc.aichat.title">AI Chat Widget Setup — Bilingual</span><span class="hs-f" data-i18n="svc.aichat.foot">One-time setup · Answers day & night</span><span class="hs-p">$60</span></a><a class="hs-card" data-route-link="services" href="#/services"><span class="hs-ic" style="background:#2563EB">📍</span><span class="hs-t" data-i18n="svc.gbptuneup.title">Google Business Profile Tune-Up</span><span class="hs-f" data-i18n="svc.gbptuneup.foot">One-time · Categories, services, photos & more</span><span class="hs-p">$40</span></a><a class="hs-card hs-all" data-route-link="services" href="#/services"><span class="hs-t" data-i18n="home2.svc.all">See all 53 services →</span></a></div>
     </div>
   </section>
   <section id="top-picks">
@@ -1073,19 +1073,19 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
 
     <!-- WHAT IS A DOWNLOAD - BIG BAND -->
     <section id="what-downloads">
-      <div style="background:linear-gradient(135deg,#0F4C81,#1B6B3C);border:4px solid #8FC3F5;border-radius:22px;padding:36px 30px;color:#fff;box-shadow:0 18px 40px rgba(20,83,45,.35)">
+      <div style="background:linear-gradient(135deg,#0F4C81,#146EB4);border:4px solid #8FC3F5;border-radius:22px;padding:36px 30px;color:#fff;box-shadow:0 18px 40px rgba(20,83,45,.35)">
         <p class="kicker" data-i18n="wd.kicker" style="color:#BFDDF7;font-size:.98rem">👋 NEW HERE? READ THIS FIRST — IT TAKES 10 SECONDS</p>
         <h2 data-i18n="wd.title" style="font-size:2.4rem;line-height:1.1;margin:0 0 14px;color:#fff">What is a download? It's simple.</h2>
         <p data-i18n="wd.desc" style="font-size:1.3rem;line-height:1.5;margin:0 0 26px;max-width:62ch">A download is a planner, checklist or guide that comes to you as a file on your phone or computer — NOT in the mail. You print it at home, or just use it on your phone.</p>
         <div style="display:flex;flex-wrap:wrap;gap:16px">
-          <div style="flex:1 1 230px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.25);border-radius:16px;padding:20px 18px"><div style="font-size:2.6rem;font-weight:900;color:#BFDDF7;line-height:1">1</div><b data-i18n="wd.s1t" style="display:block;font-size:1.15rem;margin:10px 0 6px">PICK IT</b><p data-i18n="wd.s1x" style="margin:0;font-size:1.02rem;line-height:1.45;color:#EAF5EE">Choose any planner, checklist or guide below.</p></div>
-          <div style="flex:1 1 230px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.25);border-radius:16px;padding:20px 18px"><div style="font-size:2.6rem;font-weight:900;color:#BFDDF7;line-height:1">2</div><b data-i18n="wd.s2t" style="display:block;font-size:1.15rem;margin:10px 0 6px">PAY SAFELY</b><p data-i18n="wd.s2x" style="margin:0;font-size:1.02rem;line-height:1.45;color:#EAF5EE">Check out in seconds — safe and secure.</p></div>
-          <div style="flex:1 1 230px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.25);border-radius:16px;padding:20px 18px"><div style="font-size:2.6rem;font-weight:900;color:#BFDDF7;line-height:1">3</div><b data-i18n="wd.s3t" style="display:block;font-size:1.15rem;margin:10px 0 6px">IT LANDS IN YOUR EMAIL</b><p data-i18n="wd.s3x" style="margin:0;font-size:1.02rem;line-height:1.45;color:#EAF5EE">The file arrives right away. Nothing is mailed to your house.</p></div>
-          <div style="flex:1 1 230px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.25);border-radius:16px;padding:20px 18px"><div style="font-size:2.6rem;font-weight:900;color:#BFDDF7;line-height:1">4</div><b data-i18n="wd.s4t" style="display:block;font-size:1.15rem;margin:10px 0 6px">PRINT IT — OR USE IT ON YOUR PHONE</b><p data-i18n="wd.s4x" style="margin:0;font-size:1.02rem;line-height:1.45;color:#EAF5EE">Print the pages you need. Print more copies anytime. It's yours forever.</p></div>
+          <div style="flex:1 1 230px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.25);border-radius:16px;padding:20px 18px"><div style="font-size:2.6rem;font-weight:900;color:#BFDDF7;line-height:1">1</div><b data-i18n="wd.s1t" style="display:block;font-size:1.15rem;margin:10px 0 6px">PICK IT</b><p data-i18n="wd.s1x" style="margin:0;font-size:1.02rem;line-height:1.45;color:#E8F1FA">Choose any planner, checklist or guide below.</p></div>
+          <div style="flex:1 1 230px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.25);border-radius:16px;padding:20px 18px"><div style="font-size:2.6rem;font-weight:900;color:#BFDDF7;line-height:1">2</div><b data-i18n="wd.s2t" style="display:block;font-size:1.15rem;margin:10px 0 6px">PAY SAFELY</b><p data-i18n="wd.s2x" style="margin:0;font-size:1.02rem;line-height:1.45;color:#E8F1FA">Check out in seconds — safe and secure.</p></div>
+          <div style="flex:1 1 230px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.25);border-radius:16px;padding:20px 18px"><div style="font-size:2.6rem;font-weight:900;color:#BFDDF7;line-height:1">3</div><b data-i18n="wd.s3t" style="display:block;font-size:1.15rem;margin:10px 0 6px">IT LANDS IN YOUR EMAIL</b><p data-i18n="wd.s3x" style="margin:0;font-size:1.02rem;line-height:1.45;color:#E8F1FA">The file arrives right away. Nothing is mailed to your house.</p></div>
+          <div style="flex:1 1 230px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.25);border-radius:16px;padding:20px 18px"><div style="font-size:2.6rem;font-weight:900;color:#BFDDF7;line-height:1">4</div><b data-i18n="wd.s4t" style="display:block;font-size:1.15rem;margin:10px 0 6px">PRINT IT — OR USE IT ON YOUR PHONE</b><p data-i18n="wd.s4x" style="margin:0;font-size:1.02rem;line-height:1.45;color:#E8F1FA">Print the pages you need. Print more copies anytime. It's yours forever.</p></div>
         </div>
-        <p data-i18n="wd.math" style="background:#8FC3F5;color:#20301F;font-weight:700;font-size:1.12rem;line-height:1.5;border-radius:14px;padding:16px 20px;margin:22px 0 0">🧮 THINK OF THEM AS A CALCULATOR — AN INCREDIBLY ADVANCED ONE: the spreadsheet ones add everything up by themselves — budgets, debt payoff, mileage, health numbers. You type the numbers once; they do all the calculating and show you the answer. The print ones keep you on track with boxes to check and lines to write on.</p>
+        <p data-i18n="wd.math" style="background:#8FC3F5;color:#0B3C6C;font-weight:700;font-size:1.12rem;line-height:1.5;border-radius:14px;padding:16px 20px;margin:22px 0 0">🧮 THINK OF THEM AS A CALCULATOR — AN INCREDIBLY ADVANCED ONE: the spreadsheet ones add everything up by themselves — budgets, debt payoff, mileage, health numbers. You type the numbers once; they do all the calculating and show you the answer. The print ones keep you on track with boxes to check and lines to write on.</p>
         <p data-i18n="wd.value" style="background:#fff;color:#0F4C81;font-weight:700;font-size:1.12rem;line-height:1.5;border-radius:14px;padding:16px 20px;margin:14px 0 0">⭐ NOT JUST A SHEET OF PAPER: these work back for you. Put your numbers in and they show you where your money went, what you still owe, and when you'll be out of debt. They keep your bills, your health, your parties and your workdays organized — you stop guessing and start knowing.</p>
-        <p data-i18n="wd.lang" style="margin:16px 0 0;font-size:1.08rem;color:#EAF5EE">Everything comes in English or Spanish — every card shows its language, so you know exactly what you're getting before you pay.</p>
+        <p data-i18n="wd.lang" style="margin:16px 0 0;font-size:1.08rem;color:#E8F1FA">Everything comes in English or Spanish — every card shows its language, so you know exactly what you're getting before you pay.</p>
         <p data-i18n="wd.saved" style="margin:14px 0 0;font-size:1.08rem;font-weight:700;color:#FFE9A8">🔒 YOUR PURCHASES ARE SAVED: every download is tied to your email. Lose your file next week or next year? Email us and we send it again — free, forever.</p>
         <p data-i18n="aff.3x" style="margin:14px 0 0;font-size:1.08rem;font-weight:700;color:#FFE9A8">💰 EARN BY SHARING: love a download? Share it with your link and earn 40% of every sale you bring in — you get paid automatically. Join free from the gold banner near the top of this page.</p>
       </div>
@@ -1213,7 +1213,7 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
 <h3 class="svc-sub" data-i18n="svc2.feat.title">⭐ Featured for businesses</h3>
 <div class="svc-row svc-feat-row">
 <article class="card svc-card" data-subcat="monthly">
-          <div class="cover-art" style="background:#166534" role="img" aria-label="Christopher DeWitt · Services">
+          <div class="cover-art" style="background:#0F4C81" role="img" aria-label="Christopher DeWitt · Services">
             <div class="ca-top"><span>Christopher DeWitt · Services</span><span class="ca-price">$99</span></div>
             <span class="ca-icon" aria-hidden="true">🤝</span>
             <span class="ca-title" data-i18n="svc.retainer.title">Bilingual Business Retainer</span>
@@ -1227,7 +1227,7 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
               <li><b data-i18n="svc.yousend">You send:</b> <span data-i18n="svc.retainer.send">Your business name and pages — then add us as a Page editor or profile manager. You grant access; we never ask for your password.</span></li>
               <li><b data-i18n="svc.youget">You get:</b> <span data-i18n="svc.retainer.get">Your posts, menus and updates kept current in English and Spanish, all month long — review replies included.</span></li>
             </ul>
-            <div class="foot"><span class="turn" data-i18n="svc.retainer.turn">⏱ Ongoing monthly service</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="retainer" href="https://beacons.ai/christopherdewitt" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
+            <div class="foot"><span class="turn" data-i18n="svc.retainer.turn">⏱ Ongoing monthly service</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="retainer" href="https://shop.beacons.ai/christopherdewitt/7dc48bab-64b7-454d-bbe9-673a5cf8fbf4" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
           </div>
         </article>
 <article class="card svc-card" data-subcat="monthly">
@@ -1245,7 +1245,7 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
               <li><b data-i18n="svc.yousend">You send:</b> <span data-i18n="svc.reviews.send">Manager access to your Google Business Profile and Facebook Page — you add us yourself; never your password.</span></li>
               <li><b data-i18n="svc.youget">You get:</b> <span data-i18n="svc.reviews.get">Every new review answered within a day, in the reviewer's language, in your business's voice.</span></li>
             </ul>
-            <div class="foot"><span class="turn" data-i18n="svc.reviews.turn">⏱ Ongoing monthly service</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="reviews" href="https://beacons.ai/christopherdewitt" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
+            <div class="foot"><span class="turn" data-i18n="svc.reviews.turn">⏱ Ongoing monthly service</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="reviews" href="https://shop.beacons.ai/christopherdewitt/5045f7c9-37e9-40bc-9522-4ad2cee7151b" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
           </div>
         </article>
 <article class="card svc-card" data-subcat="systems">
@@ -1263,7 +1263,7 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
               <li><b data-i18n="svc.yousend">You send:</b> <span data-i18n="svc.aichat.send">Your page or website, plus the questions customers ask you most.</span></li>
               <li><b data-i18n="svc.youget">You get:</b> <span data-i18n="svc.aichat.get">A bilingual chat assistant set up on your page or site, answering customer questions day and night.</span></li>
             </ul>
-            <div class="foot"><span class="turn" data-i18n="svc.aichat.turn">⏱ One-time service</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="aichat" href="https://beacons.ai/christopherdewitt" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
+            <div class="foot"><span class="turn" data-i18n="svc.aichat.turn">⏱ One-time service</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="aichat" href="https://shop.beacons.ai/christopherdewitt/d47dbaa2-b06e-4d3c-ac0f-1e9dd522ec76" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
           </div>
         </article>
 <article class="card svc-card" data-subcat="presence">
@@ -1281,7 +1281,7 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
               <li><b data-i18n="svc.yousend">You send:</b> <span data-i18n="svc.gbptuneup.send">Your business name and a manager invite to your Google profile — you grant access; never your password.</span></li>
               <li><b data-i18n="svc.youget">You get:</b> <span data-i18n="svc.gbptuneup.get">Your Google listing corrected end to end — categories, services, photos, hours and a bilingual description.</span></li>
             </ul>
-            <div class="foot"><span class="turn" data-i18n="svc.gbptuneup.turn">⏱ One-time service</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="gbptuneup" href="https://beacons.ai/christopherdewitt" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
+            <div class="foot"><span class="turn" data-i18n="svc.gbptuneup.turn">⏱ One-time service</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="gbptuneup" href="https://shop.beacons.ai/christopherdewitt/493538ed-81a2-40da-b3fb-bdeabf5b5967" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
           </div>
         </article>
 </div>
@@ -1292,7 +1292,7 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
 <div class="chips-row svc-subchips"><button type="button" class="mf-chip svc-subchip on" data-subfilter="all" data-i18n="svc2.all">All</button><button type="button" class="mf-chip svc-subchip" data-subfilter="monthly" data-i18n="svc2.sub.business.monthly">Monthly care</button><button type="button" class="mf-chip svc-subchip" data-subfilter="presence" data-i18n="svc2.sub.business.presence">Online presence</button><button type="button" class="mf-chip svc-subchip" data-subfilter="storefront" data-i18n="svc2.sub.business.storefront">Storefront & listings</button><button type="button" class="mf-chip svc-subchip" data-subfilter="systems" data-i18n="svc2.sub.business.systems">Systems & automation</button><button type="button" class="mf-chip svc-subchip" data-subfilter="hiring" data-i18n="svc2.sub.business.hiring">Hiring & team</button></div>
 <div class="svc-row">
 <article class="card svc-card" data-subcat="monthly">
-          <div class="cover-art" style="background:#166534" role="img" aria-label="Christopher DeWitt · Services">
+          <div class="cover-art" style="background:#0F4C81" role="img" aria-label="Christopher DeWitt · Services">
             <div class="ca-top"><span>Christopher DeWitt · Services</span><span class="ca-price">$99</span></div>
             <span class="ca-icon" aria-hidden="true">🤝</span>
             <span class="ca-title" data-i18n="svc.retainer.title">Bilingual Business Retainer</span>
@@ -1306,7 +1306,7 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
               <li><b data-i18n="svc.yousend">You send:</b> <span data-i18n="svc.retainer.send">Your business name and pages — then add us as a Page editor or profile manager. You grant access; we never ask for your password.</span></li>
               <li><b data-i18n="svc.youget">You get:</b> <span data-i18n="svc.retainer.get">Your posts, menus and updates kept current in English and Spanish, all month long — review replies included.</span></li>
             </ul>
-            <div class="foot"><span class="turn" data-i18n="svc.retainer.turn">⏱ Ongoing monthly service</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="retainer" href="https://beacons.ai/christopherdewitt" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
+            <div class="foot"><span class="turn" data-i18n="svc.retainer.turn">⏱ Ongoing monthly service</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="retainer" href="https://shop.beacons.ai/christopherdewitt/7dc48bab-64b7-454d-bbe9-673a5cf8fbf4" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
           </div>
         </article>
 <article class="card svc-card" data-subcat="monthly">
@@ -1324,7 +1324,7 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
               <li><b data-i18n="svc.yousend">You send:</b> <span data-i18n="svc.reviews.send">Manager access to your Google Business Profile and Facebook Page — you add us yourself; never your password.</span></li>
               <li><b data-i18n="svc.youget">You get:</b> <span data-i18n="svc.reviews.get">Every new review answered within a day, in the reviewer's language, in your business's voice.</span></li>
             </ul>
-            <div class="foot"><span class="turn" data-i18n="svc.reviews.turn">⏱ Ongoing monthly service</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="reviews" href="https://beacons.ai/christopherdewitt" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
+            <div class="foot"><span class="turn" data-i18n="svc.reviews.turn">⏱ Ongoing monthly service</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="reviews" href="https://shop.beacons.ai/christopherdewitt/5045f7c9-37e9-40bc-9522-4ad2cee7151b" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
           </div>
         </article>
 <article class="card svc-card" data-subcat="presence">
@@ -1342,7 +1342,7 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
               <li><b data-i18n="svc.yousend">You send:</b> <span data-i18n="svc.gbptuneup.send">Your business name and a manager invite to your Google profile — you grant access; never your password.</span></li>
               <li><b data-i18n="svc.youget">You get:</b> <span data-i18n="svc.gbptuneup.get">Your Google listing corrected end to end — categories, services, photos, hours and a bilingual description.</span></li>
             </ul>
-            <div class="foot"><span class="turn" data-i18n="svc.gbptuneup.turn">⏱ One-time service</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="gbptuneup" href="https://beacons.ai/christopherdewitt" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
+            <div class="foot"><span class="turn" data-i18n="svc.gbptuneup.turn">⏱ One-time service</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="gbptuneup" href="https://shop.beacons.ai/christopherdewitt/493538ed-81a2-40da-b3fb-bdeabf5b5967" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
           </div>
         </article>
 <article class="card svc-card" data-subcat="presence">
@@ -1364,7 +1364,7 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
           </div>
         </article>
 <article class="card svc-card" data-subcat="presence">
-          <div class="cover-art" style="background:#0F766E" role="img" aria-label="Christopher DeWitt · Services">
+          <div class="cover-art" style="background:#0F4C81" role="img" aria-label="Christopher DeWitt · Services">
             <div class="ca-top"><span>Christopher DeWitt · Services</span><span class="ca-price">$195</span></div>
             <span class="ca-icon" aria-hidden="true">📈</span>
             <span class="ca-title" data-i18n="svc.seogeo.title">SEO + GEO Fix — Audit + Implementation</span>
@@ -1382,7 +1382,7 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
           </div>
         </article>
 <article class="card svc-card" data-subcat="presence">
-          <div class="cover-art" style="background:#15803D" role="img" aria-label="Christopher DeWitt · Services">
+          <div class="cover-art" style="background:#2F7DE1" role="img" aria-label="Christopher DeWitt · Services">
             <div class="ca-top"><span>Christopher DeWitt · Services</span><span class="ca-price">$45</span></div>
             <span class="ca-icon" aria-hidden="true">📲</span>
             <span class="ca-title" data-i18n="svc.whatsapp.title">WhatsApp Business Setup</span>
@@ -1396,7 +1396,7 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
               <li><b data-i18n="svc.yousend">You send:</b> <span data-i18n="svc.whatsapp.send">Your WhatsApp Business number, plus your services, prices and hours — you confirm the verification code on your own phone; we never ask for your password.</span></li>
               <li><b data-i18n="svc.youget">You get:</b> <span data-i18n="svc.whatsapp.get">Your WhatsApp Business profile fully set up — catalog, greeting, away message and quick replies, all in English and Spanish.</span></li>
             </ul>
-            <div class="foot"><span class="turn" data-i18n="svc.whatsapp.turn">⏱ One-time service</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="whatsapp" href="https://beacons.ai/christopherdewitt" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
+            <div class="foot"><span class="turn" data-i18n="svc.whatsapp.turn">⏱ One-time service</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="whatsapp" href="https://shop.beacons.ai/christopherdewitt/6c2d41b8-2c0f-4e9d-a538-bfced5cc6776" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
           </div>
         </article>
 <article class="card svc-card" data-subcat="presence">
@@ -1414,7 +1414,7 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
               <li><b data-i18n="svc.yousend">You send:</b> <span data-i18n="svc.hubpage.send">Your links, menu, hours and logo or photos — we build the page; you never share any password.</span></li>
               <li><b data-i18n="svc.youget">You get:</b> <span data-i18n="svc.hubpage.get">One clean hub page with all your links, menu, hours and a WhatsApp button — ready to put in your bio and share anywhere.</span></li>
             </ul>
-            <div class="foot"><span class="turn" data-i18n="svc.hubpage.turn">⏱ One-time service</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="hubpage" href="https://beacons.ai/christopherdewitt" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
+            <div class="foot"><span class="turn" data-i18n="svc.hubpage.turn">⏱ One-time service</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="hubpage" href="https://shop.beacons.ai/christopherdewitt/3a7a2da3-9fda-4dad-9cc5-9ec74bc0761b" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
           </div>
         </article>
 <article class="card svc-card" data-subcat="presence">
@@ -1432,11 +1432,11 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
               <li><b data-i18n="svc.yousend">You send:</b> <span data-i18n="svc.sponsored.send">Your business info, photos or a short clip, and what you want promoted — we post from our own pages; you never share any login.</span></li>
               <li><b data-i18n="svc.youget">You get:</b> <span data-i18n="svc.sponsored.get">Your business featured on my Facebook and Instagram in front of 55,000+ local followers — story, post, reel or the bundle, in English and Spanish.</span></li>
             </ul>
-            <div class="foot"><span class="turn" data-i18n="svc.sponsored.turn">⏱ Per placement</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="sponsored" href="https://beacons.ai/christopherdewitt" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
+            <div class="foot"><span class="turn" data-i18n="svc.sponsored.turn">⏱ Per placement</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="sponsored" href="https://shop.beacons.ai/christopherdewitt/4424aa91-b1dd-4af6-854e-91a30ede8a35" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
           </div>
         </article>
 <article class="card svc-card" data-subcat="presence">
-          <div class="cover-art" style="background:#4D7C0F" role="img" aria-label="Christopher DeWitt · Services">
+          <div class="cover-art" style="background:#146EB4" role="img" aria-label="Christopher DeWitt · Services">
             <div class="ca-top"><span>Christopher DeWitt · Services</span><span class="ca-price">$10</span></div>
             <span class="ca-icon" aria-hidden="true">📖</span>
             <span class="ca-title" data-i18n="svc.directory.title">Bilingual Business Directory Listing</span>
@@ -1450,7 +1450,7 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
               <li><b data-i18n="svc.yousend">You send:</b> <span data-i18n="svc.directory.send">Your business name, services, hours and contact info — that's all we need; no accounts, no passwords.</span></li>
               <li><b data-i18n="svc.youget">You get:</b> <span data-i18n="svc.directory.get">Your business listed in our bilingual Pembroke Pines directory — name, services, hours and contact in front of English- and Spanish-speaking customers.</span></li>
             </ul>
-            <div class="foot"><span class="turn" data-i18n="svc.directory.turn">⏱ Ongoing monthly service</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="dir-link" data-route-link="directory" href="#/directory" data-i18n="dir.see">See the directory ›</a> <a class="buy svc-buy" data-service="directory" href="https://beacons.ai/christopherdewitt" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
+            <div class="foot"><span class="turn" data-i18n="svc.directory.turn">⏱ Ongoing monthly service</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="dir-link" data-route-link="directory" href="#/directory" data-i18n="dir.see">See the directory ›</a> <a class="buy svc-buy" data-service="directory" href="https://shop.beacons.ai/christopherdewitt/295f3e1a-5990-4725-a834-5c8468f796d8" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
           </div>
         </article>
 <article class="card svc-card" data-subcat="storefront">
@@ -1504,7 +1504,7 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
               <li><b data-i18n="svc.yousend">You send:</b> <span data-i18n="svc.sellitforyou.send">What you're selling, its condition, and your asking price — plus photos if you have them, or we take them locally.</span></li>
               <li><b data-i18n="svc.youget">You get:</b> <span data-i18n="svc.sellitforyou.get">Your item photographed, listed with a written description, posted, and buyer messages handled — you just do the meetup and collect.</span></li>
             </ul>
-            <div class="foot"><span class="turn" data-i18n="svc.sellitforyou.turn">⏱ One-time service</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="sellitforyou" href="https://beacons.ai/christopherdewitt" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
+            <div class="foot"><span class="turn" data-i18n="svc.sellitforyou.turn">⏱ One-time service</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="sellitforyou" href="https://shop.beacons.ai/christopherdewitt/abb53b07-b8a7-47bf-bd8f-5b1d453697fc" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
           </div>
         </article>
 <article class="card svc-card" data-subcat="systems">
@@ -1558,11 +1558,11 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
               <li><b data-i18n="svc.yousend">You send:</b> <span data-i18n="svc.aichat.send">Your page or website, plus the questions customers ask you most.</span></li>
               <li><b data-i18n="svc.youget">You get:</b> <span data-i18n="svc.aichat.get">A bilingual chat assistant set up on your page or site, answering customer questions day and night.</span></li>
             </ul>
-            <div class="foot"><span class="turn" data-i18n="svc.aichat.turn">⏱ One-time service</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="aichat" href="https://beacons.ai/christopherdewitt" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
+            <div class="foot"><span class="turn" data-i18n="svc.aichat.turn">⏱ One-time service</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="aichat" href="https://shop.beacons.ai/christopherdewitt/d47dbaa2-b06e-4d3c-ac0f-1e9dd522ec76" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
           </div>
         </article>
 <article class="card svc-card" data-subcat="systems">
-          <div class="cover-art" style="background:#0F766E" role="img" aria-label="Christopher DeWitt · Services">
+          <div class="cover-art" style="background:#0F4C81" role="img" aria-label="Christopher DeWitt · Services">
             <div class="ca-top"><span>Christopher DeWitt · Services</span><span class="ca-price">$79</span></div>
             <span class="ca-icon" aria-hidden="true">🤖</span>
             <span class="ca-title" data-i18n="svc.bizai.title">Your Business AI, Set Up For You</span>
@@ -1576,7 +1576,7 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
               <li><b data-i18n="svc.yousend">You send:</b> <span data-i18n="svc.bizai.send">Your business name, services, prices and the questions customers ask you most — everything stays yours; we never ask for your passwords.</span></li>
               <li><b data-i18n="svc.youget">You get:</b> <span data-i18n="svc.bizai.get">A ready-made AI assistant loaded with your business's info and prompts for posts, invoices and customer replies — set up and ready, in English and Spanish.</span></li>
             </ul>
-            <div class="foot"><span class="turn" data-i18n="svc.bizai.turn">⏱ One-time service</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="bizai" href="https://beacons.ai/christopherdewitt" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
+            <div class="foot"><span class="turn" data-i18n="svc.bizai.turn">⏱ One-time service</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="bizai" href="https://shop.beacons.ai/christopherdewitt/725aa49f-ce9f-4eea-9944-41ba132dc641" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
           </div>
         </article>
 <article class="card svc-card" data-subcat="hiring">
@@ -1594,7 +1594,7 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
               <li><b data-i18n="svc.yousend">You send:</b> <span data-i18n="svc.hiringpack.send">The job title, pay range, hours and what you're looking for — everything by email; no accounts or passwords needed.</span></li>
               <li><b data-i18n="svc.youget">You get:</b> <span data-i18n="svc.hiringpack.get">Your job post, hiring flyer and application questions in English and Spanish — reach the whole local workforce, not half of it.</span></li>
             </ul>
-            <div class="foot"><span class="turn" data-i18n="svc.hiringpack.turn">⏱ One-time service</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="hiringpack" href="https://beacons.ai/christopherdewitt" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
+            <div class="foot"><span class="turn" data-i18n="svc.hiringpack.turn">⏱ One-time service</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="hiringpack" href="https://shop.beacons.ai/christopherdewitt/d305d181-49cf-4612-83be-becd2b8f8f39" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
           </div>
         </article>
 </div>
@@ -1691,7 +1691,7 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
               <li><b data-i18n="svc.yousend">You send:</b> <span data-i18n="svc.selleres.send">Your listing text — title, description and tags — pasted into an email or message.</span></li>
               <li><b data-i18n="svc.youget">You get:</b> <span data-i18n="svc.selleres.get">The same listing in natural, selling Spanish — title, description and tags — ready to paste in.</span></li>
             </ul>
-            <div class="foot"><span class="turn" data-i18n="svc.selleres.turn">⏱ Per listing</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="selleres" href="https://beacons.ai/christopherdewitt" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
+            <div class="foot"><span class="turn" data-i18n="svc.selleres.turn">⏱ Per listing</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="selleres" href="https://shop.beacons.ai/christopherdewitt/0c9e6a05-8fd0-497b-af63-b4d3b547c484" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
           </div>
         </article>
 <article class="card svc-card" data-subcat="sellers">
@@ -1709,7 +1709,7 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
               <li><b data-i18n="svc.yousend">You send:</b> <span data-i18n="svc.sellertemplates.send">Your shop name and the platforms you sell on — everything by email; we never log into your seller accounts.</span></li>
               <li><b data-i18n="svc.youget">You get:</b> <span data-i18n="svc.sellertemplates.get">40+ ready-made replies in English and Spanish for shipping delays, returns, refunds and reviews — copy, paste, and answer in seconds.</span></li>
             </ul>
-            <div class="foot"><span class="turn" data-i18n="svc.sellertemplates.turn">⏱ One-time service</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="sellertemplates" href="https://beacons.ai/christopherdewitt" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
+            <div class="foot"><span class="turn" data-i18n="svc.sellertemplates.turn">⏱ One-time service</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="sellertemplates" href="https://shop.beacons.ai/christopherdewitt/9fc05495-428d-4503-a8e8-780e0444c552" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
           </div>
         </article>
 </div>
@@ -1752,7 +1752,7 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
               <li><b data-i18n="svc.yousend">You send:</b> <span data-i18n="svc.launchkit.send">Your business name, logo or photos, and your first raw videos — you confirm account codes on your own phone; we never ask for your passwords.</span></li>
               <li><b data-i18n="svc.youget">You get:</b> <span data-i18n="svc.launchkit.get">Your TikTok and YouTube set up from zero — channels, banners, profiles, and your first videos captioned in English and Spanish.</span></li>
             </ul>
-            <div class="foot"><span class="turn" data-i18n="svc.launchkit.turn">⏱ One-time service</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="launchkit" href="https://beacons.ai/christopherdewitt" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
+            <div class="foot"><span class="turn" data-i18n="svc.launchkit.turn">⏱ One-time service</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="launchkit" href="https://shop.beacons.ai/christopherdewitt/bad2b691-1c71-428d-9eff-22bec08481b2" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
           </div>
         </article>
 <article class="card svc-card" data-subcat="audio">
@@ -1788,7 +1788,7 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
               <li><b data-i18n="svc.yousend">You send:</b> <span data-i18n="svc.voiceover.send">Your script — or just the words you want said — and where the audio will play: video, phone greeting, or both.</span></li>
               <li><b data-i18n="svc.youget">You get:</b> <span data-i18n="svc.voiceover.get">Clean, professional voice audio for your videos and phone greetings, recorded in English and Spanish, ready to use.</span></li>
             </ul>
-            <div class="foot"><span class="turn" data-i18n="svc.voiceover.turn">⏱ Per order</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="voiceover" href="https://beacons.ai/christopherdewitt" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
+            <div class="foot"><span class="turn" data-i18n="svc.voiceover.turn">⏱ Per order</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="voiceover" href="https://shop.beacons.ai/christopherdewitt/c30d9ec0-b017-48ef-bb89-86b3b5859477" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
           </div>
         </article>
 <article class="card svc-card" data-subcat="photo">
@@ -1806,7 +1806,7 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
               <li><b data-i18n="svc.yousend">You send:</b> <span data-i18n="svc.photopolish.send">Up to 10 product photos from your phone, by email or message.</span></li>
               <li><b data-i18n="svc.youget">You get:</b> <span data-i18n="svc.photopolish.get">All 10 photos back — cleaned, brightened and listing-ready for Marketplace, Etsy or your shop.</span></li>
             </ul>
-            <div class="foot"><span class="turn" data-i18n="svc.photopolish.turn">⏱ Per 10 photos</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="photopolish" href="https://beacons.ai/christopherdewitt" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
+            <div class="foot"><span class="turn" data-i18n="svc.photopolish.turn">⏱ Per 10 photos</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="photopolish" href="https://shop.beacons.ai/christopherdewitt/0663a0a0-26da-456b-8159-91285dd90d16" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
           </div>
         </article>
 <article class="card svc-card" data-subcat="social">
@@ -1903,7 +1903,7 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
               <li><b data-i18n="svc.yousend">You send:</b> <span data-i18n="svc.taxintake.send">Your office name, contact info and the documents you ask clients for — everything by email; no accounts or passwords needed.</span></li>
               <li><b data-i18n="svc.youget">You get:</b> <span data-i18n="svc.taxintake.get">Bilingual client intake forms, document checklists and appointment emails in English and Spanish — ready before tax season hits.</span></li>
             </ul>
-            <div class="foot"><span class="turn" data-i18n="svc.taxintake.turn">⏱ One-time service</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="taxintake" href="https://beacons.ai/christopherdewitt" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
+            <div class="foot"><span class="turn" data-i18n="svc.taxintake.turn">⏱ One-time service</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="taxintake" href="https://shop.beacons.ai/christopherdewitt/6e68946a-1a0b-454b-b0a2-a46545f4d3b9" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
           </div>
         </article>
 <article class="card svc-card" data-subcat="forms">
@@ -1921,11 +1921,11 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
               <li><b data-i18n="svc.yousend">You send:</b> <span data-i18n="svc.hoanotices.send">Your association's name and the notices you send most — everything by email; no accounts or passwords needed.</span></li>
               <li><b data-i18n="svc.youget">You get:</b> <span data-i18n="svc.hoanotices.get">Meeting notices, hurricane-prep notices and rule reminders in English and Spanish, ready to post and send.</span></li>
             </ul>
-            <div class="foot"><span class="turn" data-i18n="svc.hoanotices.turn">⏱ One-time service</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="hoanotices" href="https://beacons.ai/christopherdewitt" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
+            <div class="foot"><span class="turn" data-i18n="svc.hoanotices.turn">⏱ One-time service</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="hoanotices" href="https://shop.beacons.ai/christopherdewitt/99f23b7c-d129-46e4-afba-7528fc1c876d" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
           </div>
         </article>
 <article class="card svc-card" data-subcat="cleanup">
-          <div class="cover-art" style="background:#0D9488" role="img" aria-label="Christopher DeWitt · Services">
+          <div class="cover-art" style="background:#146EB4" role="img" aria-label="Christopher DeWitt · Services">
             <div class="ca-top"><span>Christopher DeWitt · Services</span><span class="ca-price">$25</span></div>
             <span class="ca-icon" aria-hidden="true">📊</span>
             <span class="ca-title" data-i18n="svc.dataentry.title">Data Entry & Spreadsheet Cleanup</span>
@@ -1943,7 +1943,7 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
           </div>
         </article>
 <article class="card svc-card" data-subcat="cleanup">
-          <div class="cover-art" style="background:#CA8A04" role="img" aria-label="Christopher DeWitt · Services">
+          <div class="cover-art" style="background:#4A90D9" role="img" aria-label="Christopher DeWitt · Services">
             <div class="ca-top"><span>Christopher DeWitt · Services</span><span class="ca-price">$40</span></div>
             <span class="ca-icon" aria-hidden="true">🧾</span>
             <span class="ca-title" data-i18n="svc.receipts.title">Receipt & Expense Sort-Out</span>
@@ -1961,7 +1961,7 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
           </div>
         </article>
 <article class="card svc-card" data-subcat="cleanup">
-          <div class="cover-art" style="background:#65A30D" role="img" aria-label="Christopher DeWitt · Services">
+          <div class="cover-art" style="background:#2F7DE1" role="img" aria-label="Christopher DeWitt · Services">
             <div class="ca-top"><span>Christopher DeWitt · Services</span><span class="ca-price">$35</span></div>
             <span class="ca-icon" aria-hidden="true">📥</span>
             <span class="ca-title" data-i18n="svc.inboxcleanup.title">Inbox & Files Cleanup Plan</span>
@@ -2090,7 +2090,7 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
               <li><b data-i18n="svc.yousend">You send:</b> <span data-i18n="svc.linkedin.send">Your current LinkedIn text or your resume, plus the jobs or clients you want to attract — pasted in an email or message. We never ask for your LinkedIn password; you paste the finished text in yourself.</span></li>
               <li><b data-i18n="svc.youget">You get:</b> <span data-i18n="svc.linkedin.get">Your headline, summary, and experience rewritten in English and Spanish — professional in both markets, ready to paste into your profile.</span></li>
             </ul>
-            <div class="foot"><span class="turn" data-i18n="svc.linkedin.turn">⏱ One-time service</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="linkedin" href="https://beacons.ai/christopherdewitt" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
+            <div class="foot"><span class="turn" data-i18n="svc.linkedin.turn">⏱ One-time service</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="linkedin" href="https://shop.beacons.ai/christopherdewitt/2229ef5e-8f1b-4892-a1c0-171de093dc85" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
           </div>
         </article>
 <article class="card svc-card" data-subcat="money">
@@ -2126,7 +2126,7 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
               <li><b data-i18n="svc.yousend">You send:</b> <span data-i18n="svc.drivermentor.send">Your start date, your station, and the questions nobody has answered yet — by message or email.</span></li>
               <li><b data-i18n="svc.youget">You get:</b> <span data-i18n="svc.drivermentor.get">A full week of text mentoring from a driver-trainer with six years on the road — route strategy, rescues, inspections, and straight answers when you need them.</span></li>
             </ul>
-            <div class="foot"><span class="turn" data-i18n="svc.drivermentor.turn">⏱ 7 days of mentoring</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="drivermentor" href="https://beacons.ai/christopherdewitt" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
+            <div class="foot"><span class="turn" data-i18n="svc.drivermentor.turn">⏱ 7 days of mentoring</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="drivermentor" href="https://shop.beacons.ai/christopherdewitt/b41be9cb-3e86-4426-869a-62caad13aeba" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
           </div>
         </article>
 </div>
@@ -2216,7 +2216,7 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
 <div class="chips-row svc-subchips"><button type="button" class="mf-chip svc-subchip on" data-subfilter="all" data-i18n="svc2.all">All</button><button type="button" class="mf-chip svc-subchip" data-subfilter="gifts" data-i18n="svc2.sub.personal.gifts">Gifts & cards</button><button type="button" class="mf-chip svc-subchip" data-subfilter="memorial" data-i18n="svc2.sub.personal.memorial">Memorial</button></div>
 <div class="svc-row">
 <article class="card svc-card" data-subcat="gifts">
-          <div class="cover-art" style="background:#1F9D63" role="img" aria-label="Christopher DeWitt · Services">
+          <div class="cover-art" style="background:#2F7DE1" role="img" aria-label="Christopher DeWitt · Services">
             <div class="ca-top"><span>Christopher DeWitt · Services</span><span class="ca-price">$10</span></div>
             <span class="ca-icon" aria-hidden="true">🎁</span>
             <span class="ca-title" data-i18n="svc.giftfinder.title">Personal Gift Finder</span>
@@ -2234,7 +2234,7 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
           </div>
         </article>
 <article class="card svc-card" data-subcat="gifts">
-          <div class="cover-art" style="background:#047857" role="img" aria-label="Christopher DeWitt · Services">
+          <div class="cover-art" style="background:#0F4C81" role="img" aria-label="Christopher DeWitt · Services">
             <div class="ca-top"><span>Christopher DeWitt · Services</span><span class="ca-price">$25</span></div>
             <span class="ca-icon" aria-hidden="true">🎄</span>
             <span class="ca-title" data-i18n="svc.holidaycards.title">Holiday Card Helper — List & Messages Done</span>
@@ -2266,7 +2266,7 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
               <li><b data-i18n="svc.yousend">You send:</b> <span data-i18n="svc.storybook.send">Your child's name, age, and the adventure you want — animals, space, dinosaurs, their favorite things — by email or message.</span></li>
               <li><b data-i18n="svc.youget">You get:</b> <span data-i18n="svc.storybook.get">A personalized storybook starring your child, delivered as a printable PDF — their name and their adventure on every page.</span></li>
             </ul>
-            <div class="foot"><span class="turn" data-i18n="svc.storybook.turn">⏱ One-time service</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="storybook" href="https://beacons.ai/christopherdewitt" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
+            <div class="foot"><span class="turn" data-i18n="svc.storybook.turn">⏱ One-time service</span><!-- New service Nov 15, 2026 — Beacons listing not created yet; interim storefront target, same pattern the original six services used before their listings were wired. --><a class="buy svc-buy" data-service="storybook" href="https://shop.beacons.ai/christopherdewitt/d9906c76-2c02-4a9e-8198-ad81d87e76db" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></div>
           </div>
         </article>
 <article class="card svc-card" data-subcat="memorial">
@@ -2318,7 +2318,7 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
         <article style="background:var(--surface,#fff);border:1px solid var(--line,#e2e2e2);border-radius:14px;padding:16px;border:1.5px solid #8FC3F5">
           <h3 style="margin:0 0 6px;font-size:1.02rem" data-i18n="dir.cta.title">Get listed — $10/month</h3>
           <p style="margin:0 0 8px;color:var(--muted,#555);font-size:.92rem" data-i18n="dir.cta.desc">Your name, services, hours, and contact in front of English- and Spanish-speaking customers.</p>
-          <p style="margin:8px 0 0"><a class="buy svc-buy" data-service="directory" href="https://beacons.ai/christopherdewitt" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></p>
+          <p style="margin:8px 0 0"><a class="buy svc-buy" data-service="directory" href="https://shop.beacons.ai/christopherdewitt/295f3e1a-5990-4725-a834-5c8468f796d8" target="_blank" rel="noopener" data-i18n="svc.buy">Get it now ↗</a></p>
         </article>
       </div>
     </div>
@@ -2349,7 +2349,7 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
     <!-- INTL VIEW IDENTITY (look pass 2026-11-10): every selector scoped to #international; no other view can be affected -->
     <style>
 #international{background:#F5F1E4;padding-top:0!important}
-#international .intl-hero{background:#1B4335;border-top:10px solid #E8B860;padding:30px 0 24px;margin-bottom:22px}
+#international .intl-hero{background:#0B3C6C;border-top:10px solid #9CCBF5;padding:30px 0 24px;margin-bottom:22px}
 #international .intl-globe{font-size:54px;line-height:1.05}
 #international .intl-hero h2{color:#FFF9E8;font-size:1.85rem;line-height:1.18;margin:8px 0}
 #international .intl-hero p{color:#EFE7CB}
@@ -2357,12 +2357,12 @@ header.site .lang-toggle button{min-height:34px;padding:4px 9px;font-size:.8rem}
 #international .intl-flags .fl{font-size:23px;vertical-align:-5px;margin-right:5px}
 #international .intl-flags-cap{font-size:.9rem;margin:4px 0 0}
 #international .intl-pills{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 2px}
-#international .intl-pill{border:1.5px solid #E8B860;border-radius:999px;padding:6px 13px;font-size:.86rem;font-weight:700;line-height:1.3}
-#international .intl-pill.live{background:#E8B860;color:#1B4335}
+#international .intl-pill{border:1.5px solid #9CCBF5;border-radius:999px;padding:6px 13px;font-size:.86rem;font-weight:700;line-height:1.3}
+#international .intl-pill.live{background:#9CCBF5;color:#0B3C6C}
 #international .intl-pill.soon{background:rgba(232,184,96,.08);color:#F5EFDB;border-color:rgba(232,184,96,.6);font-weight:600}
 #international .intl-coming{font-size:.9rem;margin:10px 0 0}
-#international article{border-top:4px solid #E8B860!important;background:#FFFFFF!important;box-shadow:0 1px 5px rgba(27,67,53,.08)}
-#international .wrap>h3{color:#1B4335}
+#international article{border-top:4px solid #9CCBF5!important;background:#FFFFFF!important;box-shadow:0 1px 5px rgba(27,67,53,.08)}
+#international .wrap>h3{color:#0B3C6C}
 #international .wrap>h3::before{content:"🌎 "}
 #international .intl-carousel{display:flex;gap:12px;align-items:stretch;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:8px;scrollbar-width:thin;scrollbar-color:rgba(27,67,53,.35) transparent}
 #international .intl-carousel::-webkit-scrollbar{height:6px}
@@ -2651,10 +2651,10 @@ function applyLanguage(lang){
 var CATS = {
   driver:{label:{en:"Driver & Gig", es:"Conductores y trabajos por encargo"}, icon:"🚐", color:"#2F7DE1"},
   business:{label:{en:"Small Business", es:"Pequeños negocios"}, icon:"💼", color:"#F0762B"},
-  money:{label:{en:"Money & Home", es:"Dinero y hogar"}, icon:"🏠", color:"#0CA678"},
+  money:{label:{en:"Money & Home", es:"Dinero y hogar"}, icon:"🏠", color:"#2F7DE1"},
   family:{label:{en:"Family", es:"Familia"}, icon:"👨‍👩‍👧", color:"#E0497B"},   holidays:{label:{en:"Holidays", es:"Fiestas"}, icon:"🎄", color:"#E03131"},
   tech:{label:{en:"Tech & AI", es:"Tecnología e IA"}, icon:"🤖", color:"#4C6FFF"},
-  outdoors:{label:{en:"Outdoors & Garden", es:"Exterior y jardín"}, icon:"🎣", color:"#3FA34D"},
+  outdoors:{label:{en:"Outdoors & Garden", es:"Exterior y jardín"}, icon:"🎣", color:"#4A90D9"},
   travel:{label:{en:"Travel", es:"Viajes"}, icon:"🧳", color:"#FF7A59"},
   wellness:{label:{en:"Wellness & Food", es:"Bienestar y comida"}, icon:"🌿", color:"#8B5CF6"}
 };
@@ -3857,7 +3857,7 @@ function renderTemplates(){
      sub:{en:"Date nights without the “what do you want to do?” loop, plus gift ideas that land — all right here.",es:"Citas sin el eterno “¿qué quieres hacer?”, además de ideas de regalos que aciertan — todo disponible aquí."},
      picks:["Date Night","DeWitt Gift Playbook","Family Movie Night","Recipe Keeper"],
      test:function(){return md>=116 && md<=214;}},
-    {id:"easter", icon:"🐣", bg:"#2F9E44", name:{en:"Easter season",es:"Temporada de Pascua"}, title:{en:"Easter & spring picks",es:"Recomendaciones de Pascua y primavera"}, link:{en:"Shop Easter & spring picks ↓",es:"Ver recomendaciones de Pascua y primavera ↓"},
+    {id:"easter", icon:"🐣", bg:"#2F7DE1", name:{en:"Easter season",es:"Temporada de Pascua"}, title:{en:"Easter & spring picks",es:"Recomendaciones de Pascua y primavera"}, link:{en:"Shop Easter & spring picks ↓",es:"Ver recomendaciones de Pascua y primavera ↓"},
      banner:{en:"<strong>Easter & spring are here</strong> — garden starters, journals and fresh-season planners.",es:"<strong>La Pascua y la primavera ya están aquí</strong> — inicios de jardín, diarios y planificadores de temporada fresca."},
      sub:{en:"Spring in the garden and around the house: starter plans, layout planners and a season journal — all right here.",es:"Primavera en el jardín y en casa: planes para empezar, planificadores de distribución y un diario de temporada — todo disponible aquí."},
      picks:["Backyard Vegetable Garden","Raised-Bed Garden","Garden Journal","Homestead Daily Chores"],
@@ -4235,12 +4235,12 @@ var _mo=new MutationObserver(queuePrune);_mo.observe(document.body,{childList:tr
 "use strict";
 function L(){return (typeof currentLang!=="undefined"&&currentLang==="es")?"es":"en";}
 var MF_CATS=[
- {id:"budget",en:"Budget & Debt",es:"Presupuesto y deudas",ic:"💰",col:"#DFF3E4"},
+ {id:"budget",en:"Budget & Debt",es:"Presupuesto y deudas",ic:"💰",col:"#DCEBF9"},
  {id:"business",en:"Small Business",es:"Negocios pequeños",ic:"💼",col:"#FFE8D6"},
  {id:"weddings",en:"Weddings & Parties",es:"Bodas y fiestas",ic:"💍",col:"#FDE2EF"},
  {id:"classroom",en:"Classroom & Daycare",es:"Aulas y guarderías",ic:"🎒",col:"#FFF3BF"},
  {id:"homefamily",en:"Home & Family",es:"Hogar y familia",ic:"🏠",col:"#E7F0FF"},
- {id:"health",en:"Health",es:"Salud",ic:"💊",col:"#E6FCF5"},
+ {id:"health",en:"Health",es:"Salud",ic:"💊",col:"#E8F1FA"},
  {id:"seasonal",en:"Seasonal",es:"De temporada",ic:"🎄",col:"#FFE3E3"},
  {id:"templates",en:"Templates & Spreadsheets",es:"Plantillas y hojas de cálculo",ic:"📊",col:"#EDE7FF"}
 ];
@@ -4259,16 +4259,16 @@ function mfCatOf(x){
 }
 function mfCounts(){var m={};PRODUCTS.forEach(function(x){var c=mfCatOf(x);m[c]=(m[c]||0)+1;});return m;}
 var FINE_CATS=[
- {id:"budget",en:"Budget & Debt",es:"Presupuesto y deudas",ic:"💰",col:"#DFF3E2"},
+ {id:"budget",en:"Budget & Debt",es:"Presupuesto y deudas",ic:"💰",col:"#DCEBF9"},
  {id:"bookkeeping",en:"Bookkeeping & Small Business",es:"Contabilidad y negocios",ic:"📒",col:"#E3ECFF"},
  {id:"contractor",en:"Contractor & Landlord",es:"Contratistas y propietarios",ic:"🔨",col:"#FFE8CC"},
  {id:"classroom",en:"Daycare & Classroom",es:"Guardería y aula",ic:"🍎",col:"#FFE3E3"},
  {id:"weddings",en:"Weddings & Parties",es:"Bodas y fiestas",ic:"💍",col:"#FCE4F3"},
- {id:"homefamily",en:"Home & Family",es:"Hogar y familia",ic:"🏠",col:"#E6F4EA"},
- {id:"outdoors",en:"Outdoors & Garden",es:"Exterior y jardín",ic:"🌿",col:"#E4F5E0"},
+ {id:"homefamily",en:"Home & Family",es:"Hogar y familia",ic:"🏠",col:"#E3EEFA"},
+ {id:"outdoors",en:"Outdoors & Garden",es:"Exterior y jardín",ic:"🌿",col:"#E8F1FA"},
  {id:"health",en:"Health & Wellness",es:"Salud y bienestar",ic:"❤️",col:"#FFE9EC"},
  {id:"seasonal",en:"Seasonal & Holidays",es:"Temporada y fiestas",ic:"🎄",col:"#FFF3CD"},
- {id:"driver",en:"Driver & Gig",es:"Reparto y trabajo gig",ic:"🚐",col:"#E0F2F1"},
+ {id:"driver",en:"Driver & Gig",es:"Reparto y trabajo gig",ic:"🚐",col:"#E3EEFA"},
  {id:"tech",en:"Tech & AI",es:"Tecnología e IA",ic:"💻",col:"#EDE7FF"},
  {id:"travel",en:"Travel",es:"Viajes",ic:"✈️",col:"#E3F2FD"},
  {id:"spanish",en:"En Español",es:"En Español",ic:"🇪🇸",col:"#FDEBD0"}
@@ -4965,8 +4965,8 @@ body.scrolled .gsearch .chips{display:flex!important}
 body.scrolled .gsearch .req-link{display:block!important}
 @media(max-width:820px){body.scrolled .gsearch{padding:8px 0!important}}
 /* Fix 10: Muse invite card — the one colorful card on Home */
-.muse-strip.invite-card{display:flex;gap:14px;align-items:flex-start;background:linear-gradient(135deg,#FFF1D6,#FFDF9E)!important;border:2px solid #E8A33D!important;color:#3A2A00!important;border-radius:16px;padding:16px;margin-top:18px}
-.muse-strip .muse-mascot{width:92px;height:92px;border-radius:50%;object-fit:cover;flex:0 0 auto;border:3px solid #E8A33D;background:#1B2340}
+.muse-strip.invite-card{display:flex;gap:14px;align-items:flex-start;background:linear-gradient(135deg,#FFF1D6,#FFDF9E)!important;border:2px solid #8FC3F5!important;color:#3A2A00!important;border-radius:16px;padding:16px;margin-top:18px}
+.muse-strip .muse-mascot{width:92px;height:92px;border-radius:50%;object-fit:cover;flex:0 0 auto;border:3px solid #8FC3F5;background:#1B2340}
 .muse-strip .muse-body{flex:1 1 auto;min-width:0}
 .muse-strip .muse-body h3{margin:0 0 6px;font-size:1.12rem;color:#7A4A00}
 .muse-strip .muse-body p{margin:0 0 8px;color:#3A2A00}
@@ -5390,7 +5390,7 @@ footer a{padding:13px 0}
    Real text: responsive and crisp on phone, tablet and PC. */
 header.site{background:#0B3C6C!important;border-bottom:3px solid #8FC3F5;backdrop-filter:none}
 header.site .brand{font-family:"Playfair Display",Georgia,"Times New Roman",serif;font-weight:900;font-size:clamp(1.45rem,4.2vw,2.1rem);color:#FFF9EB;line-height:1.05;letter-spacing:.01em}
-header.site .brand span{font-family:"Public Sans",sans-serif;color:#BFE3CC}
+header.site .brand span{font-family:"Public Sans",sans-serif;color:#BFDDF7}
 header.site .brand span[data-i18n="brand.builtFor"]{color:rgba(255,249,235,.82)}
 header.site nav.main a.tab{background:rgba(255,249,235,.07);color:#FFF9EB;border:1px solid rgba(255,249,235,.22)}
 header.site nav.main a.tab:hover{background:rgba(255,249,235,.16)}
