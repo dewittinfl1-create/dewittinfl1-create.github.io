@@ -4896,10 +4896,15 @@ if(document.readyState==="loading") document.addEventListener("DOMContentLoaded"
 (function(){
 "use strict";
 function dwLang(){
-  try{ var q=new URLSearchParams(location.search).get("lang"); if(q==="es"||q==="en") return q; }catch(e){}
+  /* Follow the site's ACTIVE language, not the raw URL: currentLang is seeded
+     from ?lang= by the site's own init and updated by applyLanguage() on every
+     toggle click, so it must outrank the ?lang= param — otherwise a ?lang= link
+     pins the chat to that language forever and the toggle never reaches it.
+     The URL param remains only as a last-resort fallback. */
+  try{ if(typeof currentLang!=="undefined"&&(currentLang==="es"||currentLang==="en")) return currentLang; }catch(e){}
   try{ var sv=localStorage.getItem("cdw-lang"); if(sv==="es"||sv==="en") return sv; }catch(e){}
   var dl=document.documentElement.lang; if(dl==="es"||dl==="en") return dl;
-  try{ if(typeof currentLang!=="undefined"&&(currentLang==="es"||currentLang==="en")) return currentLang; }catch(e){}
+  try{ var q=new URLSearchParams(location.search).get("lang"); if(q==="es"||q==="en") return q; }catch(e){}
   return "en";
 }
 var FB="https://www.facebook.com/christopher.dewitt", MC="https://m.me/cm/ahNRa3Grx3Q-kzLv/", EM="dewitt3089@hotmail.com";
